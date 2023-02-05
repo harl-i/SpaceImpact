@@ -23,6 +23,10 @@ public class Player : SpaceFlyingObject
 
     private void OnShoot()
     {
-        Shoot();
+        if (_elapsedTime > _shootDelay)
+        {
+            Shoot();
+            _elapsedTime = 0f;
+        }
     }
 }

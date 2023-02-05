@@ -6,6 +6,14 @@ public class SpaceFlyingObject : MonoBehaviour
 {
     [SerializeField] protected Transform _shootPoint;
     [SerializeField] protected BulletsPool _bulletsPool;
+    [SerializeField] protected float _shootDelay;
+
+    protected float _elapsedTime;
+
+    private void Update()
+    {
+        _elapsedTime += Time.deltaTime;
+    }
 
     protected void Shoot()
     {

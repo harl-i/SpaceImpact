@@ -6,9 +6,6 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerMover _playerMover;
 
-    private float _elapsedTime;
-    private float _shootDelay = 0.15f;
-
     public event UnityAction keyFirePressed;
 
     private void Start()
@@ -19,7 +16,6 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         InputHandler();
-        _elapsedTime += Time.deltaTime;
     }
 
     private void InputHandler()
@@ -50,10 +46,9 @@ public class PlayerInput : MonoBehaviour
             _playerMover.StopMove();
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) && _elapsedTime > _shootDelay)
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             keyFirePressed?.Invoke();
-            _elapsedTime = 0f;
         }
     }
 }
