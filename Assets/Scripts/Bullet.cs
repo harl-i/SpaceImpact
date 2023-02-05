@@ -13,6 +13,6 @@ public class Bullet : MonoBehaviour, IObjectFromPool
 
     private void Update()
     {
-        transform.Translate(new Vector2(0, -1) * _bulletSpeed * Time.deltaTime);
+        transform.Translate(Vector2.right * _bulletSpeed * Time.deltaTime);
     }
 }
