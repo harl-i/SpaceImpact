@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(PlayerMover))]
 public class PlayerInput : MonoBehaviour
 {
-    public Vector2 MoveDirection { get; private set; }
+    [SerializeField] private PlayerMover _playerMover;
 
-    private bool _isHorizontalMove;
-    private bool _isVerticalMove;
     private float _elapsedTime;
     private float _shootDelay = 0.15f;
 
     public event UnityAction keyFirePressed;
+
+    private void Start()
+    {
+        _playerMover = GetComponent<PlayerMover>();
+    }
 
     private void Update()
     {
@@ -22,40 +24,30 @@ public class PlayerInput : MonoBehaviour
 
     private void InputHandler()
     {
-        if (Input.GetKey(KeyCode.W) && !_isHorizontalMove)
+        if (Input.GetKey(KeyCode.W))
         {
-            MoveDirection = new Vector2(0, 1);
-            _isVerticalMove = true;
+            _playerMover.TryMoveUp();
         }
 
-        if (Input.GetKey(KeyCode.S) && !_isHorizontalMove)
+        if (Input.GetKey(KeyCode.S))
         {
-            MoveDirection = new Vector2(0, -1);
-            _isVerticalMove = true;
+            _playerMover.TryMoveDown();
         }
 
-        if (Input.GetKey(KeyCode.D) && !_isVerticalMove)
+        if (Input.GetKey(KeyCode.D))
         {
-            MoveDirection = new Vector2(1, 0);
-            _isHorizontalMove = true;
+            _playerMover.TryMoveRight();
         }
 
-        if (Input.GetKey(KeyCode.A) && !_isVerticalMove)
+        if (Input.GetKey(KeyCode.A))
         {
-            MoveDirection = new Vector2(-1, 0);
-            _isHorizontalMove = true;
+            _playerMover.TryMoveLeft();
         }
 
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) ||
+            Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
         {
-            MoveDirection = Vector2.zero;
-            _isVerticalMove = false;
-        }
-
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-        {
-            MoveDirection = Vector2.zero;
-            _isHorizontalMove = false;
+            _playerMover.StopMove();
         }
 
         if (Input.GetKeyDown(KeyCode.Return) && _elapsedTime > _shootDelay)
