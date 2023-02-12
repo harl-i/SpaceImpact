@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Transition : MonoBehaviour
 {
     [SerializeField] private Wave _targetWave;
-    protected Enemy _enemy;
 
     public Wave TargetWave => _targetWave;
 

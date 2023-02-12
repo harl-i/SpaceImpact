@@ -1,26 +1,66 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour, IObjectFromPool
 {
     [SerializeField] private float _bulletSpeed;
-
-    public event UnityAction EnemyDying;
+    [SerializeField] private float _bulletLifeTime;
+    [SerializeField] private Direction _choiceDirection;
 
     public void Disable()
     {
         gameObject.SetActive(false);
     }
 
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        transform.Translate(Vector2.right * _bulletSpeed * Time.deltaTime);
+        Disable();
     }
+
+    private void OnEnable()
+    {
+        SetDirection(_choiceDirection);
+    }
+
+    private void SetDirection(Direction direction)
+    {
+        switch (direction)
+        {
+            case Direction.Left:
+                StartCoroutine(Shoot(Vector2.left, _bulletLifeTime));
+                break;
+            case Direction.Right:
+                StartCoroutine(Shoot(Vector2.right, _bulletLifeTime));
+                break;
+            default:
+                break;
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         gameObject.SetActive(false);
     }
+
+    private IEnumerator Shoot(Vector2 direction, float lifetime)
+    {
+        float timeAfterEnable = 0;
+
+        while (timeAfterEnable < lifetime)
+        {
+            this.transform.Translate(direction * _bulletSpeed * Time.deltaTime);
+            timeAfterEnable += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Disable();
+    }
+}
+
+enum Direction
+{
+    Left,
+    Right
 }

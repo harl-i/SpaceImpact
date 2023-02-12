@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceFlyingObject : MonoBehaviour
+public abstract class SpaceFlyingObject : MonoBehaviour
 {
     [SerializeField] protected Transform _shootPoint;
     [SerializeField] protected BulletsPool _bulletsPool;

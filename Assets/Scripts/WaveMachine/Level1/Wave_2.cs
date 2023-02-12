@@ -6,7 +6,6 @@ public class Wave_2 : Wave
 {
     [SerializeField] private Enemy _enemyPrefab;
 
-    //private int _enemyCount = 3;
     private int _enabledEnemy = 0;
     private float _spawnDelay = 3;
     private float _elapsedTime;
