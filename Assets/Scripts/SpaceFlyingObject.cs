@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class SpaceFlyingObject : MonoBehaviour
 {
     [SerializeField] protected Transform _shootPoint;
-    [SerializeField] protected BulletsPool _bulletsPool;
+    [SerializeField] protected ObjectPool _bulletsPool;
     [SerializeField] protected float _shootDelay;
 
     protected float _elapsedTime;

@@ -1,4 +1,4 @@
 public interface IObjectFromPool
 {
-    public void Disable();
+    public void ReturnToPool();
 }

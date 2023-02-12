@@ -17,7 +17,7 @@ public abstract class Wave : MonoBehaviour
             foreach (var transition in _transitions)
             {
                 transition.enabled = true;
-                transition.Init(wave);
+                //transition.Init(wave);
             }
         }
     }

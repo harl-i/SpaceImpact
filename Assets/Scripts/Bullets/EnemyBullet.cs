@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisableTrigger : MonoBehaviour
+public class EnemyBullet : Bullet
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IObjectFromPool poolObject))
+        if (collision.TryGetComponent(out Player player))
         {
-            poolObject.ReturnToPool();
+            player.ApplyDamage();
+            ReturnToPool();
         }
     }
 }

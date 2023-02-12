@@ -1,20 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IObjectFromPool
+public abstract class Bullet : MonoBehaviour, IObjectFromPool
 {
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private float _bulletLifeTime;
     [SerializeField] private Direction _choiceDirection;
 
-    public void Disable()
+    public void ReturnToPool()
     {
         gameObject.SetActive(false);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Disable();
     }
 
     private void OnEnable()
@@ -37,11 +32,10 @@ public class Bullet : MonoBehaviour, IObjectFromPool
         }
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        gameObject.SetActive(false);
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    gameObject.SetActive(false);
+    //}
 
     private IEnumerator Shoot(Vector2 direction, float lifetime)
     {
@@ -55,7 +49,7 @@ public class Bullet : MonoBehaviour, IObjectFromPool
             yield return null;
         }
 
-        Disable();
+        ReturnToPool();
     }
 }
 

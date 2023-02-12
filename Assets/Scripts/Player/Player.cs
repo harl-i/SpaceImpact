@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : SpaceFlyingObject
 {
     private PlayerInput _input;
+    private int _health = 3;
 
     private void Awake()
     {
@@ -29,5 +30,11 @@ public class Player : SpaceFlyingObject
             Shoot();
             _elapsedTime = 0f;
         }
+    }
+
+    public void ApplyDamage()
+    {
+        _health--;
+        Debug.Log(_health);
     }
 }

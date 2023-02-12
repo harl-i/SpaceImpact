@@ -9,12 +9,22 @@ public class Enemy : SpaceFlyingObject, IObjectFromPool
     [SerializeField] private int _reward;
     [SerializeField] private float _firstShootDelay;
 
-    public static event UnityAction EnemyDying;
     public static event UnityAction<int> RewardAccrual;
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Die()
+    {
+        RewardAccrual?.Invoke(_reward);
+        ReturnToPool();
+    }
 
     private void Awake()
     {
-        _bulletsPool = FindObjectOfType<EnemyBulletsPool>().GetComponent<BulletsPool>();
+        _bulletsPool = FindObjectOfType<EnemyBulletsPool>();
     }
 
     private void OnEnable()
@@ -22,12 +32,6 @@ public class Enemy : SpaceFlyingObject, IObjectFromPool
         StartCoroutine(StartShoot(_firstShootDelay));
     }
 
-    public void Disable()
-    {
-        EnemyDying?.Invoke();
-        RewardAccrual?.Invoke(_reward);
-        gameObject.SetActive(false);
-    }
 
     private void Update()
     {
