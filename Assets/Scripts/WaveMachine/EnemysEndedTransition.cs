@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveEnemyEnded : Transition
+public class EnemysEndedTransition : Transition
 {
     protected override void OnEnemyDying()
     {
