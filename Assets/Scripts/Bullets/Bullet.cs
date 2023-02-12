@@ -32,11 +32,6 @@ public abstract class Bullet : MonoBehaviour, IObjectFromPool
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    gameObject.SetActive(false);
-    //}
-
     private IEnumerator Shoot(Vector2 direction, float lifetime)
     {
         float timeAfterEnable = 0;

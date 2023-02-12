@@ -9,5 +9,10 @@ public class PlayerBullet : Bullet
             enemy.Die();
             ReturnToPool();
         }
+
+        if (collision.TryGetComponent(out RightTrigger rightTrigger))
+        {
+            ReturnToPool();
+        }
     }
 }

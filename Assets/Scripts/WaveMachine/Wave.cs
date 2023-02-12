@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,9 +6,9 @@ public abstract class Wave : MonoBehaviour
 {
     [SerializeField] private List<Transition> _transitions;
     [SerializeField] protected List<EnemySpawnPoint> _spawnPoints;
-    [SerializeField] protected int _enemyCount;
+    //[SerializeField] protected int _enemyCount;
 
-    public int EnemyCount => _enemyCount;
+    //public int EnemyCount => _enemyCount;
 
     public void StartWave(Wave wave)
     {
@@ -17,7 +18,6 @@ public abstract class Wave : MonoBehaviour
             foreach (var transition in _transitions)
             {
                 transition.enabled = true;
-                //transition.Init(wave);
             }
         }
     }
@@ -42,5 +42,32 @@ public abstract class Wave : MonoBehaviour
         }
 
         return null;
+    }
+
+    protected IEnumerator Spawn(Enemy enemyPrefab, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
+    {
+        for (int i = 0; i < enemysCount; i++)
+        {
+            Instantiate(enemyPrefab, spawnPoint.transform);
+
+            yield return new WaitForSeconds(spawnDelay);
+        }
+    }
+
+    protected IEnumerator Spawn(Enemy enemyPrefab, float spawnDelay, int enemysCount)
+    {
+        if (enemysCount < _spawnPoints.Count)
+        {
+            for (int i = 0; i < enemysCount; i++)
+            {
+                Instantiate(enemyPrefab, _spawnPoints[i].transform);
+
+                yield return new WaitForSeconds(spawnDelay);
+            }
+        }
+        else
+        {
+            Debug.Log("Количество врагов слишком большое");
+        }
     }
 }
