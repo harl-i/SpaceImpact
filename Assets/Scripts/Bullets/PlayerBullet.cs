@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Enemy enemy))
         {
-            enemy.Die();
+            enemy.ApplyDamage();
             ReturnToPool();
         }
 

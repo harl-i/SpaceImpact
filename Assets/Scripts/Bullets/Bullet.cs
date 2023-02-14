@@ -46,6 +46,8 @@ public abstract class Bullet : MonoBehaviour, IObjectFromPool
 
         ReturnToPool();
     }
+
+    protected abstract void OnTriggerEnter2D(Collider2D collision);
 }
 
 enum Direction

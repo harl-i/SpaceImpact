@@ -789,10 +789,6 @@ GameObject:
   - component: {fileID: 695434103}
   - component: {fileID: 695434102}
   - component: {fileID: 695434101}
-  - component: {fileID: 695434104}
-  - component: {fileID: 695434099}
-  - component: {fileID: 695434106}
-  - component: {fileID: 695434105}
   m_Layer: 0
   m_Name: WaveMachine
   m_TagString: Untagged
@@ -800,26 +796,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &695434099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695434098}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43a9ecc1cb3bbb48881ea0365084081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 695434106}
-  _spawnPoints:
-  - {fileID: 1232430716}
-  - {fileID: 146373491}
-  - {fileID: 1014040326}
-  _enemyCount: 2
-  _enemyPrefab: {fileID: 8639750737701718997, guid: fd53fcb1dd87dd5469a07d66d20bd972, type: 3}
 --- !u!114 &695434101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,13 +808,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8170538d94004754690f337a68f6c322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 695434104}
+  _transitions: []
   _spawnPoints:
   - {fileID: 1232430716}
   - {fileID: 146373491}
   - {fileID: 1014040326}
-  _enemyCount: 3
   _enemyPrefab: {fileID: 8639750737701718997, guid: fd53fcb1dd87dd5469a07d66d20bd972, type: 3}
 --- !u!114 &695434102
 MonoBehaviour:
@@ -868,53 +842,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &695434104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695434098}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b775bf9bf9007e4a828e36c69a2a9db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetWave: {fileID: 695434099}
-  _delay: 11
---- !u!114 &695434105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695434098}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b86b3ff83cc84b870f35a2aa6eecb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transitions: []
-  _spawnPoints:
-  - {fileID: 1232430716}
-  - {fileID: 146373491}
-  - {fileID: 1014040326}
-  _enemyCount: 3
-  _enemyPrefab: {fileID: 8639750737701718997, guid: fd53fcb1dd87dd5469a07d66d20bd972, type: 3}
---- !u!114 &695434106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695434098}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b775bf9bf9007e4a828e36c69a2a9db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetWave: {fileID: 695434105}
-  _delay: 9
 --- !u!1 &785300872
 GameObject:
   m_ObjectHideFlags: 0

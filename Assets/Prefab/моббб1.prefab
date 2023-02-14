@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbaf8e6c2c154468af8921e4b25c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 3
   _shootPoint: {fileID: 7572420351716423333}
   _bulletsPool: {fileID: 3124566701369422171, guid: 46800749ad5fe4b4894b2d10bbd4a16f, type: 3}
   _shootDelay: 1.5

@@ -6,7 +6,6 @@ using UnityEngine;
 public class Player : SpaceFlyingObject
 {
     private PlayerInput _input;
-    private int _health = 3;
 
     private void Awake()
     {
@@ -32,9 +31,9 @@ public class Player : SpaceFlyingObject
         }
     }
 
-    public void ApplyDamage()
+    public override void Die()
     {
-        _health--;
-        Debug.Log(_health);
+        Debug.Log("GAME OVER!");
+        gameObject.SetActive(false);
     }
 }

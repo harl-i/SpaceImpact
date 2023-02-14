@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,10 +12,11 @@ public class Enemy : SpaceFlyingObject, IObjectFromPool
 
     public void ReturnToPool()
     {
+        Debug.Log("Enemy Die");
         gameObject.SetActive(false);
     }
 
-    public void Die()
+    public override void Die()
     {
         RewardAccrual?.Invoke(_reward);
         ReturnToPool();
@@ -61,4 +61,5 @@ public class Enemy : SpaceFlyingObject, IObjectFromPool
             yield return new WaitUntil(() => gameObject.activeSelf == true);
         }
     }
+
 }
