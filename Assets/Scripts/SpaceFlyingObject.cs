@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class SpaceFlyingObject : MonoBehaviour
 {
@@ -8,10 +9,18 @@ public abstract class SpaceFlyingObject : MonoBehaviour
     [SerializeField] protected float _shootDelay;
 
     protected float _elapsedTime;
-    
+
+    public event UnityAction<int> HealthChanged;
+
+    private void Start()
+    {
+        HealthChanged?.Invoke(_health);
+    }
+
     public void ApplyDamage()
     {
         _health--;
+        HealthChanged?.Invoke(_health);
         Debug.Log(_health);
 
         if (_health <= 0)

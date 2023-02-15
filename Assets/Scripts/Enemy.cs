@@ -57,9 +57,6 @@ public class Enemy : SpaceFlyingObject, IObjectFromPool
             Shoot();
 
             yield return new WaitForSeconds(delay);
-
-            yield return new WaitUntil(() => gameObject.activeSelf == true);
         }
     }
-
 }
