@@ -12,6 +12,11 @@ public abstract class Bullet : MonoBehaviour, IObjectFromPool
         gameObject.SetActive(false);
     }
 
+    public GameObject GetGameObject()
+    {
+        return this.gameObject;
+    }
+
     private void OnEnable()
     {
         SetDirection(_choiceDirection);

@@ -16,6 +16,11 @@ public class Enemy : SpaceFlyingObject, IObjectFromPool
         gameObject.SetActive(false);
     }
 
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
     public override void Die()
     {
         RewardAccrual?.Invoke(_reward);

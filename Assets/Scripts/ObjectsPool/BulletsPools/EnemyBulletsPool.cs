@@ -6,6 +6,6 @@ public class EnemyBulletsPool : ObjectPool
 
     private void Awake()
     {
-        Initialize(_bulletPrefab.gameObject);
+        Initialize(_bulletPrefab);
     }
 }

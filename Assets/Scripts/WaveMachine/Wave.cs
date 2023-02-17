@@ -6,9 +6,6 @@ public abstract class Wave : MonoBehaviour
 {
     [SerializeField] private List<Transition> _transitions;
     [SerializeField] protected List<EnemySpawnPoint> _spawnPoints;
-    //[SerializeField] protected int _enemyCount;
-
-    //public int EnemyCount => _enemyCount;
 
     public void StartWave(Wave wave)
     {
@@ -44,30 +41,33 @@ public abstract class Wave : MonoBehaviour
         return null;
     }
 
-    protected IEnumerator Spawn(Enemy enemyPrefab, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
+    //protected IEnumerator Spawn<T>(T enemyPrefab, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
+    //    where T : IObjectFromPool
+
+    protected IEnumerator Spawn(IObjectFromPool enemyPrefab, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
     {
         for (int i = 0; i < enemysCount; i++)
         {
-            Instantiate(enemyPrefab, spawnPoint.transform);
+            Instantiate(enemyPrefab.GetGameObject(), spawnPoint.transform) ;
 
             yield return new WaitForSeconds(spawnDelay);
         }
     }
 
-    protected IEnumerator Spawn(Enemy enemyPrefab, float spawnDelay, int enemysCount)
-    {
-        if (enemysCount < _spawnPoints.Count)
-        {
-            for (int i = 0; i < enemysCount; i++)
-            {
-                Instantiate(enemyPrefab, _spawnPoints[i].transform);
+    //protected IEnumerator Spawn(Enemy enemyPrefab, float spawnDelay, int enemysCount)
+    //{
+    //    if (enemysCount < _spawnPoints.Count)
+    //    {
+    //        for (int i = 0; i < enemysCount; i++)
+    //        {
+    //            Instantiate(enemyPrefab, _spawnPoints[i].transform);
 
-                yield return new WaitForSeconds(spawnDelay);
-            }
-        }
-        else
-        {
-            Debug.Log("Количество врагов слишком большое");
-        }
-    }
+    //            yield return new WaitForSeconds(spawnDelay);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Количество врагов слишком большое");
+    //    }
+    //}
 }

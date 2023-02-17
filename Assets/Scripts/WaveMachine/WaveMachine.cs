@@ -1,15 +1,10 @@
-using System;
-using TMPro;
 using UnityEngine;
 
 public class WaveMachine : MonoBehaviour
 {
     [SerializeField] private Wave _firstWave;
 
-
     private Wave _currentWave;
-
-    //public Wave CurrentWave => _currentWave;
 
     private void Start()
     {
