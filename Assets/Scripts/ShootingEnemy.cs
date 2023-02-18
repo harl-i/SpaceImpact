@@ -11,7 +11,7 @@ public abstract class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 
     public static event UnityAction<int> RewardAccrual;
 
-    public override void Die()
+    protected override void Die()
     {
         base.Die();
         RewardAccrual?.Invoke(_reward);
@@ -19,8 +19,7 @@ public abstract class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 
     protected void Shoot()
     {
-        GameObject bullet;
-        _bulletsPool.TryGetObject(out bullet);
+        _bulletsPool.TryGetObject(out GameObject bullet);
 
         if (bullet != null)
         {

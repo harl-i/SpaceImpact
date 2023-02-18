@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wave_1 : Wave
 {
-    [SerializeField] private NonShootingEnemy _enemyPrefab;
+    [SerializeField] protected EnemyPool _enemysPool;
 
     private float _spawnDelay = 3;
 
@@ -24,7 +24,7 @@ public class Wave_1 : Wave
     {
         for (int i = 0; i < _enemyCountOnIteration.Count; i++)
         {
-            yield return StartCoroutine(Spawn(_enemyPrefab, _spawnDelay, _enemyCountOnIteration[i], _spawnPoints[i]));
+            yield return StartCoroutine(Spawn(_enemysPool, _spawnDelay, _enemyCountOnIteration[i], _spawnPoints[i]));
 
             yield return new WaitForSeconds(_spawnDelay);
         }

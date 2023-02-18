@@ -8,21 +8,17 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
     [SerializeField] protected int _reward;
 
     protected float _elapsedTime;
+    private int _currentHealth;
 
     public void ApplyDamage()
     {
-        _health--;
+        _currentHealth--;
         Debug.Log(_health);
 
-        if (_health <= 0)
+        if (_currentHealth <= 0)
         {
             Die();
         }
-    }
-
-    public virtual void Die()
-    {
-        ReturnToPool();
     }
 
     public void ReturnToPool()
@@ -33,6 +29,21 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
     public GameObject GetGameObject()
     {
         return gameObject;
+    }
+
+    protected virtual void Die()
+    {
+        ReturnToPool();
+    }
+
+    private void OnEnable()
+    {
+        RestoreHealth();
+    }
+
+    private void RestoreHealth()
+    {
+        _currentHealth = _health;
     }
 
     private void Update()

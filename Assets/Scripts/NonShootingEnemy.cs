@@ -1,9 +1,22 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class NonShootingEnemy : SpaceFlyingObject, IObjectFromPool
+public class NonShootingEnemy : SpaceFlyingObject
 {
-    public override void Die()
+    public static event UnityAction<int> RewardAccrual;
+
+    protected override void Die()
     {
         base.Die();
+        RewardAccrual?.Invoke(_reward);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Player player))
+        {
+            player.ApplyDamage();
+            Die();
+        }
     }
 }

@@ -41,18 +41,35 @@ public abstract class Wave : MonoBehaviour
         return null;
     }
 
-    //protected IEnumerator Spawn<T>(T enemyPrefab, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
-    //    where T : IObjectFromPool
-
-    protected IEnumerator Spawn(IObjectFromPool enemyPrefab, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
+    protected IEnumerator Spawn(EnemyPool enemysPool, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
     {
         for (int i = 0; i < enemysCount; i++)
         {
-            Instantiate(enemyPrefab.GetGameObject(), spawnPoint.transform) ;
+            enemysPool.TryGetObject(out GameObject result);
+
+            if (result != null)
+            {
+                result.transform.position = spawnPoint.transform.position;
+                result.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Enemys pool is empty");
+            }
 
             yield return new WaitForSeconds(spawnDelay);
         }
     }
+
+    //protected IEnumerator Spawn(IObjectFromPool enemyPrefab, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
+    //{
+    //    for (int i = 0; i < enemysCount; i++)
+    //    {
+    //        Instantiate(enemyPrefab.GetGameObject(), spawnPoint.transform) ;
+
+    //        yield return new WaitForSeconds(spawnDelay);
+    //    }
+    //}
 
     //protected IEnumerator Spawn(Enemy enemyPrefab, float spawnDelay, int enemysCount)
     //{

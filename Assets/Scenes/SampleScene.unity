@@ -451,9 +451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c7ee5ec13d7049a535da5f1f0bacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
-  _shootPoint: {fileID: 2055601279}
   _bulletsPool: {fileID: 1750111436}
+  _shootPoint: {fileID: 2055601279}
   _shootDelay: 0.15
 --- !u!114 &417317070
 MonoBehaviour:
@@ -867,7 +866,7 @@ MonoBehaviour:
   - {fileID: 1232430716}
   - {fileID: 146373491}
   - {fileID: 1014040326}
-  _enemyPrefab: {fileID: 0}
+  _enemysPool: {fileID: 785300874}
 --- !u!1 &785300872
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,8 +876,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 785300873}
+  - component: {fileID: 785300874}
   m_Layer: 0
-  m_Name: Enemys
+  m_Name: Enemys_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -899,6 +899,21 @@ Transform:
   m_Father: {fileID: 641112372}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &785300874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785300872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c39bb4dff10c7e4a8e21b977f4b35ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 785300872}
+  _capacity: 10
+  _enemy: {fileID: 9097524849889478026, guid: fd53fcb1dd87dd5469a07d66d20bd972, type: 3}
 --- !u!1 &824997452
 GameObject:
   m_ObjectHideFlags: 0
