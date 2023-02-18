@@ -8,6 +8,7 @@ public class Background : MonoBehaviour
 
     private RawImage _image;
     private float _imagePositionX;
+    private float _speedÑoefficient = 100f;
 
     private void Awake()
     {
@@ -17,7 +18,7 @@ public class Background : MonoBehaviour
 
     private void Update()
     {
-        _imagePositionX += _speed * Time.deltaTime;
+        _imagePositionX += (_speed / _speedÑoefficient) * Time.deltaTime;
 
         if (_imagePositionX > 1)
         {

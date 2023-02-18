@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Wave_1 : Wave
 {
-    [SerializeField] private Enemy _enemyPrefab;
-    //[SerializeField] private IBonus _rocketBonus;
+    [SerializeField] private NonShootingEnemy _enemyPrefab;
 
     private float _spawnDelay = 3;
 

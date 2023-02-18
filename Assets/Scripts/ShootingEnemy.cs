@@ -2,29 +2,35 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : SpaceFlyingObject, IObjectFromPool
+public abstract class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private int _reward;
     [SerializeField] private float _firstShootDelay;
+    [SerializeField] protected ObjectPool _bulletsPool;
+    [SerializeField] protected Transform _shootPoint;
+    [SerializeField] protected float _shootDelay;
 
     public static event UnityAction<int> RewardAccrual;
 
-    public void ReturnToPool()
-    {
-        Debug.Log("Enemy Die");
-        gameObject.SetActive(false);
-    }
-
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
-
     public override void Die()
     {
+        base.Die();
         RewardAccrual?.Invoke(_reward);
-        ReturnToPool();
+    }
+
+    protected void Shoot()
+    {
+        GameObject bullet;
+        _bulletsPool.TryGetObject(out bullet);
+
+        if (bullet != null)
+        {
+            bullet.transform.position = _shootPoint.transform.position;
+            bullet.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("bullets pool is empty");
+        }
     }
 
     private void Awake()
@@ -36,13 +42,6 @@ public class Enemy : SpaceFlyingObject, IObjectFromPool
     {
         StartCoroutine(StartShoot(_firstShootDelay));
     }
-
-
-    private void Update()
-    {
-        transform.Translate(Vector2.left * _speed * Time.deltaTime);
-    }
-
 
     private IEnumerator StartShoot(float firstShootDelay)
     {

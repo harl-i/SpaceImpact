@@ -14,12 +14,12 @@ public class Score : MonoBehaviour
 
     private void OnEnable()
     {
-        Enemy.RewardAccrual += OnAccrual;
+        ShootingEnemy.RewardAccrual += OnAccrual;
     }
 
     private void OnDisable()
     {
-        Enemy.RewardAccrual -= OnAccrual;
+        ShootingEnemy.RewardAccrual -= OnAccrual;
     }
 
     private void OnAccrual(int reward)

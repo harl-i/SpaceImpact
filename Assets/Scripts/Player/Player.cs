@@ -1,15 +1,46 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerInput))]
-public class Player : SpaceFlyingObject
+public class Player : MonoBehaviour
 {
+    [SerializeField] private ObjectPool _bulletsPool;
+    [SerializeField] private Transform _shootPoint;
+    [SerializeField] private float _shootDelay;
+
+    private int _health = 3;
     private PlayerInput _input;
+    private float _elapsedTime;
+
+    public event UnityAction<int> HealthChanged;
+
+    public void ApplyDamage()
+    {
+        _health--;
+        HealthChanged?.Invoke(_health);
+        Debug.Log(_health);
+
+        if (_health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log("GAME OVER!");
+        gameObject.SetActive(false);
+    }
 
     private void Awake()
     {
         _input = GetComponent<PlayerInput>();
+    }
+
+    private void Start()
+    {
+        HealthChanged?.Invoke(_health);
     }
 
     private void OnEnable()
@@ -22,6 +53,11 @@ public class Player : SpaceFlyingObject
         _input.keyFirePressed -= OnShoot;
     }
 
+    private void Update()
+    {
+        _elapsedTime += Time.deltaTime;
+    }
+
     private void OnShoot()
     {
         if (_elapsedTime > _shootDelay)
@@ -31,9 +67,19 @@ public class Player : SpaceFlyingObject
         }
     }
 
-    public override void Die()
+    private void Shoot()
     {
-        Debug.Log("GAME OVER!");
-        gameObject.SetActive(false);
+        GameObject bullet;
+        _bulletsPool.TryGetObject(out bullet);
+
+        if (bullet != null)
+        {
+            bullet.transform.position = _shootPoint.transform.position;
+            bullet.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("bullets pool is empty");
+        }
     }
 }

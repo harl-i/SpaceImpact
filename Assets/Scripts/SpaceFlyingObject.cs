@@ -1,26 +1,17 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-public abstract class SpaceFlyingObject : MonoBehaviour
+[RequireComponent(typeof(PolygonCollider2D))]
+public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
 {
+    [SerializeField] protected float _speed;
     [SerializeField] protected int _health;
-    [SerializeField] protected Transform _shootPoint;
-    [SerializeField] protected ObjectPool _bulletsPool;
-    [SerializeField] protected float _shootDelay;
+    [SerializeField] protected int _reward;
 
     protected float _elapsedTime;
-
-    public event UnityAction<int> HealthChanged;
-
-    private void Start()
-    {
-        HealthChanged?.Invoke(_health);
-    }
 
     public void ApplyDamage()
     {
         _health--;
-        HealthChanged?.Invoke(_health);
         Debug.Log(_health);
 
         if (_health <= 0)
@@ -29,26 +20,29 @@ public abstract class SpaceFlyingObject : MonoBehaviour
         }
     }
 
-    public abstract void Die();
+    public virtual void Die()
+    {
+        ReturnToPool();
+    }
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 
     private void Update()
     {
         _elapsedTime += Time.deltaTime;
+        Move();
     }
 
-    protected void Shoot()
+    private void Move()
     {
-        GameObject bullet;
-        _bulletsPool.TryGetObject(out bullet);
-
-        if (bullet != null)
-        {
-            bullet.transform.position = _shootPoint.transform.position;
-            bullet.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("bullets pool is empty");
-        }
+        transform.Translate(Vector2.left * _speed * Time.deltaTime);
     }
 }
