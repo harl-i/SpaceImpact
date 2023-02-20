@@ -1,13 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PolygonCollider2D))]
 public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
 {
-    [SerializeField] protected float _speed;
     [SerializeField] protected int _health;
     [SerializeField] protected int _reward;
+    //[SerializeField] protected Move _linearMove;
+    //[SerializeField] protected Move _chaoticMove;
+
 
     protected float _elapsedTime;
+
+
     private int _currentHealth;
 
     public void ApplyDamage()
@@ -20,6 +25,21 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
             Die();
         }
     }
+
+    //public void SetMoveVariant(MoveVariants move)
+    //{
+    //    switch (move)
+    //    {
+    //        case MoveVariants.Linear:
+    //            _linearMove.enabled = true;
+    //            break;
+    //        case MoveVariants.Chaotic:
+    //            _chaoticMove.enabled = true;
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //}
 
     public void ReturnToPool()
     {
@@ -49,11 +69,5 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
     private void Update()
     {
         _elapsedTime += Time.deltaTime;
-        Move();
-    }
-
-    private void Move()
-    {
-        transform.Translate(Vector2.left * _speed * Time.deltaTime);
     }
 }

@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class NonShootingEnemy : SpaceFlyingObject
 {
+
     public static event UnityAction<int> RewardAccrual;
 
     protected override void Die()

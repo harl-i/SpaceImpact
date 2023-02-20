@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketBonus : MonoBehaviour, IObjectFromPool
+public class RocketBonus : Bonus
 {
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
+    private int _rocketsCount = 3;
 
-    public void ReturnToPool()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObject.SetActive(false);
+        if (collision.TryGetComponent(out Player player))
+        {
+            player.PickedRocketBonus(_rocketsCount);
+            gameObject.SetActive(false);
+        }
     }
 }

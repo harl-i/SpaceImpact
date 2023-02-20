@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PolygonCollider2D))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private ObjectPool _bulletsPool;
@@ -10,10 +11,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float _shootDelay;
 
     private int _health = 3;
+    private int _rockets;
     private PlayerInput _input;
     private float _elapsedTime;
 
     public event UnityAction<int> HealthChanged;
+
+    public void PickedRocketBonus(int count)
+    {
+        _rockets += count;
+    }
 
     public void ApplyDamage()
     {

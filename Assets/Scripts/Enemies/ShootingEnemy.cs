@@ -2,12 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
+public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 {
     [SerializeField] private float _firstShootDelay;
-    [SerializeField] protected ObjectPool _bulletsPool;
-    [SerializeField] protected Transform _shootPoint;
-    [SerializeField] protected float _shootDelay;
+    [SerializeField] private Transform _shootPoint;
+    [SerializeField] private float _shootDelay;
+
+    private ObjectPool _bulletsPool;
 
     public static event UnityAction<int> RewardAccrual;
 
@@ -17,7 +18,7 @@ public abstract class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
         RewardAccrual?.Invoke(_reward);
     }
 
-    protected void Shoot()
+    private void Shoot()
     {
         _bulletsPool.TryGetObject(out GameObject bullet);
 
@@ -32,7 +33,7 @@ public abstract class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         _bulletsPool = FindObjectOfType<EnemyBulletsPool>();
     }

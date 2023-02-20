@@ -9,6 +9,8 @@ public abstract class ObjectPool : MonoBehaviour
 
     private List<GameObject> _pool = new List<GameObject>();
 
+    public List<GameObject> Pool => _pool;
+
     public bool TryGetObject(out GameObject result)
     {
         result = _pool.FirstOrDefault(obj => obj.activeSelf == false);

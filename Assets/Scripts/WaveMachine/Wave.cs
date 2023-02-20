@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,34 @@ using UnityEngine;
 public abstract class Wave : MonoBehaviour
 {
     [SerializeField] private List<Transition> _transitions;
-    [SerializeField] protected List<EnemySpawnPoint> _spawnPoints;
+    [SerializeField] protected EnemyPool _enemysPool;
+    [SerializeField] protected List<SpawnPoint> _spawnPoints;
+    [SerializeField] protected MoveVariants MoveVariant;
+
+    protected const string LinearMove = "LinearMove";
+    protected const string ChaoticMove = "ChaoticMove";
+
+    //[SerializeField] protected MoveVariants _moveVariants;
+
 
     public void StartWave(Wave wave)
     {
         if (enabled == false)
         {
             enabled = true;
+
+            switch (MoveVariant)
+            {
+                case MoveVariants.Linear:
+                    AddComponent(LinearMove);
+                    break;
+                case MoveVariants.Chaotic:
+                    AddComponent(ChaoticMove);
+                    break;
+                default:
+                    break;
+            }
+
             foreach (var transition in _transitions)
             {
                 transition.enabled = true;
@@ -19,13 +41,53 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
+    private void AddComponent(string componentType)
+    {
+        var type = Type.GetType(componentType);
+
+        if (type != null)
+        {
+            foreach (var enemy in _enemysPool.Pool)
+            {
+                enemy.AddComponent(type);
+            }
+
+        }
+    }
+
+    private void RemoveComponent(string componentType)
+    {
+        var type = Type.GetType(componentType);
+
+        if (type != null)
+        {
+            foreach (var enemy in _enemysPool.Pool)
+            {
+                Destroy(enemy.GetComponent(type));
+            }
+        }
+    }
+
     public void EndWave()
     {
+        switch (MoveVariant)
+        {
+            case MoveVariants.Linear:
+                RemoveComponent(LinearMove);
+                break;
+            case MoveVariants.Chaotic:
+                RemoveComponent(ChaoticMove);
+                break;
+            default:
+                break;
+        }
+
         if (enabled == true)
         {
             foreach (var transition in _transitions)
             {
                 transition.enabled = false;
+
             }
         }
     }
@@ -41,10 +103,12 @@ public abstract class Wave : MonoBehaviour
         return null;
     }
 
-    protected IEnumerator Spawn(EnemyPool enemysPool, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
+    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, SpawnPoint spawnPoint)
     {
         for (int i = 0; i < enemysCount; i++)
         {
+            yield return new WaitForSeconds(spawnDelay);
+
             enemysPool.TryGetObject(out GameObject result);
 
             if (result != null)
@@ -56,35 +120,13 @@ public abstract class Wave : MonoBehaviour
             {
                 Debug.Log("Enemys pool is empty");
             }
-
-            yield return new WaitForSeconds(spawnDelay);
         }
     }
 
-    //protected IEnumerator Spawn(IObjectFromPool enemyPrefab, float spawnDelay, int enemysCount, EnemySpawnPoint spawnPoint)
-    //{
-    //    for (int i = 0; i < enemysCount; i++)
-    //    {
-    //        Instantiate(enemyPrefab.GetGameObject(), spawnPoint.transform) ;
+    protected IEnumerator SpawnBonus(Bonus bonus, float spawnDelay, SpawnPoint spawnPoint)
+    {
+        yield return new WaitForSeconds(spawnDelay);
 
-    //        yield return new WaitForSeconds(spawnDelay);
-    //    }
-    //}
-
-    //protected IEnumerator Spawn(Enemy enemyPrefab, float spawnDelay, int enemysCount)
-    //{
-    //    if (enemysCount < _spawnPoints.Count)
-    //    {
-    //        for (int i = 0; i < enemysCount; i++)
-    //        {
-    //            Instantiate(enemyPrefab, _spawnPoints[i].transform);
-
-    //            yield return new WaitForSeconds(spawnDelay);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Количество врагов слишком большое");
-    //    }
-    //}
+        Instantiate(bonus, spawnPoint.transform);
+    }
 }
