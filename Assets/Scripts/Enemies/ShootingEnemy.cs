@@ -38,8 +38,9 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
         _bulletsPool = FindObjectOfType<EnemyBulletsPool>();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         StartCoroutine(StartShoot(_firstShootDelay));
     }
 
@@ -61,6 +62,15 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
             Shoot();
 
             yield return new WaitForSeconds(delay);
+        }
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Player player))
+        {
+            player.ApplyDamage();
+            Die();
         }
     }
 }

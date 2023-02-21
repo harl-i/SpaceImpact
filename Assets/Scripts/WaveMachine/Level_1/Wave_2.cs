@@ -3,15 +3,14 @@ using UnityEngine;
 
 public class Wave_2 : Wave
 {
-    private float _spawnDelay = 2.5f;
     private int _enemysCount = 7;
 
     private void OnEnable()
     {
-        StartCoroutine(StartWave());
+        StartCoroutine(ActivateSpawn());
     }
 
-    private IEnumerator StartWave()
+    private IEnumerator ActivateSpawn()
     {
         for (int i = 0; i < _enemysCount; i++)
         {

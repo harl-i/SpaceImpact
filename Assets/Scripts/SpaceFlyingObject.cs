@@ -6,40 +6,19 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
 {
     [SerializeField] protected int _health;
     [SerializeField] protected int _reward;
-    //[SerializeField] protected Move _linearMove;
-    //[SerializeField] protected Move _chaoticMove;
-
 
     protected float _elapsedTime;
-
-
     private int _currentHealth;
 
     public void ApplyDamage()
     {
         _currentHealth--;
-        Debug.Log(_health);
 
         if (_currentHealth <= 0)
         {
             Die();
         }
     }
-
-    //public void SetMoveVariant(MoveVariants move)
-    //{
-    //    switch (move)
-    //    {
-    //        case MoveVariants.Linear:
-    //            _linearMove.enabled = true;
-    //            break;
-    //        case MoveVariants.Chaotic:
-    //            _chaoticMove.enabled = true;
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //}
 
     public void ReturnToPool()
     {
@@ -56,7 +35,7 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
         ReturnToPool();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         RestoreHealth();
     }
@@ -70,4 +49,6 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
     {
         _elapsedTime += Time.deltaTime;
     }
+
+    protected abstract void OnTriggerEnter2D(Collider2D collision);
 }

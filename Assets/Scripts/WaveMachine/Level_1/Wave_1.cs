@@ -6,9 +6,6 @@ public class Wave_1 : Wave
 {
     [SerializeField] private Bonus bonus;
 
-
-    private float _spawnDelay = 2f;
-
     private Dictionary<int, int> _enemyCountOnIteration = new Dictionary<int, int>()
     {
         {0, 3},
@@ -19,15 +16,14 @@ public class Wave_1 : Wave
 
     private void OnEnable()
     {
-        StartCoroutine(StartWave());
+        StartCoroutine(ActivateSpawn());
     }
 
-    private IEnumerator StartWave()
+    private IEnumerator ActivateSpawn()
     {
         int j = 0;
         for (int i = 0; i < _enemyCountOnIteration.Count; i++)
         {
-
             if (j > _spawnPoints.Count - 1)
                 j = 0;
 

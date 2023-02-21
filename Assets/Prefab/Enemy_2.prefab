@@ -176,10 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbaf8e6c2c154468af8921e4b25c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
   _health: 4
   _reward: 15
-  _firstShootDelay: 1.5
+  _firstShootDelay: 3
   _shootPoint: {fileID: 5764821695430111755}
   _shootDelay: 1.25
 --- !u!95 &7314281951459861519

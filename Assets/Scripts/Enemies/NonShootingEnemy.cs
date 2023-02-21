@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class NonShootingEnemy : SpaceFlyingObject
 {
-
     public static event UnityAction<int> RewardAccrual;
 
     protected override void Die()
@@ -14,7 +11,7 @@ public class NonShootingEnemy : SpaceFlyingObject
         RewardAccrual?.Invoke(_reward);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Player player))
         {
@@ -22,4 +19,5 @@ public class NonShootingEnemy : SpaceFlyingObject
             Die();
         }
     }
+
 }
