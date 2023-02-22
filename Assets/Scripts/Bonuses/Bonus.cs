@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Bonus : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] protected int _count;
 
     private void Update()
     {

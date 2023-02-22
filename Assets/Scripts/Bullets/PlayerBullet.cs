@@ -8,13 +8,13 @@ public class PlayerBullet : Bullet
     {
         if (collision.TryGetComponent(out ShootingEnemy shootingEnemy))
         {
-            shootingEnemy.ApplyDamage();
+            shootingEnemy.ApplyDamage(_damage);
             ReturnToPool();
         }
 
         if (collision.TryGetComponent(out NonShootingEnemy nonShootingEnemy))
         {
-            nonShootingEnemy.ApplyDamage();
+            nonShootingEnemy.ApplyDamage(_damage);
             ReturnToPool();
         }
 

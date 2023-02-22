@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private PlayerMover _playerMover;
 
     public event UnityAction keyFirePressed;
+    public event UnityAction keySuperFirePressed;
 
     private void Start()
     {
@@ -49,6 +50,11 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             keyFirePressed?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            keySuperFirePressed?.Invoke();
         }
     }
 }

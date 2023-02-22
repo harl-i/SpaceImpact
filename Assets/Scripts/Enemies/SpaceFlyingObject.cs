@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
 {
     [SerializeField] protected int _health;
@@ -10,9 +11,9 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
     protected float _elapsedTime;
     private int _currentHealth;
 
-    public void ApplyDamage()
+    public void ApplyDamage(int damage)
     {
-        _currentHealth--;
+        _currentHealth -= damage;
 
         if (_currentHealth <= 0)
         {

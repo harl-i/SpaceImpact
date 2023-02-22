@@ -6,6 +6,7 @@ public abstract class Bullet : MonoBehaviour, IObjectFromPool
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private float _bulletLifeTime;
     [SerializeField] private Direction _choiceDirection;
+    [SerializeField] protected int _damage;
 
     public void ReturnToPool()
     {
