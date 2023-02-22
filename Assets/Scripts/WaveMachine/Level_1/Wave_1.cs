@@ -9,9 +9,8 @@ public class Wave_1 : Wave
     private Dictionary<int, int> _enemyCountOnIteration = new Dictionary<int, int>()
     {
         {0, 3},
-        {1, 2},
-        {2, 3},
-        {3, 1}
+        {1, 5},
+        {2, 3}
     };
 
     private void OnEnable()
@@ -21,18 +20,15 @@ public class Wave_1 : Wave
 
     private IEnumerator ActivateSpawn()
     {
-        int j = 0;
         for (int i = 0; i < _enemyCountOnIteration.Count; i++)
         {
-            if (j > _spawnPoints.Count - 1)
-                j = 0;
-
-            yield return StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, _enemyCountOnIteration[i], _spawnPoints[j]));
-
-            j++;
+            yield return StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, _enemyCountOnIteration[i], _spawnPoints[i].transform.position));
         }
 
-        StartCoroutine(SpawnBonus(bonus, 0.5f, _spawnPoints[0]));
-        StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[0]));
+        StartCoroutine(SpawnEnemy(_enemysPool, 0.15f, 1, _spawnPoints[0].transform.position));
+        StartCoroutine(SpawnBonus(bonus, 1f, _spawnPoints[0]));
+
+
+        StartCoroutine(SpawnEnemy(_enemysPool, 2f, 1, _spawnPoints[0].transform.position));
     }
 }

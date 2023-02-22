@@ -6,6 +6,7 @@ public class ChaoticMove : Move
     private float _topBorder = 1.65f;
     private float _bottomBorder = -3.55f;
     private float _offsetX = 3.3f;
+    private float _speed = 1.7f;
 
     private void OnEnable()
     {
@@ -26,7 +27,7 @@ public class ChaoticMove : Move
 
             while (transform.position != target)
             {
-                transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * 1.25f);
+                transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * _speed);
                 yield return null;
             }
 

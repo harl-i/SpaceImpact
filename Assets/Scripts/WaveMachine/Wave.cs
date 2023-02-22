@@ -108,7 +108,7 @@ public abstract class Wave : MonoBehaviour
         return null;
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, SpawnPoint spawnPoint)
+    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPoint)
     {
         for (int i = 0; i < enemysCount; i++)
         {
@@ -118,7 +118,7 @@ public abstract class Wave : MonoBehaviour
 
             if (result != null)
             {
-                result.transform.position = spawnPoint.transform.position;
+                result.transform.position = spawnPoint;
                 result.SetActive(true);
             }
             else
@@ -128,7 +128,7 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, SpawnPoint spawnPoint, List<GameObject> waypoints)
+    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPointPosition, List<GameObject> waypoints)
     {
         for (int i = 0; i < enemysCount; i++)
         {
@@ -139,7 +139,7 @@ public abstract class Wave : MonoBehaviour
             if (result != null)
             {
                 result.GetComponent<PointsMove>().SetPoints(waypoints);
-                result.transform.position = spawnPoint.transform.position;
+                result.transform.position = spawnPointPosition;
                 result.SetActive(true);
             }
             else
@@ -149,11 +149,11 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    protected IEnumerator SpawnBonus(Bonus bonus, float spawnDelay, SpawnPoint spawnPoint)
+    protected IEnumerator SpawnBonus(Bonus bonus, float spawnDelay, SpawnPoint spawnPointPosition)
     {
         yield return new WaitForSeconds(spawnDelay);
 
-        Instantiate(bonus, spawnPoint.transform);
+        Instantiate(bonus, spawnPointPosition.transform);
     }
 }
 

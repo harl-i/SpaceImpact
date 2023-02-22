@@ -20,11 +20,13 @@ public class Rocket : MonoBehaviour, IObjectFromPool
         if (collision.TryGetComponent(out ShootingEnemy shootingEnemy))
         {
             shootingEnemy.ApplyDamage(_damage);
+            ReturnToPool();
         }
 
         if (collision.TryGetComponent(out NonShootingEnemy nonShootingEnemy))
         {
             nonShootingEnemy.ApplyDamage(_damage);
+            ReturnToPool();
         }
     }
 

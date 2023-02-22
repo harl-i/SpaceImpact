@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private ObjectPool _bulletsPool;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
-    [SerializeField] private float _superShootDelay;
+    //[SerializeField] private float _superShootDelay;
 
     private SuperWeaponSwitcher _superWeaponSwitcher;
     private PlayerInput _input;
