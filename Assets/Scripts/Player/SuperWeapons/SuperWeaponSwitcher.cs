@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(RocketGun))]
 [RequireComponent(typeof(LaserGun))]
@@ -9,22 +11,27 @@ public class SuperWeaponSwitcher : MonoBehaviour
     private LaserGun _laserGun;
     private LaserWallGun _laserWallGun;
 
+    public event UnityAction<SuperWeaponVariant> SwitchSuperWeapon;
+
     public void ActivateRocketGun()
     {
         DisableAll();
         _rocketGun.enabled = true;
+        SwitchSuperWeapon?.Invoke(SuperWeaponVariant.Rocket);
     }
 
     public void ActivateLaserGun()
     {
         DisableAll();
         _laserGun.enabled = true;
+        SwitchSuperWeapon?.Invoke(SuperWeaponVariant.Laser);
     }
 
     public void ActivateLaserWallGun()
     {
         DisableAll();
         _laserWallGun.enabled = true;
+        SwitchSuperWeapon?.Invoke(SuperWeaponVariant.LaserWall);
     }
 
     private void Awake()

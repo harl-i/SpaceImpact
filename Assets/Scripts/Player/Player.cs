@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField] private ObjectPool _bulletsPool;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
-    //[SerializeField] private float _superShootDelay;
 
     private SuperWeaponSwitcher _superWeaponSwitcher;
     private PlayerInput _input;
@@ -27,6 +26,7 @@ public class Player : MonoBehaviour
     public int LaserWallsCount => _laserWallsCount;
 
     public event UnityAction<int> HealthChanged;
+    public event UnityAction<int> SuperShoot;
 
     public void PickedRocketBonus(int count)
     {
@@ -49,19 +49,29 @@ public class Player : MonoBehaviour
     public void ReduceRocket()
     {
         if (_rocketsCount > 0)
+        {
             _rocketsCount--;
+            SuperShoot(_rocketsCount);
+        }
     }
 
     public void ReduceLaser()
     {
         if (_lasersCount > 0)
+        {
             _lasersCount--;
+            SuperShoot(_lasersCount);
+        }
     }
 
     public void ReduceLaserWall()
     {
         if (_laserWallsCount > 0)
+        {
             _laserWallsCount--;
+            SuperShoot(_laserWallsCount);
+        }
+
     }
 
     public void ApplyDamage()
@@ -152,9 +162,9 @@ public class Player : MonoBehaviour
     }
 }
 
-public enum SuperWeaponVariant
-{
-    Rocket,
-    Laser,
-    LaserWall
-}
+//public enum SuperWeaponVariant
+//{
+//    Rocket,
+//    Laser,
+//    LaserWall
+//}
