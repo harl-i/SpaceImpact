@@ -21,20 +21,25 @@ public abstract class Wave : MonoBehaviour
         {
             enabled = true;
 
-            switch (MoveVariant)
-            {
-                case MoveVariants.Linear:
-                    AddComponent(LinearMove);
-                    break;
-                case MoveVariants.Chaotic:
-                    AddComponent(ChaoticMove);
-                    break;
-                case MoveVariants.Points:
-                    AddComponent(PointsMove);
-                    break;
-                default:
-                    break;
-            }
+            //switch (MoveVariant)
+            //{
+            //    case MoveVariants.Linear:
+            //        AddComponent(LinearMove);
+            //        break;
+            //    case MoveVariants.Chaotic:
+            //        AddComponent(ChaoticMove);
+            //        break;
+            //    case MoveVariants.Points:
+            //        AddComponent(PointsMove);
+            //        break;
+            //    default:
+            //        break;
+            //}
+
+            //foreach (var enemy in _enemysPool.Pool)
+            //{
+                
+            //}
 
             foreach (var transition in _transitions)
             {
@@ -43,49 +48,49 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    private void AddComponent(string componentType)
-    {
-        var type = Type.GetType(componentType);
+    //private void AddComponent(string componentType)
+    //{
+    //    var type = Type.GetType(componentType);
 
-        if (type != null)
-        {
-            foreach (var enemy in _enemysPool.Pool)
-            {
-                enemy.AddComponent(type);
-            }
+    //    if (type != null)
+    //    {
+    //        foreach (var enemy in _enemysPool.Pool)
+    //        {
+    //            enemy.AddComponent(type);
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
-    private void RemoveComponent(string componentType)
-    {
-        var type = Type.GetType(componentType);
+    //private void RemoveComponent(string componentType)
+    //{
+    //    var type = Type.GetType(componentType);
 
-        if (type != null)
-        {
-            foreach (var enemy in _enemysPool.Pool)
-            {
-                Destroy(enemy.GetComponent(type));
-            }
-        }
-    }
+    //    if (type != null)
+    //    {
+    //        foreach (var enemy in _enemysPool.Pool)
+    //        {
+    //            Destroy(enemy.GetComponent(type));
+    //        }
+    //    }
+    //}
 
     public void EndWave()
     {
-        switch (MoveVariant)
-        {
-            case MoveVariants.Linear:
-                RemoveComponent(LinearMove);
-                break;
-            case MoveVariants.Chaotic:
-                RemoveComponent(ChaoticMove);
-                break;
-            case MoveVariants.Points:
-                RemoveComponent(PointsMove);
-                break;
-            default:
-                break;
-        }
+        //switch (MoveVariant)
+        //{
+        //    case MoveVariants.Linear:
+        //        RemoveComponent(LinearMove);
+        //        break;
+        //    case MoveVariants.Chaotic:
+        //        RemoveComponent(ChaoticMove);
+        //        break;
+        //    case MoveVariants.Points:
+        //        RemoveComponent(PointsMove);
+        //        break;
+        //    default:
+        //        break;
+        //}
 
         if (enabled == true)
         {
@@ -108,7 +113,7 @@ public abstract class Wave : MonoBehaviour
         return null;
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPoint)
+    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, MoveVariants moveVariants)
     {
         for (int i = 0; i < enemysCount; i++)
         {
@@ -118,6 +123,7 @@ public abstract class Wave : MonoBehaviour
 
             if (result != null)
             {
+                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(moveVariants);
                 result.transform.position = spawnPoint;
                 result.SetActive(true);
             }
@@ -138,6 +144,7 @@ public abstract class Wave : MonoBehaviour
 
             if (result != null)
             {
+                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(MoveVariants.Points);
                 result.GetComponent<PointsMove>().SetPoints(waypoints);
                 result.transform.position = spawnPointPosition;
                 result.SetActive(true);
@@ -157,9 +164,9 @@ public abstract class Wave : MonoBehaviour
     }
 }
 
-public enum MoveVariants
-{
-    Linear,
-    Chaotic,
-    Points
-}
+//public enum MoveVariants
+//{
+//    Linear,
+//    Chaotic,
+//    Points
+//}
