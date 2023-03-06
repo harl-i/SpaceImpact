@@ -5,13 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(LinearMove))]
 [RequireComponent(typeof(ChaoticMove))]
 [RequireComponent(typeof(PointsMove))]
+[RequireComponent(typeof(PatrolMove))]
 public class MoveSwitcher : MonoBehaviour
 {
     private LinearMove _linearMove;
     private ChaoticMove _chaoticMove;
     private PointsMove _pointsMove;
+    private PatrolMove _patrolMove;
 
-    public void ActivateMoveVariant(MoveVariants moveVariants)
+    public void ActivateMoveVariant(MoveVariants moveVariants, float speed)
     {
         DisableAll();
 
@@ -19,12 +21,19 @@ public class MoveSwitcher : MonoBehaviour
         {
             case MoveVariants.Linear:
                 _linearMove.enabled = true;
+                _linearMove.SetSpeed(speed);
                 break;
             case MoveVariants.Chaotic:
                 _chaoticMove.enabled = true;
+                _chaoticMove.SetSpeed(speed);
                 break;
             case MoveVariants.Points:
                 _pointsMove.enabled = true;
+                _pointsMove.SetSpeed(speed);
+                break;
+            case MoveVariants.Patrol:
+                _patrolMove.enabled = true;
+                _patrolMove.SetSpeed(speed);
                 break;
             default:
                 break;
@@ -43,5 +52,6 @@ public class MoveSwitcher : MonoBehaviour
         _linearMove = GetComponent<LinearMove>();
         _chaoticMove = GetComponent<ChaoticMove>();
         _pointsMove = GetComponent<PointsMove>();
+        _patrolMove = GetComponent<PatrolMove>();
     }
 }

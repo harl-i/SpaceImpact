@@ -6,11 +6,16 @@ public class ChaoticMove : Move
     private float _topBorder = 1.65f;
     private float _bottomBorder = -3.55f;
     private float _offsetX = 3.3f;
-    private float _speed = 1.7f;
+    private float _speed;
 
     private void OnEnable()
     {
         StartCoroutine(StartMove());
+    }
+
+    public override void SetSpeed(float speed)
+    {
+        _speed = speed;
     }
 
     public override IEnumerator StartMove()

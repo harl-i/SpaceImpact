@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private SuperWeaponSwitcher _superWeaponSwitcher;
     private PlayerInput _input;
     private int _health = 3;
-    private int _rocketsCount = 3;
+    private int _rocketsCount;
     private int _lasersCount;
     private int _laserWallsCount;
     private float _shootElapsedTime;
@@ -30,19 +30,19 @@ public class Player : MonoBehaviour
 
     public void PickedRocketBonus(int count)
     {
-        _rocketsCount += count;
+        _rocketsCount = count;
         SetSuperWeapon(SuperWeaponVariant.Rocket);
     }
 
     public void PickedLaserBonus(int count)
     {
-        _lasersCount += count;
+        _lasersCount = count;
         SetSuperWeapon(SuperWeaponVariant.Laser);
     }
 
     public void PickedLaserWallBonus(int count)
     {
-        _laserWallsCount += count;
+        _laserWallsCount = count;
         SetSuperWeapon(SuperWeaponVariant.LaserWall);
     }
 
@@ -161,10 +161,3 @@ public class Player : MonoBehaviour
         }
     }
 }
-
-//public enum SuperWeaponVariant
-//{
-//    Rocket,
-//    Laser,
-//    LaserWall
-//}

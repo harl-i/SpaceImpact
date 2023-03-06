@@ -7,6 +7,7 @@ public abstract class Wave : MonoBehaviour
 {
     [SerializeField] private List<Transition> _transitions;
     [SerializeField] protected float _spawnDelay;
+    [SerializeField] protected float _enemySpeed;
     [SerializeField] protected EnemyPool _enemysPool;
     [SerializeField] protected List<SpawnPoint> _spawnPoints;
     [SerializeField] protected MoveVariants MoveVariant;
@@ -21,26 +22,6 @@ public abstract class Wave : MonoBehaviour
         {
             enabled = true;
 
-            //switch (MoveVariant)
-            //{
-            //    case MoveVariants.Linear:
-            //        AddComponent(LinearMove);
-            //        break;
-            //    case MoveVariants.Chaotic:
-            //        AddComponent(ChaoticMove);
-            //        break;
-            //    case MoveVariants.Points:
-            //        AddComponent(PointsMove);
-            //        break;
-            //    default:
-            //        break;
-            //}
-
-            //foreach (var enemy in _enemysPool.Pool)
-            //{
-                
-            //}
-
             foreach (var transition in _transitions)
             {
                 transition.enabled = true;
@@ -48,50 +29,8 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    //private void AddComponent(string componentType)
-    //{
-    //    var type = Type.GetType(componentType);
-
-    //    if (type != null)
-    //    {
-    //        foreach (var enemy in _enemysPool.Pool)
-    //        {
-    //            enemy.AddComponent(type);
-    //        }
-
-    //    }
-    //}
-
-    //private void RemoveComponent(string componentType)
-    //{
-    //    var type = Type.GetType(componentType);
-
-    //    if (type != null)
-    //    {
-    //        foreach (var enemy in _enemysPool.Pool)
-    //        {
-    //            Destroy(enemy.GetComponent(type));
-    //        }
-    //    }
-    //}
-
     public void EndWave()
     {
-        //switch (MoveVariant)
-        //{
-        //    case MoveVariants.Linear:
-        //        RemoveComponent(LinearMove);
-        //        break;
-        //    case MoveVariants.Chaotic:
-        //        RemoveComponent(ChaoticMove);
-        //        break;
-        //    case MoveVariants.Points:
-        //        RemoveComponent(PointsMove);
-        //        break;
-        //    default:
-        //        break;
-        //}
-
         if (enabled == true)
         {
             foreach (var transition in _transitions)
@@ -123,7 +62,7 @@ public abstract class Wave : MonoBehaviour
 
             if (result != null)
             {
-                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(moveVariants);
+                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(moveVariants, _enemySpeed);
                 result.transform.position = spawnPoint;
                 result.SetActive(true);
             }
@@ -134,7 +73,7 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPointPosition, List<GameObject> waypoints)
+    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, List<GameObject> waypoints)
     {
         for (int i = 0; i < enemysCount; i++)
         {
@@ -144,9 +83,31 @@ public abstract class Wave : MonoBehaviour
 
             if (result != null)
             {
-                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(MoveVariants.Points);
+                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(MoveVariants.Points, _enemySpeed);
                 result.GetComponent<PointsMove>().SetPoints(waypoints);
-                result.transform.position = spawnPointPosition;
+                result.transform.position = spawnPoint;
+                result.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Enemys pool is empty");
+            }
+        }
+    }
+
+    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, List<GameObject> waypoints, bool isLooped)
+    {
+        for (int i = 0; i < enemysCount; i++)
+        {
+            yield return new WaitForSeconds(spawnDelay);
+
+            enemysPool.TryGetObject(out GameObject result);
+
+            if (result != null && isLooped == true)
+            {
+                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(MoveVariants.Patrol, _enemySpeed);
+                result.GetComponent<PatrolMove>().SetPoints(waypoints);
+                result.transform.position = spawnPoint;
                 result.SetActive(true);
             }
             else
@@ -163,10 +124,3 @@ public abstract class Wave : MonoBehaviour
         Instantiate(bonus, spawnPointPosition.transform);
     }
 }
-
-//public enum MoveVariants
-//{
-//    Linear,
-//    Chaotic,
-//    Points
-//}

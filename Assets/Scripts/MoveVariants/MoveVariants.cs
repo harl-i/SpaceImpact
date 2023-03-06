@@ -2,5 +2,6 @@ public enum MoveVariants
 {
     Linear,
     Chaotic,
-    Points
+    Points,
+    Patrol
 }

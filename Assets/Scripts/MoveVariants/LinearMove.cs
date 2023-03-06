@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class LinearMove : Move
 {
-    private float _speed = 2f;
-
-    private void OnEnable()
+    private float _speed;
+    
+    public override void SetSpeed(float speed)
     {
-        StartCoroutine(StartMove());
+        _speed = speed;
     }
 
     public override IEnumerator StartMove()
@@ -17,5 +17,10 @@ public class LinearMove : Move
             transform.Translate(Vector2.left * _speed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(StartMove());
     }
 }

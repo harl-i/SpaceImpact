@@ -5,10 +5,16 @@ using UnityEngine;
 public class PointsMove : Move
 {
     private List<GameObject> _points = new List<GameObject>();
+    private float _speed;
 
     public void SetPoints(List<GameObject> points)
     {
         _points = points;
+    }
+
+    public override void SetSpeed(float speed)
+    {
+        _speed = speed;
     }
 
     public override IEnumerator StartMove()
@@ -28,7 +34,7 @@ public class PointsMove : Move
     {
         while (transform.position != target)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * 1.7f);
+            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * _speed);
             yield return null;
         }
     }
