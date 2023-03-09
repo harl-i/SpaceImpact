@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,6 +8,7 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
     [SerializeField] private float _firstShootDelay;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
+    [SerializeField] private bool isBoss;
 
     private ObjectPool _bulletsPool;
 
@@ -14,8 +16,19 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 
     protected override void Die()
     {
-        base.Die();
         RewardAccrual?.Invoke(_reward);
+
+        if (isBoss)
+        {
+            BossDie();
+        }
+
+        base.Die();
+    }
+
+    private void BossDie()
+    {
+        gameObject.GetComponent<BossDieBehaviour>().enabled = true;
     }
 
     private void Shoot()
@@ -35,7 +48,7 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 
     private void Start()
     {
-        _bulletsPool = FindObjectOfType<EnemyBulletsPool>();
+        _bulletsPool = FindObjectOfType<EnemyBulletsPool>();   
     }
 
     protected override void OnEnable()

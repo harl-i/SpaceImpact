@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LevelEnd : MonoBehaviour
+public class LevelEndBehaviour : MonoBehaviour
 {
     private Vector3 _targetFirst;
     private Vector3 _targetSecond;
@@ -12,7 +12,7 @@ public class LevelEnd : MonoBehaviour
     private float verticalSpeed = 2f;
     private float horizontalSpeed = 4f;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(Leaving());
     }

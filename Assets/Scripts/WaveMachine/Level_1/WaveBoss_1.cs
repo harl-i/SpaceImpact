@@ -10,11 +10,4 @@ public class WaveBoss_1 : Wave
     {
         StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[0].transform.position, _wayPoints, true));
     }
-
-    //private IEnumerator ActivateSpawn()
-    //{
-    //    SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[0].transform.position, _wayPoints, true);
-
-    //    yield return null;
-    //}
 }

@@ -6,6 +6,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(SuperWeaponSwitcher))]
+[RequireComponent(typeof(LevelEventsListener))]
+[RequireComponent(typeof(PlayerMover))]
+[RequireComponent(typeof(LevelEndBehaviour))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private ObjectPool _bulletsPool;
@@ -14,6 +17,8 @@ public class Player : MonoBehaviour
 
     private SuperWeaponSwitcher _superWeaponSwitcher;
     private PlayerInput _input;
+    private PlayerMover _playerMover;
+    private LevelEndBehaviour _levelEndBehavoiur;
     private int _health = 3;
     private int _rocketsCount;
     private int _lasersCount;
@@ -96,11 +101,15 @@ public class Player : MonoBehaviour
     {
         _input = GetComponent<PlayerInput>();
         _superWeaponSwitcher = GetComponent<SuperWeaponSwitcher>();
+        _playerMover = GetComponent<PlayerMover>();
+        _levelEndBehavoiur = GetComponent<LevelEndBehaviour>();
     }
 
     private void Start()
     {
         HealthChanged?.Invoke(_health);
+        _playerMover.enabled = true;
+        _levelEndBehavoiur.enabled = false;
     }
 
     private void OnEnable()
