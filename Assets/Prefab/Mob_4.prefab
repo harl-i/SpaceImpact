@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3260008134055907056}
   - component: {fileID: 8554244236255054851}
   - component: {fileID: 4638610625397620375}
+  - component: {fileID: 1545778317030165107}
   m_Layer: 0
   m_Name: Mob_4
   m_TagString: Untagged
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 5
   _reward: 10
+  _bossPuff: {fileID: -2640974818947492985, guid: 8b063c9208ccd244b8b68d12f7383314, type: 3}
 --- !u!114 &4419338369012574638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,3 +248,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1545778317030165107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5771492112709342997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd5612c773c8aa4da5125bc5d6c7040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

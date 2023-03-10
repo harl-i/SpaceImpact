@@ -238,6 +238,7 @@ MonoBehaviour:
   _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 2
   isBoss: 1
+  _bossPuff: {fileID: -2640974818947492985, guid: 8b063c9208ccd244b8b68d12f7383314, type: 3}
 --- !u!114 &4569763066991964874
 MonoBehaviour:
   m_ObjectHideFlags: 0

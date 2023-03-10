@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
 
-public class BossDieBehaviour : MonoBehaviour
+[RequireComponent(typeof(Animator))]
+public class BossDieSpeaker : MonoBehaviour
 {
     private void OnEnable()
     {
