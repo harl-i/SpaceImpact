@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public int RocketsCount => _rocketsCount;
     public int LasersCount => _lasersCount;
     public int LaserWallsCount => _laserWallsCount;
+    public int Health => _health;
 
     public event UnityAction<int> HealthChanged;
     public event UnityAction<int> SuperShoot;
@@ -95,6 +96,26 @@ public class Player : MonoBehaviour
     {
         Debug.Log("GAME OVER!");
         gameObject.SetActive(false);
+    }
+
+    public void SetHelath(int count)
+    {
+        _health = count;
+    }
+
+    public void SetRockets(int count)
+    {
+        _rocketsCount = count;
+    }
+
+    public void SetLasers(int count)
+    {
+        _lasersCount = count;
+    }
+
+    public void SetLasersWalls(int count)
+    {
+        _laserWallsCount = count;
     }
 
     private void Awake()

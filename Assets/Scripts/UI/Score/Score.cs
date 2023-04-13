@@ -7,6 +7,14 @@ public class Score : MonoBehaviour
     private TextMeshProUGUI _textMeshPro;
     private int _score;
 
+    public int ScoreCount => _score;
+
+    public void SetScore(int count)
+    {
+        _score = count;
+        _textMeshPro.text = _score.ToString();
+    }
+
     private void Awake()
     {
         _textMeshPro = GetComponent<TextMeshProUGUI>();
