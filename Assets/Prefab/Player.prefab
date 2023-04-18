@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613298601ada49d41bf31438771e4d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: {fileID: 0}
 --- !u!114 &6726286291054318117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ba877766ce53e48a2a0d61b66816cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: {fileID: 0}
 --- !u!95 &3147315760658410727
 Animator:
   serializedVersion: 4
