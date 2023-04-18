@@ -33,6 +33,8 @@ public abstract class SuperWeapon : MonoBehaviour
 
     protected abstract void Shoot();
 
+    public abstract SuperWeaponVariant GetSuperWeaponType();
+
     private void Update()
     {
         _elapsedTime += Time.deltaTime;

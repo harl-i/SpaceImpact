@@ -4,6 +4,11 @@ public class LaserWallGun : SuperWeapon
 {
     [SerializeField] private LaserWallPool _pool;
 
+    public override SuperWeaponVariant GetSuperWeaponType()
+    {
+        return SuperWeaponVariant.LaserWall;
+    }
+
     protected override void OnSuperShoot()
     {
         if (_elapsedTime > _shootDelay && _player.LaserWallsCount > 0)

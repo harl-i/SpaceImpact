@@ -4,6 +4,11 @@ public class LaserGun : SuperWeapon
 {
     [SerializeField] private LasersPool _pool;
 
+    public override SuperWeaponVariant GetSuperWeaponType()
+    {
+        return SuperWeaponVariant.Laser;
+    }
+
     protected override void OnSuperShoot()
     {
         if (_elapsedTime > _shootDelay && _player.LasersCount > 0)

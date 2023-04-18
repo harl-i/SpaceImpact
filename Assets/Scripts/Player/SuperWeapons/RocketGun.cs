@@ -4,6 +4,11 @@ public class RocketGun : SuperWeapon
 {
     [SerializeField] private RocketsPool _pool;
 
+    public override SuperWeaponVariant GetSuperWeaponType()
+    {
+       return SuperWeaponVariant.Rocket;
+    }
+
     protected override void OnSuperShoot()
     {
         if (_elapsedTime > _shootDelay && _player.RocketsCount > 0)

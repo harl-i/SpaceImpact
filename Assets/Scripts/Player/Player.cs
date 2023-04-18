@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -131,6 +130,9 @@ public class Player : MonoBehaviour
         HealthChanged?.Invoke(_health);
         _playerMover.enabled = true;
         _levelEndBehavoiur.enabled = false;
+
+        string weapon = SuperWeaponVariant.Laser.ToString();
+        Debug.Log(weapon);
     }
 
     private void OnEnable()
