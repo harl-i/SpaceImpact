@@ -52,9 +52,9 @@ public abstract class Wave : MonoBehaviour
         return null;
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, MoveVariants moveVariants)
+    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemiesCount, Vector3 spawnPoint, MoveVariants moveVariants)
     {
-        for (int i = 0; i < enemysCount; i++)
+        for (int i = 0; i < enemiesCount; i++)
         {
             yield return new WaitForSeconds(spawnDelay);
 
@@ -73,13 +73,13 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, List<GameObject> waypoints)
+    protected IEnumerator SpawnEnemy(EnemyPool enemiesPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, List<GameObject> waypoints)
     {
         for (int i = 0; i < enemysCount; i++)
         {
             yield return new WaitForSeconds(spawnDelay);
 
-            enemysPool.TryGetObject(out GameObject result);
+            enemiesPool.TryGetObject(out GameObject result);
 
             if (result != null)
             {
@@ -95,13 +95,13 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, List<GameObject> waypoints, bool isLooped)
+    protected IEnumerator SpawnEnemy(EnemyPool enemiesPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, List<GameObject> waypoints, bool isLooped)
     {
         for (int i = 0; i < enemysCount; i++)
         {
             yield return new WaitForSeconds(spawnDelay);
 
-            enemysPool.TryGetObject(out GameObject result);
+            enemiesPool.TryGetObject(out GameObject result);
 
             if (result != null && isLooped == true)
             {
