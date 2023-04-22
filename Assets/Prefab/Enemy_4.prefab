@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 4638610625397620375}
   - component: {fileID: 1545778317030165107}
   m_Layer: 0
-  m_Name: Mob_4
+  m_Name: Enemy_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
