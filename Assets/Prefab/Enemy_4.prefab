@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8554244236255054851}
   - component: {fileID: 4638610625397620375}
   - component: {fileID: 1545778317030165107}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 5
   _reward: 10
-  _bossPuff: {fileID: -2640974818947492985, guid: 8b063c9208ccd244b8b68d12f7383314, type: 3}
 --- !u!114 &4419338369012574638
 MonoBehaviour:
   m_ObjectHideFlags: 0
