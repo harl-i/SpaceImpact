@@ -46,7 +46,7 @@ public class SaveParameters : MonoBehaviour
     {
         foreach (var weapon in _superWeaponsList)
         {
-            if (weapon.gameObject.activeSelf == true)
+            if (weapon.enabled == true)
             {
                 return weapon.GetSuperWeaponType();
             }
