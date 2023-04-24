@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wave_19 : MonoBehaviour
+public class Wave_19 : Wave
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<GameObject> _wayPoints = new List<GameObject>();
 
-    // Update is called once per frame
-    void Update()
+    private int _enemiesCountOnWave = 5;
+
+    private void OnEnable()
     {
-        
+        StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, _enemiesCountOnWave, _spawnPoints[0].transform.position, _wayPoints));
     }
 }
