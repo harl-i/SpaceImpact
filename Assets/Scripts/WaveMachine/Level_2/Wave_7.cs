@@ -5,8 +5,8 @@ using UnityEngine;
 public class Wave_7 : Wave
 {
     [SerializeField] private float _interval;
-    [SerializeField] private List<GameObject> _wavePointsTopLine = new List<GameObject>();
-    [SerializeField] private List<GameObject> _wavePointsBottomLine = new List<GameObject>();
+    [SerializeField] private List<GameObject> _wayPointsTopLine = new List<GameObject>();
+    [SerializeField] private List<GameObject> _wayPointsBottomLine = new List<GameObject>();
 
     private int _enemiesCountOnWave = 6;
 
@@ -21,11 +21,11 @@ public class Wave_7 : Wave
         {
             if (i % 2 != 0)
             {
-                StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[0].transform.position, _wavePointsTopLine));
+                StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[0].transform.position, _wayPointsTopLine));
             }
             else
             {
-                StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[1].transform.position, _wavePointsBottomLine));
+                StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[1].transform.position, _wayPointsBottomLine));
                 yield return new WaitForSeconds(_interval);
             }
 
