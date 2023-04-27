@@ -16,6 +16,8 @@ public class Wave_21 : Wave
     {
         StartCoroutine(SpawnBonus(_bonus, 0, _spawnPoints[1]));
 
+        yield return new WaitForSeconds(_spawnDelay);
+
         int[] spawnPointOrder = { 0, 1, 2, 1 };
         int spawnOrderIndex = 0;
 
@@ -29,7 +31,7 @@ public class Wave_21 : Wave
                 spawnOrderIndex = 0;
             }
 
-            StartCoroutine(SpawnEnemy(_enemysPool, 0, 1, _spawnPoints[pointIndex].transform.position, MoveVariant));
+            StartCoroutine(SpawnEnemy(_enemysPool, 0, 1, _spawnPoints[pointIndex].transform.position, SwitchMoveTo));
 
 
             yield return new WaitForSeconds(_spawnDelay);

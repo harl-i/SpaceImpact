@@ -15,7 +15,7 @@ public class Wave_15 : Wave
     {
         for (int i = 0; i < _enemiesCountOnWave; i++)
         {
-            StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[i].transform.position, MoveVariant));
+            StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[i].transform.position, SwitchMoveTo));
         }
         yield return null;
     }

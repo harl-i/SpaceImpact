@@ -7,6 +7,7 @@ public class PatrolMove : Move
     private List<GameObject> _points = new List<GameObject>();
     private float _speed;
     private Vector3 _target;
+    private Coroutine _startMove;
 
     public override void SetSpeed(float speed)
     {
@@ -38,5 +39,10 @@ public class PatrolMove : Move
     private void OnEnable()
     {
         StartCoroutine(StartMove());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(_startMove);
     }
 }

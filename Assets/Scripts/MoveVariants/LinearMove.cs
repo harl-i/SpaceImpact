@@ -4,7 +4,8 @@ using UnityEngine;
 public class LinearMove : Move
 {
     private float _speed;
-    
+    private Coroutine _startMove;
+
     public override void SetSpeed(float speed)
     {
         _speed = speed;
@@ -21,6 +22,11 @@ public class LinearMove : Move
 
     private void OnEnable()
     {
-        StartCoroutine(StartMove());
+        _startMove = StartCoroutine(StartMove());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(_startMove);
     }
 }

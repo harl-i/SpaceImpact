@@ -6,6 +6,7 @@ public class PointsMove : Move
 {
     private List<GameObject> _points = new List<GameObject>();
     private float _speed;
+    private Coroutine _startMove;
 
     public void SetPoints(List<GameObject> points)
     {
@@ -27,7 +28,12 @@ public class PointsMove : Move
 
     private void OnEnable()
     {
-        StartCoroutine(StartMove());
+        _startMove = StartCoroutine(StartMove());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(_startMove);
     }
 
     private IEnumerator MoveToTarget(Vector3 target)

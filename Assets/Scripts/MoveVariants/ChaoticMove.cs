@@ -7,10 +7,16 @@ public class ChaoticMove : Move
     private float _bottomBorder = -3.55f;
     private float _offsetX = 3.3f;
     private float _speed;
+    private Coroutine _startMove;
 
     private void OnEnable()
     {
-        StartCoroutine(StartMove());
+        _startMove = StartCoroutine(StartMove());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(_startMove);
     }
 
     public override void SetSpeed(float speed)
