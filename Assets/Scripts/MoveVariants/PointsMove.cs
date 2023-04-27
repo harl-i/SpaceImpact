@@ -33,7 +33,10 @@ public class PointsMove : Move
 
     private void OnDisable()
     {
-        StopCoroutine(_startMove);
+        if (_startMove != null)
+        {
+            StopCoroutine(_startMove);
+        }
     }
 
     private IEnumerator MoveToTarget(Vector3 target)

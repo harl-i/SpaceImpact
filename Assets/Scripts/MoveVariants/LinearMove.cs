@@ -27,6 +27,9 @@ public class LinearMove : Move
 
     private void OnDisable()
     {
-        StopCoroutine(_startMove);
+        if (_startMove != null)
+        {
+            StopCoroutine(_startMove);
+        }
     }
 }

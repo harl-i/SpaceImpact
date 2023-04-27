@@ -16,7 +16,10 @@ public class ChaoticMove : Move
 
     private void OnDisable()
     {
-        StopCoroutine(_startMove);
+        if (_startMove != null)
+        {
+            StopCoroutine(_startMove);
+        }
     }
 
     public override void SetSpeed(float speed)
