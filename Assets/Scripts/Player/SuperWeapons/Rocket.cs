@@ -6,12 +6,12 @@ public class Rocket : MonoBehaviour, IObjectFromPool
     [SerializeField] private int _damage;
     [SerializeField] private float _raycastDistance;
     [SerializeField] private LayerMask _targetLayer;
+    [SerializeField] private float angleStep;
+    [SerializeField] private float radius;
+    [SerializeField] private int numOfDirections;
 
     private Vector3[] _targetDirections;
-
-    public float angleStep;
-    public float radius;
-    public int numOfDirections;
+    private float _detectionRadiusSlope = 50f;
 
     public GameObject GetGameObject()
     {
@@ -44,6 +44,11 @@ public class Rocket : MonoBehaviour, IObjectFromPool
     }
 
     private void Update()
+    {
+        Homing();
+    }
+
+    private void Homing()
     {
         Transform target = null;
         float closestDistance = float.MaxValue;
@@ -87,7 +92,7 @@ public class Rocket : MonoBehaviour, IObjectFromPool
 
         for (int i = 0; i < numOfDirections; i++)
         {
-            float angle = i * angleStep - 50f;
+            float angle = i * angleStep - _detectionRadiusSlope;
             float rad = angle * Mathf.Deg2Rad;
 
             float x = radius * Mathf.Cos(rad);
