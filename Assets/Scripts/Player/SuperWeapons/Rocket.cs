@@ -51,7 +51,7 @@ public class Rocket : MonoBehaviour, IObjectFromPool
         for (int i = 0; i < _targetDirections.Length; i++)
         {
             Vector3 direction = _targetDirections[i] - transform.position;
-            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction, 100f, _targetLayer);
+            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, direction, _raycastDistance, _targetLayer);
 
             if (raycastHit)
             {
@@ -87,7 +87,7 @@ public class Rocket : MonoBehaviour, IObjectFromPool
 
         for (int i = 0; i < numOfDirections; i++)
         {
-            float angle = i * angleStep;
+            float angle = i * angleStep - 50f;
             float rad = angle * Mathf.Deg2Rad;
 
             float x = radius * Mathf.Cos(rad);

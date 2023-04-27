@@ -106,8 +106,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   angleStep: 10
-  radius: 100
-  numOfDirections: 36
+  radius: 10
+  numOfDirections: 12
 --- !u!60 &-1452666224150524412
 PolygonCollider2D:
   m_ObjectHideFlags: 0
