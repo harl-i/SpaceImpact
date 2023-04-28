@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WaveBoss_3 : Wave
 {
-    [SerializeField] private List<GameObject> _wayPoints = new List<GameObject>();
+    [SerializeField] private GameObject _boss;
 
     private void OnEnable()
     {
-        StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[0].transform.position, _wayPoints, true));
+        _boss.SetActive(true);
     }
 }

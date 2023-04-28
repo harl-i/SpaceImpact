@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolMove : Move
+public class LungeMove : Move
 {
     private List<GameObject> _points = new List<GameObject>();
     private float _speed;
-    private Vector3 _target;
     private Coroutine _startMove;
+    private float _attackSpeed = 4;
 
     public override void SetSpeed(float speed)
     {
@@ -23,16 +23,17 @@ public class PatrolMove : Move
     {
         for (int i = 0; i < _points.Count; i++)
         {
-            _target = _points[i].transform.position;
-
-            while (transform.position != _target)
+            if (i == 2)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _target, Time.deltaTime * _speed);
-                yield return null;
+                _speed *= _attackSpeed;
             }
 
-            if (i == _points.Count - 1)
-                i = 0;
+            if (i == 3)
+            {
+                _speed /= _attackSpeed; 
+            }
+
+            yield return MoveToTarget(_points[i].transform.position);
         }
     }
 
@@ -46,6 +47,15 @@ public class PatrolMove : Move
         if (_startMove != null)
         {
             StopCoroutine(_startMove);
+        }
+    }
+
+    private IEnumerator MoveToTarget(Vector3 target)
+    {
+        while (transform.position != target)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * _speed);
+            yield return null;
         }
     }
 }
