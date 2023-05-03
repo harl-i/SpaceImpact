@@ -9,9 +9,13 @@ public class Rocket : MonoBehaviour, IObjectFromPool
     [SerializeField] private float angleStep;
     [SerializeField] private float radius;
     [SerializeField] private int numOfDirections;
+    [SerializeField] private RocketSender _rocketSender;
 
     private Vector3[] _targetDirections;
-    private float _detectionRadiusSlope = 50f;
+    private float _playerDetectionRadiusSlope = 50f;
+    private float _bossDetectionRadiusSlope = -100f;
+
+    public RocketSender SenderType => _rocketSender;
 
     public GameObject GetGameObject()
     {
@@ -25,15 +29,17 @@ public class Rocket : MonoBehaviour, IObjectFromPool
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out ShootingEnemy shootingEnemy))
+        if ((_targetLayer.value & 1 << collision.gameObject.layer) != 0)
         {
-            shootingEnemy.ApplyDamage(_damage);
-            ReturnToPool();
+            if (collision.TryGetComponent(out IDamageable target))
+            {
+                target.ApplyDamage(_damage);
+                ReturnToPool();
+            }
         }
 
-        if (collision.TryGetComponent(out NonShootingEnemy nonShootingEnemy))
+        if (collision.TryGetComponent(out PlayerBullet playerBullet))
         {
-            nonShootingEnemy.ApplyDamage(_damage);
             ReturnToPool();
         }
     }
@@ -82,7 +88,7 @@ public class Rocket : MonoBehaviour, IObjectFromPool
         }
         else
         {
-            transform.Translate(Vector2.right * _speed * Time.deltaTime);
+            transform.Translate(GetDirection() * _speed * Time.deltaTime);
         }
     }
 
@@ -92,7 +98,7 @@ public class Rocket : MonoBehaviour, IObjectFromPool
 
         for (int i = 0; i < numOfDirections; i++)
         {
-            float angle = i * angleStep - _detectionRadiusSlope;
+            float angle = i * angleStep - GetDetectionRadiusSlope();
             float rad = angle * Mathf.Deg2Rad;
 
             float x = radius * Mathf.Cos(rad);
@@ -101,4 +107,36 @@ public class Rocket : MonoBehaviour, IObjectFromPool
             _targetDirections[i] = new Vector3(x, y, 0);
         }
     }
+
+    private float GetDetectionRadiusSlope()
+    {
+        switch (_rocketSender)
+        {
+            case RocketSender.Player:
+                return _playerDetectionRadiusSlope;
+            case RocketSender.Boss:
+                return _bossDetectionRadiusSlope;
+            default:
+                return 0;
+        }
+    }
+
+    private Vector2 GetDirection()
+    {
+        switch (_rocketSender)
+        {
+            case RocketSender.Player:
+                return Vector2.right;
+            case RocketSender.Boss:
+                return Vector2.left;
+            default:
+                return Vector2.zero;
+        }
+    }
+}
+
+public enum RocketSender
+{
+    Player,
+    Boss
 }

@@ -12,6 +12,7 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 
     [SerializeField] private BossPuff _bossPuff;
 
+    private int _collisionDamage = 1;
     private ObjectPool _bulletsPool;
 
     public static event UnityAction<int> RewardAccrual;
@@ -30,8 +31,8 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 
     private void BossDie()
     {
-        gameObject.GetComponent<BossDieSpeaker>().enabled = true;
-        Instantiate(_bossPuff, gameObject.transform.position, Quaternion.identity);
+            gameObject.GetComponent<BossDieSpeaker>().enabled = true;
+            Instantiate(_bossPuff, gameObject.transform.position, Quaternion.identity);
     }
 
     private void Shoot()
@@ -85,7 +86,7 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
     {
         if (collision.TryGetComponent(out Player player))
         {
-            player.ApplyDamage();
+            player.ApplyDamage(_collisionDamage);
             Die();
         }
     }

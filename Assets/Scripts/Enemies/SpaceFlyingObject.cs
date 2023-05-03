@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(MoveSwitcher))]
-public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool
+public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamageable
 {
     [SerializeField] protected int _health;
     [SerializeField] protected int _reward;

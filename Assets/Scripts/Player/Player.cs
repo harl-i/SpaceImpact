@@ -1,3 +1,4 @@
+using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +9,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(LevelEventsListener))]
 [RequireComponent(typeof(PlayerMover))]
 [RequireComponent(typeof(LevelEndBehaviour))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private ObjectPool _bulletsPool;
     [SerializeField] private Transform _shootPoint;
@@ -79,9 +80,9 @@ public class Player : MonoBehaviour
 
     }
 
-    public void ApplyDamage()
+    public void ApplyDamage(int damage)
     {
-        _health--;
+        _health -= damage;
         HealthChanged?.Invoke(_health);
         Debug.Log(_health);
 

@@ -34,7 +34,7 @@ public class BossBehaviourLunge : MonoBehaviour
         {
             _moveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, 2f);
 
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(16f);
 
             _moveSwitcher.ActivateMoveVariant(MoveVariants.Lunge, 2f);
 

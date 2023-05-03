@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class NonShootingEnemy : SpaceFlyingObject
 {
+    private int _collisionDamage = 1;
+
     public static event UnityAction<int> RewardAccrual;
 
     protected override void Die()
@@ -15,7 +17,7 @@ public class NonShootingEnemy : SpaceFlyingObject
     {
         if (collision.TryGetComponent(out Player player))
         {
-            player.ApplyDamage();
+            player.ApplyDamage(_collisionDamage);
             Die();
         }
     }

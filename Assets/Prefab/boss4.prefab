@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4569763066599221753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.144, y: 0.836, z: 0}
+  m_LocalPosition: {x: -1.86, y: 0.836, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51,6 +51,8 @@ GameObject:
   - component: {fileID: 4569763066991964873}
   - component: {fileID: 5456632021635700849}
   - component: {fileID: 4966917790640863203}
+  - component: {fileID: 9026744463082024705}
+  - component: {fileID: 2933300102905470607}
   m_Layer: 3
   m_Name: boss4
   m_TagString: Untagged
@@ -241,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbaf8e6c2c154468af8921e4b25c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
+  _health: 50
   _reward: 1000
   _firstShootDelay: 7
   _shootPoint: {fileID: 4569763066599221752}
@@ -320,3 +322,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d97a665a390a824e903dd515b81b618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9026744463082024705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569763066991964864}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c8f00a603d996488ce1a985d70682f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2933300102905470607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569763066991964864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffada21ecddd94a42bb034c614938ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstShootDelay: 2
+  _shootPoint: {fileID: 4569763066599221752}
+  _shootDelay: 3
+  _secondaryWeapon: {fileID: 0}

@@ -615,6 +615,7 @@ Transform:
   m_Children:
   - {fileID: 1750111435}
   - {fileID: 2066993558}
+  - {fileID: 1152164321}
   m_Father: {fileID: 641112372}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1362,7 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbbaa1830884434caa7627fb6287071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstWave: {fileID: 695434104}
+  _firstWave: {fileID: 695434117}
 --- !u!4 &695434103
 Transform:
   m_ObjectHideFlags: 0
@@ -1403,7 +1404,7 @@ MonoBehaviour:
   _enemysPool: {fileID: 967275552}
   _spawnPoints:
   - {fileID: 1232430716}
-  MoveVariant: 0
+  SwitchMoveTo: 0
 --- !u!114 &695434105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,7 +1424,7 @@ MonoBehaviour:
   _enemysPool: {fileID: 967275552}
   _spawnPoints:
   - {fileID: 1232430716}
-  MoveVariant: 2
+  SwitchMoveTo: 0
   _wayPoints:
   - {fileID: 550504382}
   - {fileID: 1168898190}
@@ -1461,7 +1462,7 @@ MonoBehaviour:
   _enemysPool: {fileID: 967275552}
   _spawnPoints:
   - {fileID: 1014040326}
-  MoveVariant: 2
+  SwitchMoveTo: 0
   _wayPoints:
   - {fileID: 1917999413}
   - {fileID: 527058394}
@@ -1501,7 +1502,7 @@ MonoBehaviour:
   - {fileID: 1232430716}
   - {fileID: 146373491}
   - {fileID: 1014040326}
-  MoveVariant: 0
+  SwitchMoveTo: 0
 --- !u!114 &695434110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,7 +1538,7 @@ MonoBehaviour:
   - {fileID: 1232430716}
   - {fileID: 146373491}
   - {fileID: 1014040326}
-  MoveVariant: 0
+  SwitchMoveTo: 0
   _bonus: {fileID: 6429824181495424967, guid: fb8e7e8d493986348af2dddb017855e2, type: 3}
 --- !u!114 &695434112
 MonoBehaviour:
@@ -1572,7 +1573,7 @@ MonoBehaviour:
   _enemysPool: {fileID: 967275552}
   _spawnPoints:
   - {fileID: 146373491}
-  MoveVariant: 2
+  SwitchMoveTo: 0
   _wayPoints:
   - {fileID: 1101728032}
   - {fileID: 963319670}
@@ -1614,7 +1615,7 @@ MonoBehaviour:
   _enemysPool: {fileID: 785300874}
   _spawnPoints:
   - {fileID: 1232430716}
-  MoveVariant: 0
+  SwitchMoveTo: 0
   _wayPoints:
   - {fileID: 1315199958}
   - {fileID: 523459288}
@@ -1656,7 +1657,7 @@ MonoBehaviour:
   _enemysPool: {fileID: 496287759}
   _spawnPoints:
   - {fileID: 1343667614}
-  MoveVariant: 3
+  SwitchMoveTo: 0
   _wayPoints:
   - {fileID: 981672967}
   - {fileID: 1522918055}
@@ -2144,6 +2145,53 @@ Transform:
   m_Father: {fileID: 217246930}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1152164320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1152164321}
+  - component: {fileID: 1152164322}
+  m_Layer: 0
+  m_Name: BossRocketsPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1152164321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152164320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 408596480}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1152164322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152164320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d131f589a1ec2224297af79fd2b4d790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 1152164320}
+  _capacity: 12
+  _bulletPrefab: {fileID: 8060183301293742742, guid: 07ab34f2dcffceb4c8729e9b5e8f9286, type: 3}
 --- !u!1 &1168898190
 GameObject:
   m_ObjectHideFlags: 0
