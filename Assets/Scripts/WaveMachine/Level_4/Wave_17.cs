@@ -8,6 +8,6 @@ public class Wave_17 : Wave
 
     private void OnEnable()
     {
-        StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, _enemiesCountOnWave, _spawnPoints[0].transform.position, SwitchMoveTo));
+        StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, _enemiesCountOnWave, _spawnPoints[0].transform.position, MoveVariant));
     }
 }

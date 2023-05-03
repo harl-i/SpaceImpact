@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wave_9 : Wave
+public class Wave_25 : Wave
 {
     private int _enemiesCountOnWave = 5;
 

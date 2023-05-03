@@ -10,7 +10,7 @@ public abstract class Wave : MonoBehaviour
     [SerializeField] protected float _enemySpeed;
     [SerializeField] protected EnemyPool _enemysPool;
     [SerializeField] protected List<SpawnPoint> _spawnPoints;
-    [SerializeField] protected MoveVariants SwitchMoveTo;
+    [SerializeField] protected MoveVariants MoveVariant;
 
     protected const string LinearMove = "LinearMove";
     protected const string ChaoticMove = "ChaoticMove";
