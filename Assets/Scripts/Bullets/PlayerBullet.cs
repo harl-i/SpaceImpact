@@ -6,10 +6,9 @@ public class PlayerBullet : Bullet
 {
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out ShootingEnemy shootingEnemy) || 
-            collision.TryGetComponent(out NonShootingEnemy nonShootingEnemy))
+        if (collision.TryGetComponent(out IDamageable damageable))
         {
-            shootingEnemy.ApplyDamage(_damage);
+            damageable.ApplyDamage(_damage);
             ReturnToPool();
         }
 
