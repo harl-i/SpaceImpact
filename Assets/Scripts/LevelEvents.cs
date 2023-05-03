@@ -16,6 +16,6 @@ public class LevelEvents : MonoBehaviour
 
     public void OnBossDied()
     {
-        LevelBossDied.Invoke();
+        LevelBossDied?.Invoke();
     }
 }

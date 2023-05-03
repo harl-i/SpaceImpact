@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransition : MonoBehaviour
 {
-    public int _scene;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out SaveParameters saveParameters))
@@ -17,6 +15,7 @@ public class LevelTransition : MonoBehaviour
 
     private void ChangeScene()
     {
-        SceneManager.LoadScene(_scene);
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(++currentScene);
     }
 }
