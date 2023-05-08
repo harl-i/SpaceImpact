@@ -970,6 +970,8 @@ GameObject:
   - component: {fileID: 695434103}
   - component: {fileID: 695434102}
   - component: {fileID: 695434104}
+  - component: {fileID: 695434106}
+  - component: {fileID: 695434105}
   m_Layer: 0
   m_Name: WaveMachine
   m_TagString: Untagged
@@ -989,7 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbbaa1830884434caa7627fb6287071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstWave: {fileID: 0}
+  _firstWave: {fileID: 695434104}
 --- !u!4 &695434103
 Transform:
   m_ObjectHideFlags: 0
@@ -1015,22 +1017,56 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695434098}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bf5464ec1d6e9e4984afee67d247ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions: []
-  _spawnDelay: 2
-  _enemySpeed: 2.5
+  _transitions:
+  - {fileID: 695434106}
+  _spawnDelay: 2.15
+  _enemySpeed: 2.7
   _enemysPool: {fileID: 967275552}
   _spawnPoints:
   - {fileID: 1014040326}
-  SwitchMoveTo: 2
+  MoveVariant: 0
   _wayPoints:
   - {fileID: 550504382}
   - {fileID: 1168898190}
   - {fileID: 1148692255}
+--- !u!114 &695434105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695434098}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a1397e742cb7a41b720ed1b51a36ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions: []
+  _spawnDelay: 2
+  _enemySpeed: 2.7
+  _enemysPool: {fileID: 967275552}
+  _spawnPoints:
+  - {fileID: 146373491}
+  MoveVariant: 0
+--- !u!114 &695434106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695434098}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b775bf9bf9007e4a828e36c69a2a9db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetWave: {fileID: 695434105}
+  _delay: 2
 --- !u!1 &718924730
 GameObject:
   m_ObjectHideFlags: 0

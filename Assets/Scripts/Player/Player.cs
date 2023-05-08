@@ -52,6 +52,12 @@ public class Player : MonoBehaviour, IDamageable
         SetSuperWeapon(SuperWeaponVariant.LaserWall);
     }
 
+    public void PickedHealthBonus(int count)
+    {
+        _health += count;
+        HealthChanged?.Invoke(_health);
+    }
+
     public void ReduceRocket()
     {
         if (_rocketsCount > 0)
