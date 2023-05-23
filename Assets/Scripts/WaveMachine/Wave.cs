@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -73,30 +72,7 @@ public abstract class Wave : MonoBehaviour
         {
             Debug.Log("Enemys pool is empty");
         }
-
-        //yield return null;
     }
-
-    //protected IEnumerator SpawnEnemy(EnemyPool enemiesPool, float spawnDelay, int enemiesCount, SpawnPoint spawnPoint, MoveVariants moveVariants)
-    //{
-    //    for (int i = 0; i < enemiesCount; i++)
-    //    {
-    //        yield return new WaitForSeconds(spawnDelay);
-
-    //        enemiesPool.TryGetObject(out GameObject result);
-
-    //        if (result != null)
-    //        {
-    //            result.GetComponent<MoveSwitcher>().ActivateMoveVariant(moveVariants, _enemiesSpeed, _waypoints);
-    //            result.transform.position = spawnPoint.transform.position;
-    //            result.SetActive(true);
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Enemys pool is empty");
-    //        }
-    //    }
-    //}
 
     protected void SpawnBoss(Boss boss, bool canLunge, bool hasSecondaryWeapon)
     {
@@ -122,13 +98,6 @@ public abstract class Wave : MonoBehaviour
     {
         Instantiate(bonus, spawnPointPosition.transform);
     }
-
-    //protected IEnumerator SpawnBonus(Bonus bonus, float spawnDelay, SpawnPoint spawnPointPosition)
-    //{
-    //    yield return new WaitForSeconds(spawnDelay);
-
-    //    Instantiate(bonus, spawnPointPosition.transform);
-    //}
 
     private void ActivateLungeAndSecondaryWeaponBossBehaviours(Boss levelBoss)
     {
