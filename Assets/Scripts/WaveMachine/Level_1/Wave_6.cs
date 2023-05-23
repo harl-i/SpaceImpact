@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wave_6 : Wave
@@ -11,19 +10,19 @@ public class Wave_6 : Wave
 
     private IEnumerator StartWave()
     {
-        StartCoroutine(SpawnEnemy(_enemysPool, 0, 1, _spawnPoints[0].transform.position, MoveVariants.Linear));
+        StartCoroutine(SpawnEnemy(_enemiesPool, 0, 1, _spawnPoints[0].transform.position, MoveVariants.Linear));
 
         yield return new WaitForSeconds(3.5f);
 
-        StartCoroutine(SpawnEnemy(_enemysPool, 0, 1, _spawnPoints[1].transform.position, MoveVariants.Linear));
+        StartCoroutine(SpawnEnemy(_enemiesPool, 0, 1, _spawnPoints[1].transform.position, MoveVariants.Linear));
 
         yield return new WaitForSeconds(1f);
 
-        StartCoroutine(SpawnEnemy(_enemysPool, 0, 1, _spawnPoints[0].transform.position, MoveVariants.Linear));
+        StartCoroutine(SpawnEnemy(_enemiesPool, 0, 1, _spawnPoints[0].transform.position, MoveVariants.Linear));
 
         yield return new WaitForSeconds(1.5f);
 
-        StartCoroutine(SpawnEnemy(_enemysPool, 0, 1, _spawnPoints[2].transform.position, MoveVariants.Linear));
+        StartCoroutine(SpawnEnemy(_enemiesPool, 0, 1, _spawnPoints[2].transform.position, MoveVariants.Linear));
 
         yield return null;
     }

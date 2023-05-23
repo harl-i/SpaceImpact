@@ -1363,7 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbbaa1830884434caa7627fb6287071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstWave: {fileID: 695434117}
+  _firstWave: {fileID: 695434104}
 --- !u!4 &695434103
 Transform:
   m_ObjectHideFlags: 0
@@ -1397,14 +1397,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e447042b9e46ea47896fef5b4dcf5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 695434106}
   _spawnDelay: 2
-  _enemySpeed: 2.75
-  _enemysPool: {fileID: 967275552}
+  _enemiesSpeed: 2
+  _enemiesPool: {fileID: 0}
   _spawnPoints:
   - {fileID: 1232430716}
-  SwitchMoveTo: 0
+  _moveVariant: 0
+  _isBossWave: 0
+  _boss: {fileID: 0}
+  _canLunge: 0
+  _hasSecondaryWeapon: 0
+  _lungeBehaviour: {fileID: 0}
+  _bossBehaviourSecondaryWeapon: {fileID: 0}
+  _transitions:
+  - {fileID: 695434106}
+  _bossSecondaryWeaponBullets: {fileID: 0}
+  _waypoints: []
+  _lungeWaypoints: []
 --- !u!114 &695434105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,18 +1426,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc689aab43d9424f88fdee20a3e973c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 695434108}
   _spawnDelay: 2
-  _enemySpeed: 3.5
-  _enemysPool: {fileID: 967275552}
+  _enemiesSpeed: 0
+  _enemiesPool: {fileID: 0}
   _spawnPoints:
   - {fileID: 1232430716}
-  SwitchMoveTo: 0
-  _wayPoints:
-  - {fileID: 550504382}
-  - {fileID: 1168898190}
-  - {fileID: 1148692255}
+  _moveVariant: 0
+  _isBossWave: 0
+  _boss: {fileID: 0}
+  _canLunge: 0
+  _hasSecondaryWeapon: 0
+  _lungeBehaviour: {fileID: 0}
+  _bossBehaviourSecondaryWeapon: {fileID: 0}
+  _transitions:
+  - {fileID: 695434108}
+  _bossSecondaryWeaponBullets: {fileID: 0}
+  _waypoints: []
+  _lungeWaypoints: []
 --- !u!114 &695434106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,18 +1469,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a624f754fbbcb409f3aae330299e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 695434110}
   _spawnDelay: 2
-  _enemySpeed: 3.5
-  _enemysPool: {fileID: 967275552}
+  _enemiesSpeed: 0
+  _enemiesPool: {fileID: 0}
   _spawnPoints:
   - {fileID: 1014040326}
-  SwitchMoveTo: 0
-  _wayPoints:
-  - {fileID: 1917999413}
-  - {fileID: 527058394}
-  - {fileID: 618486404}
+  _moveVariant: 0
+  _isBossWave: 0
+  _boss: {fileID: 0}
+  _canLunge: 0
+  _hasSecondaryWeapon: 0
+  _lungeBehaviour: {fileID: 0}
+  _bossBehaviourSecondaryWeapon: {fileID: 0}
+  _transitions:
+  - {fileID: 695434110}
+  _bossSecondaryWeaponBullets: {fileID: 0}
+  _waypoints: []
+  _lungeWaypoints: []
 --- !u!114 &695434108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,16 +1512,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d2b75e78d32ba408925a56ad81d0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 695434112}
   _spawnDelay: 2.5
-  _enemySpeed: 2.5
-  _enemysPool: {fileID: 1492862530}
+  _enemiesSpeed: 0
+  _enemiesPool: {fileID: 0}
   _spawnPoints:
   - {fileID: 1232430716}
   - {fileID: 146373491}
   - {fileID: 1014040326}
-  SwitchMoveTo: 0
+  _moveVariant: 0
+  _isBossWave: 0
+  _boss: {fileID: 0}
+  _canLunge: 0
+  _hasSecondaryWeapon: 0
+  _lungeBehaviour: {fileID: 0}
+  _bossBehaviourSecondaryWeapon: {fileID: 0}
+  _transitions:
+  - {fileID: 695434112}
+  _bossSecondaryWeaponBullets: {fileID: 0}
+  _waypoints: []
+  _lungeWaypoints: []
 --- !u!114 &695434110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,16 +1557,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4017109b1810e6945bd522f39997ab91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 695434114}
   _spawnDelay: 2
-  _enemySpeed: 2
-  _enemysPool: {fileID: 1927630850}
+  _enemiesSpeed: 0
+  _enemiesPool: {fileID: 0}
   _spawnPoints:
   - {fileID: 1232430716}
   - {fileID: 146373491}
   - {fileID: 1014040326}
-  SwitchMoveTo: 0
+  _moveVariant: 0
+  _isBossWave: 0
+  _boss: {fileID: 0}
+  _canLunge: 0
+  _hasSecondaryWeapon: 0
+  _lungeBehaviour: {fileID: 0}
+  _bossBehaviourSecondaryWeapon: {fileID: 0}
+  _transitions:
+  - {fileID: 695434114}
+  _bossSecondaryWeaponBullets: {fileID: 0}
+  _waypoints: []
+  _lungeWaypoints: []
   _bonus: {fileID: 6429824181495424967, guid: fb8e7e8d493986348af2dddb017855e2, type: 3}
 --- !u!114 &695434112
 MonoBehaviour:
@@ -1566,22 +1603,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64390d59010a80148a484703daea95c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 695434116}
   _spawnDelay: 2.7
-  _enemySpeed: 2.5
-  _enemysPool: {fileID: 967275552}
+  _enemiesSpeed: 0
+  _enemiesPool: {fileID: 0}
   _spawnPoints:
   - {fileID: 146373491}
-  SwitchMoveTo: 0
-  _wayPoints:
-  - {fileID: 1101728032}
-  - {fileID: 963319670}
-  - {fileID: 219328653}
-  - {fileID: 481148098}
-  - {fileID: 1798463818}
-  - {fileID: 320142130}
-  - {fileID: 442591723}
+  _moveVariant: 1
+  _isBossWave: 0
+  _boss: {fileID: 0}
+  _canLunge: 0
+  _hasSecondaryWeapon: 0
+  _lungeBehaviour: {fileID: 0}
+  _bossBehaviourSecondaryWeapon: {fileID: 0}
+  _transitions:
+  - {fileID: 695434116}
+  _bossSecondaryWeaponBullets: {fileID: 0}
+  _waypoints: []
+  _lungeWaypoints: []
 --- !u!114 &695434114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,23 +1646,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2d02450894695478936c548b0da214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 695434118}
   _spawnDelay: 2.7
-  _enemySpeed: 2
-  _enemysPool: {fileID: 785300874}
+  _enemiesSpeed: 0
+  _enemiesPool: {fileID: 0}
   _spawnPoints:
   - {fileID: 1232430716}
-  SwitchMoveTo: 0
-  _wayPoints:
-  - {fileID: 1315199958}
-  - {fileID: 523459288}
-  - {fileID: 330950103}
-  - {fileID: 1755785927}
-  - {fileID: 1512137964}
-  - {fileID: 1301820371}
-  - {fileID: 974663603}
-  - {fileID: 1446805790}
+  _moveVariant: 0
+  _isBossWave: 0
+  _boss: {fileID: 0}
+  _canLunge: 0
+  _hasSecondaryWeapon: 0
+  _lungeBehaviour: {fileID: 0}
+  _bossBehaviourSecondaryWeapon: {fileID: 0}
+  _transitions:
+  - {fileID: 695434118}
+  _bossSecondaryWeaponBullets: {fileID: 0}
+  _waypoints: []
+  _lungeWaypoints: []
 --- !u!114 &695434116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1651,17 +1689,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c59e1483fe9ea140a96e1e873ac22c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions: []
   _spawnDelay: 0
-  _enemySpeed: 1.97
-  _enemysPool: {fileID: 496287759}
+  _enemiesSpeed: 0
+  _enemiesPool: {fileID: 0}
   _spawnPoints:
   - {fileID: 1343667614}
-  SwitchMoveTo: 0
-  _wayPoints:
+  _moveVariant: 2
+  _isBossWave: 1
+  _boss: {fileID: 1262380214}
+  _canLunge: 0
+  _hasSecondaryWeapon: 1
+  _lungeBehaviour: {fileID: 0}
+  _bossBehaviourSecondaryWeapon: {fileID: 0}
+  _transitions: []
+  _bossSecondaryWeaponBullets: {fileID: 1152164322}
+  _waypoints:
   - {fileID: 981672967}
   - {fileID: 1522918055}
   - {fileID: 1534468410}
+  _lungeWaypoints: []
 --- !u!114 &695434118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,7 +1808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c5ae4177c08546428c0501d46053f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scene: 2
 --- !u!1 &785300872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2186,12 +2231,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1152164320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d131f589a1ec2224297af79fd2b4d790, type: 3}
+  m_Script: {fileID: 11500000, guid: cefc2de4d8c0ca948bbe3ec3bef967b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _container: {fileID: 1152164320}
-  _capacity: 12
-  _bulletPrefab: {fileID: 8060183301293742742, guid: 07ab34f2dcffceb4c8729e9b5e8f9286, type: 3}
+  _capacity: 15
+  _rocketPrefab: {fileID: 8060183301293742742, guid: 07ab34f2dcffceb4c8729e9b5e8f9286, type: 3}
 --- !u!1 &1168898190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,6 +2492,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd160fdb09b73b34d9e47a872ad8f33d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1262380214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5639397653590241138, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+  m_PrefabInstance: {fileID: 7105173681378339056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b189ba7b98ab5741b1dd8f2033bd3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1301820371
@@ -3861,3 +3917,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boxCollider2D: {fileID: 2108303821}
   _color: {r: 0, g: 1, b: 0.9825597, a: 1}
+--- !u!1001 &7105173681378339056
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4569763066991964864, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_Name
+      value: Boss4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569763066991964869, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4101a3fc398af1545bcf9f1fb04ecd41, type: 3}

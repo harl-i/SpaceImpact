@@ -53,13 +53,15 @@ GameObject:
   - component: {fileID: 4966917790640863203}
   - component: {fileID: 9026744463082024705}
   - component: {fileID: 2933300102905470607}
+  - component: {fileID: 8736417428178738276}
+  - component: {fileID: 5639397653590241138}
   m_Layer: 3
-  m_Name: boss4
+  m_Name: Boss4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4569763066991964869
 Transform:
   m_ObjectHideFlags: 0
@@ -341,7 +343,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4569763066991964864}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffada21ecddd94a42bb034c614938ff2, type: 3}
   m_Name: 
@@ -349,4 +351,28 @@ MonoBehaviour:
   _firstShootDelay: 2
   _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 3
-  _secondaryWeapon: {fileID: 0}
+  _secondaryWeapon: {fileID: 7206949251850053658, guid: 22d1baa1af3481448a66b08e0f215b05, type: 3}
+--- !u!114 &8736417428178738276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569763066991964864}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7adabb16802a73045a95abcfb8d41abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5639397653590241138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569763066991964864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b189ba7b98ab5741b1dd8f2033bd3c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

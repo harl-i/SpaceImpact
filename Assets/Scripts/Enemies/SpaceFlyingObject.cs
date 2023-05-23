@@ -8,6 +8,7 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamag
 {
     [SerializeField] protected int _health;
     [SerializeField] protected int _reward;
+    [SerializeField] private EnemyDeathNotifier _enemyDeathNotifier;
 
     protected float _elapsedTime;
     private int _currentHealth;
@@ -18,6 +19,11 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamag
 
         if (_currentHealth <= 0)
         {
+            if (_enemyDeathNotifier != null)
+            {
+                _enemyDeathNotifier.Notify();
+            }
+
             Die();
         }
     }

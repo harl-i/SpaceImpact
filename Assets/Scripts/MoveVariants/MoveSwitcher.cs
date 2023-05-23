@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,31 +14,34 @@ public class MoveSwitcher : MonoBehaviour
     private PatrolMove _patrolMove;
     private LungeMove _lungeMove;
 
-    public void ActivateMoveVariant(MoveVariants moveVariants, float speed)
+    public void ActivateMoveVariant(MoveVariants moveVariants, float speed, List<GameObject> wayPoints)
     {
         DisableAll();
 
         switch (moveVariants)
         {
             case MoveVariants.Linear:
-                _linearMove.enabled = true;
                 _linearMove.SetSpeed(speed);
+                _linearMove.enabled = true;
                 break;
             case MoveVariants.Chaotic:
-                _chaoticMove.enabled = true;
                 _chaoticMove.SetSpeed(speed);
+                _chaoticMove.enabled = true;
                 break;
             case MoveVariants.Points:
-                _pointsMove.enabled = true;
+                _pointsMove.SetPoints(wayPoints);
                 _pointsMove.SetSpeed(speed);
+                _pointsMove.enabled = true;
                 break;
             case MoveVariants.Patrol:
-                _patrolMove.enabled = true;
+                _patrolMove.SetPoints(wayPoints);
                 _patrolMove.SetSpeed(speed);
+                _patrolMove.enabled = true;
                 break;
             case MoveVariants.Lunge:
-                _lungeMove.enabled = true;
+                _lungeMove.SetPoints(wayPoints);
                 _lungeMove.SetSpeed(speed);
+                _lungeMove.enabled = true;
                 break;
             default:
                 break;

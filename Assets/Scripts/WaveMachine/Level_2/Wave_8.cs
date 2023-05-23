@@ -1,13 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wave_8 : Wave
 {
     [SerializeField] private Bonus bonus;
     [SerializeField] private float _interval;
-    [SerializeField] private List<GameObject> _wavePointsTopLine = new List<GameObject>();
-    [SerializeField] private List<GameObject> _wavePointsBottomLine = new List<GameObject>();
 
     private int _enemiesCountOnWave = 8;
 
@@ -26,11 +23,11 @@ public class Wave_8 : Wave
         {
             if (i % 2 != 0)
             {
-                StartCoroutine(SpawnEnemy(_enemysPool, 0, 1, _spawnPoints[0].transform.position, _wavePointsTopLine));
+                StartCoroutine(SpawnEnemy(_enemiesPool, 0, 1, _spawnPoints[0].transform.position, _moveVariant));
             }
             else
             {
-                StartCoroutine(SpawnEnemy(_enemysPool, 0, 1, _spawnPoints[2].transform.position, _wavePointsBottomLine));
+                StartCoroutine(SpawnEnemy(_enemiesPool, 0, 1, _spawnPoints[2].transform.position, _moveVariant));
                 yield return new WaitForSeconds(_interval);
             }
         }

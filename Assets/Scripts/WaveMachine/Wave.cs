@@ -1,20 +1,26 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public abstract class Wave : MonoBehaviour
 {
-    [SerializeField] private List<Transition> _transitions;
     [SerializeField] protected float _spawnDelay;
-    [SerializeField] protected float _enemySpeed;
-    [SerializeField] protected EnemyPool _enemysPool;
+    [SerializeField] protected float _enemiesSpeed;
+    [SerializeField] protected EnemyPool _enemiesPool;
     [SerializeField] protected List<SpawnPoint> _spawnPoints;
-    [SerializeField] protected MoveVariants MoveVariant;
-
-    protected const string LinearMove = "LinearMove";
-    protected const string ChaoticMove = "ChaoticMove";
-    protected const string PointsMove = "PointsMove";
+    [SerializeField] protected MoveVariants _moveVariant;
+    [SerializeField] protected bool _isBossWave;
+    [SerializeField] protected Boss _boss;
+    [SerializeField] protected bool _canLunge;
+    [SerializeField] protected bool _hasSecondaryWeapon;
+    [SerializeField] protected BossBehaviourLunge _lungeBehaviour;
+    [SerializeField] protected BossBehaviourSecondaryWeapon _bossBehaviourSecondaryWeapon;
+    [SerializeField] private List<Transition> _transitions;
+    [SerializeField] private ObjectPool _bossSecondaryWeaponBullets;
+    [SerializeField] private List<GameObject> _waypoints = new List<GameObject>();
+    [SerializeField] private List<GameObject> _lungeWaypoints = new List<GameObject>();
+    private float _bossSpeed = 2f;
 
     public void StartWave(Wave wave)
     {
@@ -36,7 +42,6 @@ public abstract class Wave : MonoBehaviour
             foreach (var transition in _transitions)
             {
                 transition.enabled = false;
-
             }
         }
     }
@@ -52,17 +57,17 @@ public abstract class Wave : MonoBehaviour
         return null;
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemysPool, float spawnDelay, int enemiesCount, Vector3 spawnPoint, MoveVariants moveVariants)
+    protected IEnumerator SpawnEnemy(EnemyPool enemiesPool, float spawnDelay, int enemiesCount, Vector3 spawnPoint, MoveVariants moveVariants)
     {
         for (int i = 0; i < enemiesCount; i++)
         {
             yield return new WaitForSeconds(spawnDelay);
 
-            enemysPool.TryGetObject(out GameObject result);
+            enemiesPool.TryGetObject(out GameObject result);
 
             if (result != null)
             {
-                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(moveVariants, _enemySpeed);
+                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(moveVariants, _enemiesSpeed, _waypoints);
                 result.transform.position = spawnPoint;
                 result.SetActive(true);
             }
@@ -73,47 +78,23 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemiesPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, List<GameObject> waypoints)
+    protected void SpawnBoss(Boss boss, bool canLunge, bool hasSecondaryWeapon)
     {
-        for (int i = 0; i < enemysCount; i++)
+        if (canLunge == false && hasSecondaryWeapon == false)
         {
-            yield return new WaitForSeconds(spawnDelay);
-
-            enemiesPool.TryGetObject(out GameObject result);
-
-            if (result != null)
-            {
-                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(MoveVariants.Points, _enemySpeed);
-                result.GetComponent<PointsMove>().SetPoints(waypoints);
-                result.transform.position = spawnPoint;
-                result.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Enemys pool is empty");
-            }
+            ActivateBaseBossBehaviour(boss);
         }
-    }
-
-    protected IEnumerator SpawnEnemy(EnemyPool enemiesPool, float spawnDelay, int enemysCount, Vector3 spawnPoint, List<GameObject> waypoints, bool isLooped)
-    {
-        for (int i = 0; i < enemysCount; i++)
+        else if (canLunge == true && hasSecondaryWeapon == false)
         {
-            yield return new WaitForSeconds(spawnDelay);
-
-            enemiesPool.TryGetObject(out GameObject result);
-
-            if (result != null && isLooped == true)
-            {
-                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(MoveVariants.Patrol, _enemySpeed);
-                result.GetComponent<PatrolMove>().SetPoints(waypoints);
-                result.transform.position = spawnPoint;
-                result.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Enemys pool is empty");
-            }
+            ActivateLungeBossBehaviour(boss);
+        }
+        else if (canLunge == false && hasSecondaryWeapon == true)
+        {
+            ActivateSecondaryWeaponBossBehaviour(boss);
+        }
+        else if (canLunge == true && hasSecondaryWeapon == true)
+        {
+            ActivateLungeAndSecondaryWeaponBossBehaviours(boss);
         }
     }
 
@@ -122,5 +103,35 @@ public abstract class Wave : MonoBehaviour
         yield return new WaitForSeconds(spawnDelay);
 
         Instantiate(bonus, spawnPointPosition.transform);
+    }
+
+    private void ActivateLungeAndSecondaryWeaponBossBehaviours(Boss boss)
+    {
+        boss.gameObject.SetActive(true);
+        boss.LungeBehaviour.SetLungeBehaviourWaypoints(_waypoints, _lungeWaypoints);
+        boss.LungeBehaviour.enabled = true;
+        boss.SecondaryWeapon.enabled = true;
+    }
+
+    private void ActivateSecondaryWeaponBossBehaviour(Boss boss)
+    {
+        boss.gameObject.SetActive(true);
+        boss.LungeBehaviour.enabled = false;
+        boss.MoveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, _bossSpeed, _waypoints);
+        boss.SecondaryWeapon.SetWeapon(_bossSecondaryWeaponBullets);
+        boss.SecondaryWeapon.enabled = true;
+    }
+
+    private void ActivateLungeBossBehaviour(Boss boss)
+    {
+        boss.gameObject.SetActive(true);
+        boss.LungeBehaviour.SetLungeBehaviourWaypoints(_waypoints, _lungeWaypoints);
+        boss.LungeBehaviour.enabled = true;
+    }
+
+    private void ActivateBaseBossBehaviour(Boss boss)
+    {
+        boss.gameObject.SetActive(true);
+        boss.MoveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, _bossSpeed, _waypoints);
     }
 }

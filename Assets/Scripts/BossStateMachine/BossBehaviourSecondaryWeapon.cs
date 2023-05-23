@@ -8,9 +8,9 @@ public class BossBehaviourSecondaryWeapon : MonoBehaviour
     [SerializeField] private float _shootDelay;
     [SerializeField] private ObjectPool _secondaryWeapon;
 
-    private void Awake()
+    public void SetWeapon(ObjectPool secondaryWeapon)
     {
-        _secondaryWeapon = FindObjectOfType<BossRocketsPool>();
+        _secondaryWeapon = secondaryWeapon;
     }
 
     private void Shoot()

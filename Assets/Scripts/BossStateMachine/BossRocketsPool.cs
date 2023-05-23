@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossRocketsPool : ObjectPool
 {
-    [SerializeField] private Rocket _bulletPrefab;
+    [SerializeField] private Rocket _rocketPrefab;
 
     private void Awake()
     {
-        Initialize(_bulletPrefab);
+        Initialize(_rocketPrefab);
     }
 }

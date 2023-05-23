@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class Wave_15 : Wave
 {
@@ -15,7 +13,7 @@ public class Wave_15 : Wave
     {
         for (int i = 0; i < _enemiesCountOnWave; i++)
         {
-            StartCoroutine(SpawnEnemy(_enemysPool, _spawnDelay, 1, _spawnPoints[i].transform.position, MoveVariant));
+            StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, 1, _spawnPoints[i].transform.position, _moveVariant));
         }
         yield return null;
     }

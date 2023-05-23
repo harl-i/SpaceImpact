@@ -19,11 +19,11 @@ public class Wave_28 : Wave
             {
                 if (j % 2 == 0)
                 {
-                    StartCoroutine(SpawnEnemy(_enemysPool, 1.2f, 1, _spawnPoints[j].transform.position, MoveVariant));
+                    StartCoroutine(SpawnEnemy(_enemiesPool, 1.2f, 1, _spawnPoints[j].transform.position, _moveVariant));
                 }
                 else
                 {
-                    StartCoroutine(SpawnEnemy(_enemysPool, 0, 1, _spawnPoints[j].transform.position, MoveVariant));
+                    StartCoroutine(SpawnEnemy(_enemiesPool, 0, 1, _spawnPoints[j].transform.position, _moveVariant));
                 }
             }
 
