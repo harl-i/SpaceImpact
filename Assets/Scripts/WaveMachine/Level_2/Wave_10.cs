@@ -1,33 +1,33 @@
-//using System.Collections;
-//using UnityEngine;
+using System.Collections;
+using UnityEngine;
 
-//public class Wave_10 : Wave
-//{
-//    private int _enemiesCountOnIteration = 3;
-//    private int _iterations = 3;
+public class Wave_10 : Wave
+{
+    private int _iterations = 3;
 
-//    private void OnEnable()
-//    {
-//        StartCoroutine(StartWave());
-//    }
+    private void OnEnable()
+    {
+        StartCoroutine(StartWave());
+    }
 
-//    private IEnumerator StartWave()
-//    {
-//        for (int i = 0; i < _iterations; i++)
-//        {
-//            for (int j = 0; j < _enemiesCountOnIteration; j++)
-//            {
-//                if (j % 2 == 0)
-//                {
-//                    StartCoroutine(SpawnEnemy(_enemiesPool, 1.7f, 1, _spawnPoints[j].transform.position, _moveVariant));
-//                }
-//                else
-//                {
-//                    StartCoroutine(SpawnEnemy(_enemiesPool, 0, 1, _spawnPoints[j].transform.position, _moveVariant));
-//                }
-//            }
+    private IEnumerator StartWave()
+    {
+        WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
+        WaitForSeconds delayBetweenIterations = new WaitForSeconds(4f);
 
-//            yield return new WaitForSeconds(_spawnDelay);
-//        }
-//    }
-//}
+        for (int i = 0; i < _iterations; i++)
+        {
+            SpawnEnemy(_enemiesPool, _spawnPoints[2], _moveVariant);
+            yield return delay;
+
+            SpawnEnemy(_enemiesPool, _spawnPoints[1], _moveVariant);
+            SpawnEnemy(_enemiesPool, _spawnPoints[3], _moveVariant);
+            yield return delay;
+
+            SpawnEnemy(_enemiesPool, _spawnPoints[0], _moveVariant);
+            SpawnEnemy(_enemiesPool, _spawnPoints[4], _moveVariant);
+
+            yield return delayBetweenIterations;
+        }
+    }
+}

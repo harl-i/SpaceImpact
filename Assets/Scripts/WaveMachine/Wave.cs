@@ -17,6 +17,7 @@ public abstract class Wave : MonoBehaviour
     [SerializeField] protected BossBehaviourLunge _lungeBehaviour;
     [SerializeField] protected BossBehaviourSecondaryWeapon _bossBehaviourSecondaryWeapon;
     [SerializeField] protected Bonus _bonus;
+    [SerializeField] protected float _bonusSpeed;
     [SerializeField] private List<Transition> _transitions;
     [SerializeField] private ObjectPool _bossSecondaryWeaponBullets;
     [SerializeField] private List<GameObject> _waypoints = new List<GameObject>();
@@ -94,9 +95,10 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    protected void SpawnBonus(Bonus bonus, SpawnPoint spawnPointPosition)
+    protected void SpawnBonus(Bonus bonus, SpawnPoint spawnPointPosition, float speed)
     {
-        Instantiate(bonus, spawnPointPosition.transform);
+        var result = Instantiate(bonus, spawnPointPosition.transform);
+        result.SetSpeed(speed);
     }
 
     private void ActivateLungeAndSecondaryWeaponBossBehaviours(Boss levelBoss)

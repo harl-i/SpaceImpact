@@ -1069,6 +1069,7 @@ MonoBehaviour:
   _lungeBehaviour: {fileID: 0}
   _bossBehaviourSecondaryWeapon: {fileID: 0}
   _bonus: {fileID: 2406467351723413076, guid: 049cdb5abb3df21439460935a38a9fb2, type: 3}
+  _bonusSpeed: 2
   _transitions:
   - {fileID: 695434105}
   _bossSecondaryWeaponBullets: {fileID: 0}
@@ -1118,6 +1119,7 @@ MonoBehaviour:
   _lungeBehaviour: {fileID: 0}
   _bossBehaviourSecondaryWeapon: {fileID: 0}
   _bonus: {fileID: 0}
+  _bonusSpeed: 0
   _transitions:
   - {fileID: 695434108}
   _bossSecondaryWeaponBullets: {fileID: 0}
@@ -1153,6 +1155,7 @@ MonoBehaviour:
   _lungeBehaviour: {fileID: 0}
   _bossBehaviourSecondaryWeapon: {fileID: 0}
   _bonus: {fileID: 0}
+  _bonusSpeed: 0
   _transitions:
   - {fileID: 695434112}
   _bossSecondaryWeaponBullets: {fileID: 0}
@@ -1202,6 +1205,7 @@ MonoBehaviour:
   _lungeBehaviour: {fileID: 0}
   _bossBehaviourSecondaryWeapon: {fileID: 0}
   _bonus: {fileID: 0}
+  _bonusSpeed: 0
   _transitions:
   - {fileID: 695434111}
   _bossSecondaryWeaponBullets: {fileID: 0}
@@ -1242,6 +1246,7 @@ MonoBehaviour:
   _lungeBehaviour: {fileID: 0}
   _bossBehaviourSecondaryWeapon: {fileID: 0}
   _bonus: {fileID: 0}
+  _bonusSpeed: 0
   _transitions:
   - {fileID: 695434114}
   _bossSecondaryWeaponBullets: {fileID: 0}
@@ -1308,6 +1313,7 @@ MonoBehaviour:
   _lungeBehaviour: {fileID: 0}
   _bossBehaviourSecondaryWeapon: {fileID: 0}
   _bonus: {fileID: 0}
+  _bonusSpeed: 0
   _transitions:
   - {fileID: 695434116}
   _bossSecondaryWeaponBullets: {fileID: 0}
@@ -1366,6 +1372,7 @@ MonoBehaviour:
   _lungeBehaviour: {fileID: 0}
   _bossBehaviourSecondaryWeapon: {fileID: 0}
   _bonus: {fileID: 0}
+  _bonusSpeed: 0
   _transitions: []
   _bossSecondaryWeaponBullets: {fileID: 0}
   _waypoints:

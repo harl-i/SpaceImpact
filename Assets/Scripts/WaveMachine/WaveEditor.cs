@@ -20,6 +20,7 @@ public class WaveEditor : Editor
     private SerializedProperty _bossSecondaryWeaponBullets;
     private SerializedProperty _hasBonus;
     private SerializedProperty _bonus;
+    private SerializedProperty _bonusSpeed;
 
 
     private void OnEnable()
@@ -39,6 +40,7 @@ public class WaveEditor : Editor
         _bossSecondaryWeaponBullets = serializedObject.FindProperty("_bossSecondaryWeaponBullets");
         _hasBonus = serializedObject.FindProperty("_hasBonus");
         _bonus = serializedObject.FindProperty("_bonus");
+        _bonusSpeed = serializedObject.FindProperty("_bonusSpeed");
     }
 
     public override void OnInspectorGUI()
@@ -81,10 +83,12 @@ public class WaveEditor : Editor
             if (_hasBonus.boolValue)
             {
                 EditorGUILayout.PropertyField(_bonus);
+                EditorGUILayout.PropertyField(_bonusSpeed);
             }
             else
             {
                 _bonus.objectReferenceValue = null;
+                //_bonusSpeed.floatValue = 0;
             }
 
             _boss.objectReferenceValue = null;

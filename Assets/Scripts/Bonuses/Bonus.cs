@@ -6,6 +6,11 @@ public abstract class Bonus : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] protected int _count;
 
+    public void SetSpeed(float speed)
+    {
+        _speed = speed;
+    }
+
     private void Update()
     {
         Move();

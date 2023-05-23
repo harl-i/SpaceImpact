@@ -1,9 +1,25 @@
+using System.Collections;
+using UnityEngine;
+
 public class Wave_9 : Wave
 {
-    private int _enemiesCountOnWave = 5;
+    private int _enemysCount = 5;
 
     private void OnEnable()
     {
-        //StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, _enemiesCountOnWave, _spawnPoints[0].transform.position, _moveVariant));
+        StartCoroutine(StartWave());
+    }
+
+    private IEnumerator StartWave()
+    {
+        WaitForSeconds spawnDelay = new WaitForSeconds(_spawnDelay);
+
+        for (int i = 0; i < _enemysCount; i++)
+        {
+            int randomPoint = Random.Range(0, _spawnPoints.Count);
+            SpawnEnemy(_enemiesPool, _spawnPoints[randomPoint], _moveVariant);
+
+            yield return spawnDelay;
+        }
     }
 }
