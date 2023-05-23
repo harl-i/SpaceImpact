@@ -1,34 +1,53 @@
- using System.Collections;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class Wave_1 : Wave
 {
-    [SerializeField] private Bonus bonus;
-
-    private Dictionary<int, int> _enemyCountOnIteration = new Dictionary<int, int>()
-    {
-        {0, 3},
-        {1, 5},
-        {2, 3}
-    };
-
     private void OnEnable()
     {
-        StartCoroutine(ActivateSpawn());
+        StartCoroutine(StartWave());
     }
 
-    private IEnumerator ActivateSpawn()
+    private IEnumerator StartWave()
     {
-        for (int i = 0; i < _enemyCountOnIteration.Count; i++)
+        WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
+        WaitForSeconds doubleDelay = new WaitForSeconds(_spawnDelay * 2);
+        WaitForSeconds shortDelay = new WaitForSeconds(0.5f);
+
+        int[] spawnPointOrder = { 0, 0, 0, 1, 1, 1, 1, 3, 3, 3, 1, 1, 1 };
+        int spawnOrderIndex = 0;
+
+        for (int i = 0; i < spawnPointOrder.Length; i++)
         {
-            yield return StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, _enemyCountOnIteration[i], _spawnPoints[i].transform.position, _moveVariant));
+            int pointIndex = spawnPointOrder[spawnOrderIndex];
+            spawnOrderIndex++;
+
+            if (spawnOrderIndex >= spawnPointOrder.Length)
+            {
+                spawnOrderIndex = 0;
+            }
+
+            if (spawnOrderIndex == 6)
+            {
+                yield return doubleDelay;
+                SpawnEnemy(_enemiesPool, _spawnPoints[pointIndex], _moveVariant);
+                yield return delay;
+            }
+            else if (spawnOrderIndex == 11)
+            {
+                SpawnEnemy(_enemiesPool, _spawnPoints[pointIndex], _moveVariant);
+                yield return shortDelay;
+            }
+            else if (spawnOrderIndex == 12)
+            {
+                SpawnBonus(_bonus, _spawnPoints[pointIndex]);
+                yield return delay;
+            }
+            else
+            {
+                SpawnEnemy(_enemiesPool, _spawnPoints[pointIndex], _moveVariant);
+                yield return delay;
+            }
         }
-
-        StartCoroutine(SpawnEnemy(_enemiesPool, 0.15f, 1, _spawnPoints[0].transform.position, _moveVariant));
-        StartCoroutine(SpawnBonus(bonus, 1f, _spawnPoints[0]));
-
-
-        StartCoroutine(SpawnEnemy(_enemiesPool, 2f, 1, _spawnPoints[0].transform.position, _moveVariant));
     }
 }

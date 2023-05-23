@@ -3,19 +3,23 @@ using UnityEngine;
 
 public class Wave_2 : Wave
 {
-    private int _enemysCount = 7;
+    private int _enemysCount = 10;
 
     private void OnEnable()
     {
-        StartCoroutine(ActivateSpawn());
+        StartCoroutine(StartWave());
     }
 
-    private IEnumerator ActivateSpawn()
+    private IEnumerator StartWave()
     {
+        WaitForSeconds spawnDelay = new WaitForSeconds(_spawnDelay);
+
         for (int i = 0; i < _enemysCount; i++)
         {
             int randomPoint = Random.Range(0, _spawnPoints.Count);
-            yield return StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, 1, _spawnPoints[randomPoint].transform.position, _moveVariant));
+            SpawnEnemy(_enemiesPool, _spawnPoints[randomPoint], _moveVariant);
+
+            yield return spawnDelay;
         }
     }
 }

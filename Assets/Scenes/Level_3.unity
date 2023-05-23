@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 695434111}
   - component: {fileID: 695434112}
   - component: {fileID: 695434114}
-  - component: {fileID: 695434113}
+  - component: {fileID: 695434116}
   m_Layer: 0
   m_Name: WaveMachine
   m_TagString: Untagged
@@ -1325,34 +1325,6 @@ MonoBehaviour:
   _bossSecondaryWeaponBullets: {fileID: 0}
   _waypoints: []
   _lungeWaypoints: []
---- !u!114 &695434113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695434098}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fcc36153148a7842919b0b1d951d451, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnDelay: 0
-  _enemiesSpeed: 0
-  _enemiesPool: {fileID: 0}
-  _spawnPoints:
-  - {fileID: 1343667614}
-  _moveVariant: 3
-  _isBossWave: 1
-  _boss: {fileID: 0}
-  _canLunge: 1
-  _hasSecondaryWeapon: 0
-  _lungeBehaviour: {fileID: 0}
-  _bossBehaviourSecondaryWeapon: {fileID: 0}
-  _transitions: []
-  _bossSecondaryWeaponBullets: {fileID: 0}
-  _waypoints: []
-  _lungeWaypoints: []
 --- !u!114 &695434114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b775bf9bf9007e4a828e36c69a2a9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetWave: {fileID: 695434113}
+  _targetWave: {fileID: 0}
   _delay: 10
 --- !u!114 &695434115
 MonoBehaviour:
@@ -1380,6 +1352,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetWave: {fileID: 695434109}
+--- !u!114 &695434116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695434098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3160c6d1b5eab45a2fb9716554c89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnDelay: 0
+  _enemiesSpeed: 0
+  _enemiesPool: {fileID: 0}
+  _spawnPoints: []
+  _moveVariant: 0
+  _isBossWave: 1
+  _boss: {fileID: 0}
+  _canLunge: 0
+  _hasSecondaryWeapon: 0
+  _lungeBehaviour: {fileID: 0}
+  _bossBehaviourSecondaryWeapon: {fileID: 0}
+  _transitions: []
+  _bossSecondaryWeaponBullets: {fileID: 0}
+  _waypoints: []
+  _lungeWaypoints: []
 --- !u!1 &718924730
 GameObject:
   m_ObjectHideFlags: 0

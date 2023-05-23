@@ -1,14 +1,9 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Wave_3 : Wave
 {
-    private Dictionary<int, int> _enemyCountOnIteration = new Dictionary<int, int>()
-    {
-        {0, 2},
-        {1, 1},
-    };
-
     private void OnEnable()
     {
         StartCoroutine(ActivateSpawn());
@@ -16,10 +11,23 @@ public class Wave_3 : Wave
 
     private IEnumerator ActivateSpawn()
     {
-        for (int i = _enemyCountOnIteration.Count; i > 0; i--)
+        WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
+
+        int[] spawnPointOrder = { 2, 1, 1 };
+        int spawnOrderIndex = 0;
+
+        for (int i = 0; i < spawnPointOrder.Length; i++)
         {
-            yield return StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, 
-                _enemyCountOnIteration[i - 1], _spawnPoints[i - 1].transform.position, _moveVariant));
+            int pointIndex = spawnPointOrder[spawnOrderIndex];
+            spawnOrderIndex++;
+
+            if (spawnOrderIndex >= spawnPointOrder.Length)
+            {
+                spawnOrderIndex = 0;
+            }
+
+            SpawnEnemy(_enemiesPool, _spawnPoints[pointIndex], _moveVariant);
+            yield return delay;
         }
     }
 }

@@ -18,6 +18,9 @@ public class WaveEditor : Editor
     private SerializedProperty _lungeWaypoints;
     private SerializedProperty _hasSecondaryWeapon;
     private SerializedProperty _bossSecondaryWeaponBullets;
+    private SerializedProperty _hasBonus;
+    private SerializedProperty _bonus;
+
 
     private void OnEnable()
     {
@@ -34,6 +37,8 @@ public class WaveEditor : Editor
         _hasSecondaryWeapon = serializedObject.FindProperty("_hasSecondaryWeapon");
         _lungeWaypoints = serializedObject.FindProperty("_lungeWaypoints");
         _bossSecondaryWeaponBullets = serializedObject.FindProperty("_bossSecondaryWeaponBullets");
+        _hasBonus = serializedObject.FindProperty("_hasBonus");
+        _bonus = serializedObject.FindProperty("_bonus");
     }
 
     public override void OnInspectorGUI()
@@ -72,6 +77,16 @@ public class WaveEditor : Editor
         }
         else
         {
+            EditorGUILayout.PropertyField(_hasBonus);
+            if (_hasBonus.boolValue)
+            {
+                EditorGUILayout.PropertyField(_bonus);
+            }
+            else
+            {
+                _bonus.objectReferenceValue = null;
+            }
+
             _boss.objectReferenceValue = null;
             switch (_moveVariant.enumValueIndex)
             {

@@ -14,8 +14,10 @@ public abstract class Wave : MonoBehaviour
     [SerializeField] protected Boss _boss;
     [SerializeField] protected bool _canLunge;
     [SerializeField] protected bool _hasSecondaryWeapon;
+    [SerializeField] protected bool _hasBonus;
     [SerializeField] protected BossBehaviourLunge _lungeBehaviour;
     [SerializeField] protected BossBehaviourSecondaryWeapon _bossBehaviourSecondaryWeapon;
+    [SerializeField] protected Bonus _bonus;
     [SerializeField] private List<Transition> _transitions;
     [SerializeField] private ObjectPool _bossSecondaryWeaponBullets;
     [SerializeField] private List<GameObject> _waypoints = new List<GameObject>();
@@ -57,26 +59,44 @@ public abstract class Wave : MonoBehaviour
         return null;
     }
 
-    protected IEnumerator SpawnEnemy(EnemyPool enemiesPool, float spawnDelay, int enemiesCount, Vector3 spawnPoint, MoveVariants moveVariants)
+    protected void SpawnEnemy(EnemyPool enemiesPool, SpawnPoint spawnPoint, MoveVariants moveVariants)
     {
-        for (int i = 0; i < enemiesCount; i++)
+        enemiesPool.TryGetObject(out GameObject result);
+
+        if (result != null)
         {
-            yield return new WaitForSeconds(spawnDelay);
-
-            enemiesPool.TryGetObject(out GameObject result);
-
-            if (result != null)
-            {
-                result.GetComponent<MoveSwitcher>().ActivateMoveVariant(moveVariants, _enemiesSpeed, _waypoints);
-                result.transform.position = spawnPoint;
-                result.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Enemys pool is empty");
-            }
+            result.GetComponent<MoveSwitcher>().ActivateMoveVariant(moveVariants, _enemiesSpeed, _waypoints);
+            result.transform.position = spawnPoint.transform.position;
+            result.SetActive(true);
         }
+        else
+        {
+            Debug.Log("Enemys pool is empty");
+        }
+
+        //yield return null;
     }
+
+    //protected IEnumerator SpawnEnemy(EnemyPool enemiesPool, float spawnDelay, int enemiesCount, SpawnPoint spawnPoint, MoveVariants moveVariants)
+    //{
+    //    for (int i = 0; i < enemiesCount; i++)
+    //    {
+    //        yield return new WaitForSeconds(spawnDelay);
+
+    //        enemiesPool.TryGetObject(out GameObject result);
+
+    //        if (result != null)
+    //        {
+    //            result.GetComponent<MoveSwitcher>().ActivateMoveVariant(moveVariants, _enemiesSpeed, _waypoints);
+    //            result.transform.position = spawnPoint.transform.position;
+    //            result.SetActive(true);
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Enemys pool is empty");
+    //        }
+    //    }
+    //}
 
     protected void SpawnBoss(Boss boss, bool canLunge, bool hasSecondaryWeapon)
     {
@@ -98,40 +118,46 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    protected IEnumerator SpawnBonus(Bonus bonus, float spawnDelay, SpawnPoint spawnPointPosition)
+    protected void SpawnBonus(Bonus bonus, SpawnPoint spawnPointPosition)
     {
-        yield return new WaitForSeconds(spawnDelay);
-
         Instantiate(bonus, spawnPointPosition.transform);
     }
 
-    private void ActivateLungeAndSecondaryWeaponBossBehaviours(Boss boss)
+    //protected IEnumerator SpawnBonus(Bonus bonus, float spawnDelay, SpawnPoint spawnPointPosition)
+    //{
+    //    yield return new WaitForSeconds(spawnDelay);
+
+    //    Instantiate(bonus, spawnPointPosition.transform);
+    //}
+
+    private void ActivateLungeAndSecondaryWeaponBossBehaviours(Boss levelBoss)
     {
-        boss.gameObject.SetActive(true);
-        boss.LungeBehaviour.SetLungeBehaviourWaypoints(_waypoints, _lungeWaypoints);
-        boss.LungeBehaviour.enabled = true;
-        boss.SecondaryWeapon.enabled = true;
+        levelBoss.gameObject.SetActive(true);
+        levelBoss.LungeBehaviour.SetLungeBehaviourWaypoints(_waypoints, _lungeWaypoints);
+        levelBoss.LungeBehaviour.enabled = true;
+        levelBoss.SecondaryWeapon.enabled = true;
     }
 
-    private void ActivateSecondaryWeaponBossBehaviour(Boss boss)
+    private void ActivateSecondaryWeaponBossBehaviour(Boss levelBoss)
     {
-        boss.gameObject.SetActive(true);
-        boss.LungeBehaviour.enabled = false;
-        boss.MoveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, _bossSpeed, _waypoints);
-        boss.SecondaryWeapon.SetWeapon(_bossSecondaryWeaponBullets);
-        boss.SecondaryWeapon.enabled = true;
+        levelBoss.gameObject.SetActive(true);
+        levelBoss.LungeBehaviour.enabled = false;
+        levelBoss.MoveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, _bossSpeed, _waypoints);
+        levelBoss.SecondaryWeapon.SetWeapon(_bossSecondaryWeaponBullets);
+        levelBoss.SecondaryWeapon.enabled = true;
     }
 
-    private void ActivateLungeBossBehaviour(Boss boss)
+    private void ActivateLungeBossBehaviour(Boss levelBoss)
     {
-        boss.gameObject.SetActive(true);
-        boss.LungeBehaviour.SetLungeBehaviourWaypoints(_waypoints, _lungeWaypoints);
-        boss.LungeBehaviour.enabled = true;
+        levelBoss.gameObject.SetActive(true);
+        levelBoss.LungeBehaviour.SetLungeBehaviourWaypoints(_waypoints, _lungeWaypoints);
+        levelBoss.LungeBehaviour.enabled = true;
     }
 
-    private void ActivateBaseBossBehaviour(Boss boss)
+    private void ActivateBaseBossBehaviour(Boss levelBoss)
     {
-        boss.gameObject.SetActive(true);
-        boss.MoveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, _bossSpeed, _waypoints);
+        levelBoss.gameObject.SetActive(true);
+
+        levelBoss.MoveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, _bossSpeed, _waypoints);
     }
 }
