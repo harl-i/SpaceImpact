@@ -1,39 +1,33 @@
-//using System.Collections;
-//using UnityEngine;
+using System.Collections;
+using UnityEngine;
 
-//public class Wave_14 : Wave
-//{
-//    [SerializeField] private Bonus _bonus;
+public class Wave_14 : Wave
+{
+    private int _iterations = 3;
 
-//    private int _enemiesCountOnIteration = 3;
-//    private int _iterations = 3;
+    private void OnEnable()
+    {
+        StartCoroutine(StartWave());
+    }
 
-//    private void OnEnable()
-//    {
-//        StartCoroutine(StartWave());
-//    }
+    private IEnumerator StartWave()
+    {
+        WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
+        WaitForSeconds delayBetweenIterations = new WaitForSeconds(4f);
 
-//    private IEnumerator StartWave()
-//    {
-//        StartCoroutine(SpawnBonus(_bonus, 0, _spawnPoints[1]));
+        for (int i = 0; i < _iterations; i++)
+        {
+            SpawnEnemy(_enemiesPool, _spawnPoints[2], _moveVariant);
+            yield return delay;
 
-//        yield return new WaitForSeconds(_spawnDelay);
+            SpawnEnemy(_enemiesPool, _spawnPoints[1], _moveVariant);
+            SpawnEnemy(_enemiesPool, _spawnPoints[3], _moveVariant);
+            yield return delay;
 
-//        for (int i = 0; i < _iterations; i++)
-//        {
-//            for (int j = 0; j < _enemiesCountOnIteration; j++)
-//            {
-//                if (j % 2 == 0)
-//                {
-//                    StartCoroutine(SpawnEnemy(_enemiesPool, 1.7f, 1, _spawnPoints[j].transform.position, _moveVariant));
-//                }
-//                else
-//                {
-//                    StartCoroutine(SpawnEnemy(_enemiesPool, 0, 1, _spawnPoints[j].transform.position, _moveVariant));
-//                }
-//            }
+            SpawnEnemy(_enemiesPool, _spawnPoints[0], _moveVariant);
+            SpawnEnemy(_enemiesPool, _spawnPoints[4], _moveVariant);
 
-//            yield return new WaitForSeconds(_spawnDelay);
-//        }
-//    }
-//}
+            yield return delayBetweenIterations;
+        }
+    }
+}
