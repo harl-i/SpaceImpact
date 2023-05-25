@@ -1,10 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class Wave_8 : Wave
+public class Wave_29Topline : Wave
 {
-    private int _enemiesCount = 4;
-    private int _iterationForSpawnBonus = 1;
+    private int _enemiesCount = 5;
 
     private void OnEnable()
     {
@@ -18,12 +17,6 @@ public class Wave_8 : Wave
         for (int i = 0; i < _enemiesCount; i++)
         {
             SpawnEnemy(_enemiesPool, _spawnPoints[0], _moveVariant);
-
-            if (i == _iterationForSpawnBonus && _bonus != null)
-            {
-                SpawnBonus(_bonus, _spawnPoints[1], _bonusSpeed, _canVerticalMoveBonus);
-            }
-
             yield return delay;
         }
     }

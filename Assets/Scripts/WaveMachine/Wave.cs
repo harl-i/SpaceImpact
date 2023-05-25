@@ -18,6 +18,7 @@ public abstract class Wave : MonoBehaviour
     [SerializeField] protected BossBehaviourSecondaryWeapon _bossBehaviourSecondaryWeapon;
     [SerializeField] protected Bonus _bonus;
     [SerializeField] protected float _bonusSpeed;
+    [SerializeField] protected bool _canVerticalMoveBonus;
     [SerializeField] private List<Transition> _transitions;
     [SerializeField] private ObjectPool _bossSecondaryWeaponBullets;
     [SerializeField] private List<GameObject> _waypoints = new List<GameObject>();
@@ -95,16 +96,21 @@ public abstract class Wave : MonoBehaviour
         }
     }
 
-    protected void SpawnBonus(Bonus bonus, SpawnPoint spawnPointPosition, float speed)
+    protected void SpawnBonus(Bonus bonus, SpawnPoint spawnPointPosition, float speed, bool canVerticalMove)
     {
         var result = Instantiate(bonus, spawnPointPosition.transform);
         result.SetSpeed(speed);
+        if (canVerticalMove)
+        {
+            result.ActivateVertcalMovement();
+        }
     }
 
     private void ActivateLungeAndSecondaryWeaponBossBehaviours(Boss levelBoss)
     {
         levelBoss.gameObject.SetActive(true);
         levelBoss.LungeBehaviour.SetLungeBehaviourWaypoints(_waypoints, _lungeWaypoints);
+        levelBoss.SecondaryWeapon.SetWeapon(_bossSecondaryWeaponBullets);
         levelBoss.LungeBehaviour.enabled = true;
         levelBoss.SecondaryWeapon.enabled = true;
     }

@@ -1,9 +1,23 @@
+using System.Collections;
+using UnityEngine;
+
 public class Wave_18 : Wave
 {
-    private int _enemiesCountOnWave = 5;
+    private int _enemiesCount = 5;
 
     private void OnEnable()
     {
-        //StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, _enemiesCountOnWave, _spawnPoints[0].transform.position, _moveVariant));
+        StartCoroutine(Startwave());
+    }
+
+    private IEnumerator Startwave()
+    {
+        WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
+
+        for (int i = 0; i < _enemiesCount; i++)
+        {
+            SpawnEnemy(_enemiesPool, _spawnPoints[0], _moveVariant);
+            yield return delay;
+        }
     }
 }

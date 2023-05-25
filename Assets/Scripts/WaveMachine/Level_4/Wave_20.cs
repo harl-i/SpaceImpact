@@ -1,27 +1,44 @@
-//using System.Collections;
-//using UnityEngine;
+using System.Collections;
+using UnityEngine;
 
-//public class Wave_20 : Wave
-//{
-//    private void OnEnable()
-//    {
-//        StartCoroutine(StartWave());
-//    }
+public class Wave_20 : Wave
+{
+    private void OnEnable()
+    {
+        StartCoroutine(StartWave());
+    }
 
-//    private IEnumerator StartWave()
-//    {
-//        StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, 1, _spawnPoints[1].transform.position, _moveVariant));
+    private IEnumerator StartWave()
+    {
+        WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
+        WaitForSeconds longDelay = new WaitForSeconds(_spawnDelay * 3);
 
-//        yield return new WaitForSeconds(5);
+        int[] spawnPointOrder = { 2, 0, 0, 0, 3, 1, 1, 1 };
+        int spawnOrderIndex = 0;
 
-//        StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, 2, _spawnPoints[0].transform.position, _moveVariant));
+        for (int i = 0; i < spawnPointOrder.Length; i++)
+        {
+            int pointIndex = spawnPointOrder[spawnOrderIndex];
+            spawnOrderIndex++;
 
-//        yield return new WaitForSeconds(5);
+            if (spawnOrderIndex >= spawnPointOrder.Length)
+            {
+                spawnOrderIndex = 0;
+            }
 
-//        StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, 2, _spawnPoints[2].transform.position, _moveVariant));
+            SpawnEnemy(_enemiesPool, _spawnPoints[pointIndex], _moveVariant);
 
-//        yield return new WaitForSeconds(5);
+            if (spawnOrderIndex == 1 || spawnOrderIndex == 4 || spawnOrderIndex == 5)
+            {
+                yield return longDelay;
+            }
+            else
+            {
+                yield return delay;
+            }
+        }
 
-//        StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, 3, _spawnPoints[1].transform.position, _moveVariant));
-//    }
-//}
+        yield return longDelay;
+        SpawnBonus(_bonus, _spawnPoints[2], _bonusSpeed, _canVerticalMoveBonus);
+    }
+}

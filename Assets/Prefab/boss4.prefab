@@ -247,7 +247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 50
   _reward: 1000
-  _firstShootDelay: 7
+  _enemyDeathNotifier: {fileID: 0}
+  _firstShootDelay: 6
   _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 2
   isBoss: 1
@@ -348,9 +349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffada21ecddd94a42bb034c614938ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstShootDelay: 2
+  _firstShootDelay: 11
   _shootPoint: {fileID: 4569763066599221752}
-  _shootDelay: 3
+  _shootDelay: 4
   _secondaryWeapon: {fileID: 7206949251850053658, guid: 22d1baa1af3481448a66b08e0f215b05, type: 3}
 --- !u!114 &8736417428178738276
 MonoBehaviour:

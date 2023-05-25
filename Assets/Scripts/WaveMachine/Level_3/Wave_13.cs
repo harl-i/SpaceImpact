@@ -29,6 +29,6 @@ public class Wave_13 : Wave
             }
 
         }
-        SpawnBonus(_bonus, _spawnPoints[3], _bonusSpeed);
+        SpawnBonus(_bonus, _spawnPoints[3], _bonusSpeed, _canVerticalMoveBonus);
     }
 }

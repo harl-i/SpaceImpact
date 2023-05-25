@@ -21,6 +21,7 @@ public class WaveEditor : Editor
     private SerializedProperty _hasBonus;
     private SerializedProperty _bonus;
     private SerializedProperty _bonusSpeed;
+    private SerializedProperty _canVerticalMoveBonus;
 
 
     private void OnEnable()
@@ -41,6 +42,7 @@ public class WaveEditor : Editor
         _hasBonus = serializedObject.FindProperty("_hasBonus");
         _bonus = serializedObject.FindProperty("_bonus");
         _bonusSpeed = serializedObject.FindProperty("_bonusSpeed");
+        _canVerticalMoveBonus = serializedObject.FindProperty("_canVerticalMoveBonus");
     }
 
     public override void OnInspectorGUI()
@@ -79,17 +81,21 @@ public class WaveEditor : Editor
         }
         else
         {
+            DrawLine();
             EditorGUILayout.PropertyField(_hasBonus);
             if (_hasBonus.boolValue)
             {
+                EditorGUILayout.PropertyField(_canVerticalMoveBonus);
                 EditorGUILayout.PropertyField(_bonus);
                 EditorGUILayout.PropertyField(_bonusSpeed);
             }
             else
             {
+                _canVerticalMoveBonus.boolValue = false;
                 _bonus.objectReferenceValue = null;
-                //_bonusSpeed.floatValue = 0;
+                _bonusSpeed.floatValue = 0;
             }
+            DrawLine();
 
             _boss.objectReferenceValue = null;
             switch (_moveVariant.enumValueIndex)
@@ -113,13 +119,18 @@ public class WaveEditor : Editor
                     break;
             }
 
-            EditorGUILayout.Space(5);
-            EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1), Color.gray);
-            EditorGUILayout.Space(5);
+            DrawLine();
             EditorGUILayout.PropertyField(_transitions);
         }
 
         serializedObject.ApplyModifiedProperties();
+    }
+
+    private static void DrawLine()
+    {
+        EditorGUILayout.Space(5);
+        EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1), Color.gray);
+        EditorGUILayout.Space(5);
     }
 
     private void ShowLinearMoveFields()

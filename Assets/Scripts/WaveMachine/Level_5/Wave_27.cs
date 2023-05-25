@@ -1,23 +1,28 @@
-//using System.Collections;
-//using UnityEngine;
+using System.Collections;
+using UnityEngine;
 
-//public class Wave_27 : Wave
-//{
-//    [SerializeField] private Bonus _bonus;
+public class Wave_27 : Wave
+{
+    private int _enemiesCount = 9;
 
-//    private int _enemiesCountOnWave = 9;
+    private void OnEnable()
+    {
+        StartCoroutine(StartWave());
+    }
 
-//    private void OnEnable()
-//    {
-//        StartCoroutine(StartWave());
-//    }
+    private IEnumerator StartWave()
+    {
+        WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
+        WaitForSeconds delayAfterBonus = new WaitForSeconds(_spawnDelay * 3);
 
-//    private IEnumerator StartWave()
-//    {
-//        StartCoroutine(SpawnBonus(_bonus, 0, _spawnPoints[0]));
+        SpawnBonus(_bonus, _spawnPoints[3], _bonusSpeed, _canVerticalMoveBonus);
 
-//        yield return new WaitForSeconds(_spawnDelay);
+        yield return delayAfterBonus;
 
-//        StartCoroutine(SpawnEnemy(_enemiesPool, _spawnDelay, _enemiesCountOnWave, _spawnPoints[0].transform.position, _moveVariant));
-//    }
-//}
+        for (int i = 0; i < _enemiesCount; i++)
+        {
+            SpawnEnemy(_enemiesPool, _spawnPoints[4], _moveVariant);
+            yield return delay;
+        }
+    }
+}

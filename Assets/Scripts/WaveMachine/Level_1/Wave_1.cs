@@ -40,7 +40,7 @@ public class Wave_1 : Wave
             }
             else if (spawnOrderIndex == 12)
             {
-                SpawnBonus(_bonus, _spawnPoints[pointIndex], _bonusSpeed);
+                SpawnBonus(_bonus, _spawnPoints[pointIndex], _bonusSpeed, _canVerticalMoveBonus);
                 yield return delay;
             }
             else
