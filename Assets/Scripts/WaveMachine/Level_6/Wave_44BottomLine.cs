@@ -1,9 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Wave_30 : Wave
+public class Wave_44BottomLine : Wave
 {
-    private int _enemiesCount = 5;
+    private int _enemiesCount = 3;
 
     private void OnEnable()
     {
@@ -16,7 +17,7 @@ public class Wave_30 : Wave
 
         for (int i = 0; i < _enemiesCount; i++)
         {
-            SpawnEnemy(_enemiesPool, _spawnPoints[1], _moveVariant);
+            SpawnEnemy(_enemiesPool, _spawnPoints[4], _moveVariant);
             yield return delay;
         }
     }

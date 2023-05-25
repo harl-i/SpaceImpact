@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class Wave_30 : Wave
+public class Wave_34 : Wave
 {
-    private int _enemiesCount = 5;
+    private int _enemiesCount = 4;
 
     private void OnEnable()
     {
@@ -14,9 +14,9 @@ public class Wave_30 : Wave
     {
         WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
 
-        for (int i = 0; i < _enemiesCount; i++)
+        for (int i = _enemiesCount; i > 0; i--)
         {
-            SpawnEnemy(_enemiesPool, _spawnPoints[1], _moveVariant);
+            SpawnEnemy(_enemiesPool, _spawnPoints[i - 1], _moveVariant);
             yield return delay;
         }
     }

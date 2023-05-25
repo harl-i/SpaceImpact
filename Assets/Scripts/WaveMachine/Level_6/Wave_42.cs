@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class Wave_30 : Wave
+public class Wave_42 : Wave
 {
-    private int _enemiesCount = 5;
+    private int _enemiesCount = 2;
 
     private void OnEnable()
     {

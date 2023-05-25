@@ -8,7 +8,7 @@ public class BulletMode : MonoBehaviour
 {
     private MoveSwitcher _moveSwitcher;
     private List<GameObject> _emptyWaypoints;
-    private float _speed = 2.5f;
+    private float _speed = 4.5f;
 
     private void OnEnable()
     {
