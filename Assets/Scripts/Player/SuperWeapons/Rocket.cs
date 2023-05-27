@@ -38,7 +38,7 @@ public class Rocket : MonoBehaviour, IObjectFromPool
             }
         }
 
-        if (collision.TryGetComponent(out PlayerBullet playerBullet))
+        if (collision.TryGetComponent(out PlayerBullet playerBullet) && _rocketSender != RocketSender.Player)
         {
             ReturnToPool();
         }

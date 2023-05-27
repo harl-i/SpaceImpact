@@ -2882,8 +2882,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1969914873}
   - component: {fileID: 1969914875}
-  - component: {fileID: 1969914876}
   - component: {fileID: 1969914877}
+  - component: {fileID: 1969914878}
   m_Layer: 0
   m_Name: RightTrigger
   m_TagString: Untagged
@@ -2932,18 +2932,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 11.917118}
   m_EdgeRadius: 0
---- !u!114 &1969914876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969914872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9da74b1d5e6b6db4289181694919f49c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1969914877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2958,6 +2946,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boxCollider2D: {fileID: 1969914875}
   _color: {r: 0, g: 1, b: 0.95434356, a: 1}
+--- !u!114 &1969914878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969914872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64fb1275bdd27a438166c872fc0e66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1979155994
 GameObject:
   m_ObjectHideFlags: 0

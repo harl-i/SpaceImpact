@@ -81,11 +81,11 @@ GameObject:
   - component: {fileID: 4569763066991964872}
   - component: {fileID: 4569763066991964873}
   - component: {fileID: 5456632021635700849}
-  - component: {fileID: 4966917790640863203}
   - component: {fileID: 9026744463082024705}
   - component: {fileID: 8219430804108402543}
   - component: {fileID: 8842499914393321701}
   - component: {fileID: 2588066340179618026}
+  - component: {fileID: 2330105654522503505}
   m_Layer: 3
   m_Name: Boss6
   m_TagString: Untagged
@@ -199,7 +199,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
+    oldSize: {x: 5, y: 5}
     newSize: {x: 10, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   _health: 100
   _reward: 1000
   _enemyDeathNotifier: {fileID: 0}
-  _firstShootDelay: 7
+  _firstShootDelay: 4
   _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 2
   isBoss: 1
@@ -374,18 +374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd5612c773c8aa4da5125bc5d6c7040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4966917790640863203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4569763066991964864}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d97a665a390a824e903dd515b81b618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9026744463082024705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstShootDelay: 10
   _shootPoint: {fileID: 1413288071104726200}
-  _shootDelay: 6
+  _shootDelay: 4
   _secondaryWeapon: {fileID: 0}
 --- !u!114 &8842499914393321701
 MonoBehaviour:
@@ -436,5 +424,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b189ba7b98ab5741b1dd8f2033bd3c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2330105654522503505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569763066991964864}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31aff201fe7064e4799154acdf7b2a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
