@@ -12,7 +12,7 @@ public class PlayerBullet : Bullet
             ReturnToPool();
         }
 
-        if (collision.TryGetComponent(out RightTrigger rightTrigger))
+        if (collision.TryGetComponent(out PlayerBulletReturnToPoolTrigger rightTrigger))
         {
             ReturnToPool();
         }

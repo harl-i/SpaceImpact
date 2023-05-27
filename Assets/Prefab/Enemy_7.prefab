@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbaf8e6c2c154468af8921e4b25c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 8
+  _health: 5
   _reward: 20
   _enemyDeathNotifier: {fileID: 2501875942543493490}
   _firstShootDelay: 3

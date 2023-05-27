@@ -31,7 +31,7 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 
     private void BossDie()
     {
-        gameObject.GetComponent<BossDieSpeaker>().enabled = true;
+        gameObject.GetComponent<BossDeathNotifier>().enabled = true;
         Instantiate(_bossPuff, gameObject.transform.position, Quaternion.identity);
     }
 

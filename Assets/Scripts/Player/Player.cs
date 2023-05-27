@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,6 +16,8 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private ObjectPool _bulletsPool;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
+    [SerializeField] private PolygonCollider2D _spaceShipPolygonCollider;
+    [SerializeField] private GameObject _shield;
 
     private SuperWeaponSwitcher _superWeaponSwitcher;
     private PlayerInput _input;
@@ -90,12 +94,26 @@ public class Player : MonoBehaviour, IDamageable
     {
         _health -= damage;
         HealthChanged?.Invoke(_health);
-        Debug.Log(_health);
 
         if (_health <= 0)
         {
             Die();
         }
+        else
+        {
+            StartCoroutine(ActivateTemporaryShield());
+        }
+    }
+
+    private IEnumerator ActivateTemporaryShield()
+    {
+        _shield.SetActive(true);
+        _spaceShipPolygonCollider.enabled = false;
+
+        yield return new WaitForSeconds(3);
+
+        _shield.SetActive(false);
+        _spaceShipPolygonCollider.enabled = true;
     }
 
     public void Die()

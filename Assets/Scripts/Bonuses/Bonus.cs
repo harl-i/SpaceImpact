@@ -1,12 +1,12 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
-[RequireComponent(typeof(BonusVerticalMovement))]
+[RequireComponent(typeof(VerticalMovement))]
 public abstract class Bonus : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] protected int _count;
-    [SerializeField] protected BonusVerticalMovement _verticalMovement;
+    [SerializeField] protected VerticalMovement _verticalMovement;
 
     public void SetSpeed(float speed)
     {
@@ -20,7 +20,7 @@ public abstract class Bonus : MonoBehaviour
 
     private void OnEnable()
     {
-        _verticalMovement = GetComponent<BonusVerticalMovement>();
+        _verticalMovement = GetComponent<VerticalMovement>();
     }
 
     private void Update()
