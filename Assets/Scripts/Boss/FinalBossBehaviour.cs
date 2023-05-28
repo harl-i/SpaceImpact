@@ -8,6 +8,7 @@ public class FinalBossBehaviour : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(_firstShield.enabled);
         if (_firstShield.enabled == false && _secondShield.enabled == false)
         {
             _bossCollider.enabled = true;

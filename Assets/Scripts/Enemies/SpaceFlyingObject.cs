@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,13 +10,21 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamag
     [SerializeField] protected int _health;
     [SerializeField] protected int _reward;
     [SerializeField] private EnemyDeathNotifier _enemyDeathNotifier;
+    [SerializeField] protected bool _isBoss;
+    [SerializeField] private Blink _blink;
 
+    private bool _isCoroutineRunning = false;
     protected float _elapsedTime;
     private int _currentHealth;
 
     public void ApplyDamage(int damage)
     {
         _currentHealth -= damage;
+        if (_isBoss && _isCoroutineRunning == false)
+        {
+            _isCoroutineRunning = true;
+            StartCoroutine(BlinkActivate());
+        }
 
         if (_currentHealth <= 0)
         {
@@ -56,6 +65,14 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamag
     private void Update()
     {
         _elapsedTime += Time.deltaTime;
+    }
+
+    private IEnumerator BlinkActivate()
+    {
+        _blink.enabled = true;
+        yield return new WaitForSeconds(_blink.BlinkingTime);
+        _blink.enabled = false;
+        _isCoroutineRunning = false;
     }
 
     protected abstract void OnTriggerEnter2D(Collider2D collision);
