@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_8.unity
     guid: 48349a88710b80e459e59b28f0952b27
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: d04dcd7c813312945b3503454b214c21
+  - enabled: 1
+    path: Assets/Scenes/GameOverScreen.unity
+    guid: 55171344f328ee34f81de8eb366f6750
   m_configObjects: {}

@@ -633,7 +633,6 @@ MonoBehaviour:
   _bulletsPool: {fileID: 0}
   _shootPoint: {fileID: 3147315760092827720}
   _shootDelay: 0.15
-  _spaceShipPolygonCollider: {fileID: 3147315760658410726}
   _shield: {fileID: 1091107913}
 --- !u!114 &3147315760658410744
 MonoBehaviour:

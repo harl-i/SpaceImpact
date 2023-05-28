@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FinalBossBehaviour : Notifier
+public class FinalBossBehaviour : MonoBehaviour
 {
     [SerializeField] private PolygonCollider2D _bossCollider;
     [SerializeField] private BossShield _firstShield;

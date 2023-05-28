@@ -5,7 +5,7 @@ public class Laser : MonoBehaviour, IObjectFromPool
     private ObjectPool _pool;
 
     [SerializeField] private int _damage = 15;
-    [SerializeField] private float _lifeTime = 1.5f;
+    [SerializeField] private float _lifeTime = 0.7f;
     private float _elapsedTime;
     private Vector3 _offsetX = new Vector3(5.75f, 0, 0);
     private Vector3 _rectangle = new Vector3(10.2f, 0.2f, 0);

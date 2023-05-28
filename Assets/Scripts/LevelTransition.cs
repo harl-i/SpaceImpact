@@ -5,10 +5,22 @@ using UnityEngine.SceneManagement;
 public class LevelTransition : MonoBehaviour
 {
     private int _firstLevel = 1;
+    private int _startScreen = 0;
+    private int _gameOverScreen = 10;
+
+    public void LoadGameOverScreen()
+    {
+        SceneManager.LoadScene(_gameOverScreen);
+    }
 
     public void StartNewGame()
     {
         StartCoroutine(LoadFirstLevel());
+    }
+
+    public void BackToMainMenu()
+    {
+        StartCoroutine(LoadStartSceen());
     }
 
     private IEnumerator LoadFirstLevel()
@@ -18,6 +30,15 @@ public class LevelTransition : MonoBehaviour
         SetStartPlayerPrefs();
 
         SceneManager.LoadScene(_firstLevel);
+    }
+
+    private IEnumerator LoadStartSceen()
+    {
+        yield return new WaitForSeconds(1f);
+
+        SetStartPlayerPrefs();
+
+        SceneManager.LoadScene(_startScreen);
     }
 
     private void SetStartPlayerPrefs()

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 9078546917459672821}
   - component: {fileID: 2501875942543493490}
   m_Layer: 3
-  m_Name: Enemy_7
+  m_Name: Enemy_7 (Patrol mode)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyDeathNotifier: {fileID: 2501875942543493490}
   _blink: {fileID: 0}
-  _health: 5
-  _reward: 10
+  _health: 35
+  _reward: 45
   _bossDeathNotifier: {fileID: 0}
   _isBoss: 0
   _canDeathNotfy: 1

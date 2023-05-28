@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +9,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(LevelEventsListener))]
 [RequireComponent(typeof(PlayerMover))]
 [RequireComponent(typeof(LevelEndBehaviour))]
+[RequireComponent(typeof(LevelTransition))]
 public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private ObjectPool _bulletsPool;
@@ -22,6 +21,7 @@ public class Player : MonoBehaviour, IDamageable
     private PlayerInput _input;
     private PlayerMover _playerMover;
     private LevelEndBehaviour _levelEndBehavoiur;
+    private LevelTransition _levelTransition;
     private int _health = 3;
     private int _rocketsCount;
     private int _lasersCount;
@@ -121,8 +121,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Debug.Log("GAME OVER!");
-        gameObject.SetActive(false);
+        _levelTransition.LoadGameOverScreen();
     }
 
     public void SetHelath(int count)
@@ -151,6 +150,7 @@ public class Player : MonoBehaviour, IDamageable
         _superWeaponSwitcher = GetComponent<SuperWeaponSwitcher>();
         _playerMover = GetComponent<PlayerMover>();
         _levelEndBehavoiur = GetComponent<LevelEndBehaviour>();
+        _levelTransition = GetComponent<LevelTransition>();
     }
 
     private void Start()
