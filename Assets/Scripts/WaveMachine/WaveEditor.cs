@@ -126,7 +126,7 @@ public class WaveEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    private static void DrawLine()
+    private void DrawLine()
     {
         EditorGUILayout.Space(5);
         EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1), Color.gray);

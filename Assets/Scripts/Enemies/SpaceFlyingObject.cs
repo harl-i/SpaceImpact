@@ -7,11 +7,14 @@ using UnityEngine;
 [RequireComponent(typeof(MoveSwitcher))]
 public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamageable
 {
+    [SerializeField] private EnemyDeathNotifier _enemyDeathNotifier;
+    [SerializeField] private Blink _blink;
     [SerializeField] protected int _health;
     [SerializeField] protected int _reward;
-    [SerializeField] private EnemyDeathNotifier _enemyDeathNotifier;
+    [SerializeField] protected BossDeathNotifier _bossDeathNotifier;
     [SerializeField] protected bool _isBoss;
-    [SerializeField] private Blink _blink;
+    [SerializeField] protected bool _canDeathNotfy;
+    [SerializeField] protected bool _canShoot;
 
     private bool _isCoroutineRunning = false;
     protected float _elapsedTime;

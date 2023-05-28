@@ -280,10 +280,12 @@ MonoBehaviour:
   _health: 100
   _reward: 1000
   _enemyDeathNotifier: {fileID: 0}
+  _isBoss: 0
+  _canDeathNotfy: 0
+  _blink: {fileID: 0}
   _firstShootDelay: 7
   _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 2
-  isBoss: 1
   _bossPuff: {fileID: -2640974818947492985, guid: 8b063c9208ccd244b8b68d12f7383314, type: 3}
 --- !u!114 &-6450063474057736574
 MonoBehaviour:

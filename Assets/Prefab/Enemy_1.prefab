@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -3360590259918898117}
   - component: {fileID: 7850731285831298145}
   - component: {fileID: 7251073703772424569}
+  - component: {fileID: 8918806445194037298}
   m_Layer: 3
   m_Name: Enemy_1
   m_TagString: Untagged
@@ -53,8 +54,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ddf08f43ced1e4587baf36cbdad8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyDeathNotifier: {fileID: 0}
+  _blink: {fileID: 0}
   _health: 5
   _reward: 10
+  _bossDeathNotifier: {fileID: 0}
+  _isBoss: 0
+  _canDeathNotfy: 0
 --- !u!212 &6328331634270134332
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -341,5 +347,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fd5612c773c8aa4da5125bc5d6c7040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8918806445194037298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732602582316261396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c8f00a603d996488ce1a985d70682f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

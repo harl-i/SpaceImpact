@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +7,6 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
     [SerializeField] private float _firstShootDelay;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
-    //[SerializeField] private bool _isBoss;
     [SerializeField] private BossPuff _bossPuff;
 
     private int _collisionDamage = 1;
@@ -30,7 +28,7 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 
     private void BossDie()
     {
-        gameObject.GetComponent<BossDeathNotifier>().enabled = true;
+        _bossDeathNotifier.enabled = true;
         Instantiate(_bossPuff, gameObject.transform.position, Quaternion.identity);
     }
 

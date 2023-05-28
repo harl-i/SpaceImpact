@@ -345,11 +345,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbaf8e6c2c154468af8921e4b25c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyDeathNotifier: {fileID: 0}
+  _blink: {fileID: 3453784136600940044}
   _health: 100
   _reward: 1000
-  _enemyDeathNotifier: {fileID: 0}
+  _bossDeathNotifier: {fileID: 631160363797699370}
   _isBoss: 1
-  _blink: {fileID: 3453784136600940044}
+  _canDeathNotfy: 0
+  _canShoot: 0
   _firstShootDelay: 7
   _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 2
@@ -711,9 +714,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 6722614349666426229}
-  _time: 0
+  _time: 1
   _speed: 10
-  _minAlphaValue: 0
+  _minAlphaValue: 0.3
 --- !u!1 &6975942214979888675
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,9 +906,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 350282102009503036}
-  _time: 0
+  _time: 1
   _speed: 10
-  _minAlphaValue: 0
+  _minAlphaValue: 0.3
 --- !u!1 &9177745034829701455
 GameObject:
   m_ObjectHideFlags: 0
