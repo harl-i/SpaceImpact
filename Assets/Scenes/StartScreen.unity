@@ -25977,7 +25977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlsScreen: {fileID: 160659478}
-  _delay: 1.5
+  _delay: 0.4
 --- !u!1 &1234492960
 GameObject:
   m_ObjectHideFlags: 0
