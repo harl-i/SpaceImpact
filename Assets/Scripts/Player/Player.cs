@@ -16,7 +16,6 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private ObjectPool _bulletsPool;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
-    //[SerializeField] private PolygonCollider2D _spaceShipPolygonCollider;
     [SerializeField] private GameObject _shield;
 
     private SuperWeaponSwitcher _superWeaponSwitcher;
@@ -112,13 +111,11 @@ public class Player : MonoBehaviour, IDamageable
     private IEnumerator ActivateTemporaryShield()
     {
         _shield.SetActive(true);
-        //_spaceShipPolygonCollider.enabled = false;
         _isShieldActivated = true;
 
         yield return new WaitForSeconds(3);
 
         _shield.SetActive(false);
-        //_spaceShipPolygonCollider.enabled = true;
         _isShieldActivated = false;
     }
 
