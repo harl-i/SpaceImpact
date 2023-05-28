@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
-using UnityEditor.TerrainTools;
+using UnityEngine;
 
 [CustomEditor(typeof(SpaceFlyingObject), true)]
 [CanEditMultipleObjects]
@@ -54,9 +51,6 @@ public class SpaceFlyingObjectEditor : Editor
         }
         else
         {
-            //_bossDeathNotifier.objectReferenceValue = null;
-            //_blink.objectReferenceValue = null;
-
             ShowBaseFields();
 
             DrawLine();
@@ -75,40 +69,7 @@ public class SpaceFlyingObjectEditor : Editor
             {
                 EditorGUILayout.PropertyField(_enemyDeathNotifier);
             }
-            //else
-            //{
-            //    _enemyDeathNotifier.objectReferenceValue = null;
-            //}
         }
-
-
-        //EditorGUILayout.PropertyField(_health);
-        //EditorGUILayout.PropertyField(_reward);
-
-        //DrawLine();
-
-        //EditorGUILayout.PropertyField(_canDeathNotfy);
-        //if (_canDeathNotfy.boolValue)
-        //{
-        //    EditorGUILayout.PropertyField(_enemyDeathNotifier);
-        //}
-        //else
-        //{
-        //    _enemyDeathNotifier.objectReferenceValue = null;
-        //}
-
-        //DrawLine();
-
-        //EditorGUILayout.PropertyField(_isBoss);
-        //if (_isBoss.boolValue)
-        //{
-        //    EditorGUILayout.PropertyField(_blink);
-        //}
-        //else
-        //{
-        //    _blink.objectReferenceValue = null;
-        //}
-
         serializedObject.ApplyModifiedProperties();
     }
 
