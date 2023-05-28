@@ -4,8 +4,8 @@ public class Laser : MonoBehaviour, IObjectFromPool
 {
     private ObjectPool _pool;
 
-    private int _damage = 5;
-    private float _lifeTime = 1.5f;
+    [SerializeField] private int _damage = 15;
+    [SerializeField] private float _lifeTime = 1.5f;
     private float _elapsedTime;
     private Vector3 _offsetX = new Vector3(5.75f, 0, 0);
     private Vector3 _rectangle = new Vector3(10.2f, 0.2f, 0);
@@ -30,7 +30,6 @@ public class Laser : MonoBehaviour, IObjectFromPool
 
     void OnDrawGizmos()
     {
-        // Draw a semitransparent red cube at the transforms position
         Gizmos.color = new Color(0, 1, 0, 0.5f);
         Gizmos.DrawCube(transform.position + _offsetX, _rectangle);
     }

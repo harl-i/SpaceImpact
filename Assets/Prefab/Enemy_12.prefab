@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 902086827552069313}
-  - component: {fileID: 9097524849889478026}
-  - component: {fileID: 6328331634270134332}
-  - component: {fileID: 237455729415539668}
-  - component: {fileID: 2496619338546489140}
   - component: {fileID: 6525351694509538746}
+  - component: {fileID: 6328331634270134332}
+  - component: {fileID: 2496619338546489140}
+  - component: {fileID: 237455729415539668}
+  - component: {fileID: 9097524849889478026}
   - component: {fileID: 907247889726628877}
   - component: {fileID: 9063596309470995962}
   - component: {fileID: -3360590259918898117}
@@ -42,21 +42,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9097524849889478026
-MonoBehaviour:
+--- !u!50 &6525351694509538746
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3732602582316261396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ddf08f43ced1e4587baf36cbdad8ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 3
-  _reward: 10
-  _enemyDeathNotifier: {fileID: 0}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!212 &6328331634270134332
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -109,26 +115,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &237455729415539668
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3732602582316261396}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 88e8d514f964a834fbe66dd45a566ec9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!60 &2496619338546489140
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -186,27 +172,46 @@ PolygonCollider2D:
       - {x: 0.22266667, y: 0.21933334}
       - {x: 0.22533333, y: 0.222}
       - {x: 0.22533333, y: 0.31133333}
---- !u!50 &6525351694509538746
-Rigidbody2D:
+--- !u!95 &237455729415539668
+Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3732602582316261396}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88e8d514f964a834fbe66dd45a566ec9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9097524849889478026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732602582316261396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ddf08f43ced1e4587baf36cbdad8ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDeathNotifier: {fileID: 0}
+  _blink: {fileID: 0}
+  _health: 3
+  _reward: 10
+  _bossDeathNotifier: {fileID: 0}
+  _isBoss: 0
+  _canDeathNotfy: 0
+  _canShoot: 0
 --- !u!114 &907247889726628877
 MonoBehaviour:
   m_ObjectHideFlags: 0

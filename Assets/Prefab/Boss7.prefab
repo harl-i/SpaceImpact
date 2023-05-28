@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 8842499914393321701}
   - component: {fileID: 2588066340179618026}
   - component: {fileID: 3297406385760197340}
+  - component: {fileID: 7936011121249353719}
   m_Layer: 3
   m_Name: Boss7
   m_TagString: Untagged
@@ -478,13 +479,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbaf8e6c2c154468af8921e4b25c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyDeathNotifier: {fileID: 0}
+  _blink: {fileID: 7936011121249353719}
   _health: 100
   _reward: 1000
-  _enemyDeathNotifier: {fileID: 0}
+  _bossDeathNotifier: {fileID: 3297406385760197340}
+  _isBoss: 1
+  _canDeathNotfy: 0
+  _canShoot: 0
   _firstShootDelay: 7
   _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 2
-  isBoss: 1
   _bossPuff: {fileID: -2640974818947492985, guid: 8b063c9208ccd244b8b68d12f7383314, type: 3}
 --- !u!114 &4569763066991964874
 MonoBehaviour:
@@ -610,3 +615,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31aff201fe7064e4799154acdf7b2a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7936011121249353719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569763066991964864}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa03180c96e441f4eae3e14f1d5dc9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 4569763066991964870}
+  _time: 0.2
+  _speed: 10
+  _minAlphaValue: 0.4

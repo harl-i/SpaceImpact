@@ -16,7 +16,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private ObjectPool _bulletsPool;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
-    [SerializeField] private PolygonCollider2D _spaceShipPolygonCollider;
+    //[SerializeField] private PolygonCollider2D _spaceShipPolygonCollider;
     [SerializeField] private GameObject _shield;
 
     private SuperWeaponSwitcher _superWeaponSwitcher;
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, IDamageable
     private int _lasersCount;
     private int _laserWallsCount;
     private float _shootElapsedTime;
+    private bool _isShieldActivated = false;
 
     public Transform ShootPoint => _shootPoint;
     public int RocketsCount => _rocketsCount;
@@ -92,28 +93,33 @@ public class Player : MonoBehaviour, IDamageable
 
     public void ApplyDamage(int damage)
     {
-        _health -= damage;
-        HealthChanged?.Invoke(_health);
+        if (_isShieldActivated == false)
+        {
+            _health -= damage;
+            HealthChanged?.Invoke(_health);
 
-        if (_health <= 0)
-        {
-            Die();
-        }
-        else
-        {
-            StartCoroutine(ActivateTemporaryShield());
+            if (_health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                StartCoroutine(ActivateTemporaryShield());
+            }
         }
     }
 
     private IEnumerator ActivateTemporaryShield()
     {
         _shield.SetActive(true);
-        _spaceShipPolygonCollider.enabled = false;
+        //_spaceShipPolygonCollider.enabled = false;
+        _isShieldActivated = true;
 
         yield return new WaitForSeconds(3);
 
         _shield.SetActive(false);
-        _spaceShipPolygonCollider.enabled = true;
+        //_spaceShipPolygonCollider.enabled = true;
+        _isShieldActivated = false;
     }
 
     public void Die()

@@ -1707,10 +1707,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: boss3
       objectReference: {fileID: 0}
-    - target: {fileID: 4569763066991964864, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4569763066991964869, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1755,46 +1751,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4569763066991964875, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: _health
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842499914393321701, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842499914393321701, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: _lungeWayPoints.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842499914393321701, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: _patrolWayPoints.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842499914393321701, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: _lungeWayPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 1923735817}
-    - target: {fileID: 8842499914393321701, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: _lungeWayPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 1984483354}
-    - target: {fileID: 8842499914393321701, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: _lungeWayPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 184519366}
-    - target: {fileID: 8842499914393321701, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: _patrolWayPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 981672967}
-    - target: {fileID: 8842499914393321701, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: _patrolWayPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 1522918055}
-    - target: {fileID: 8842499914393321701, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
-      propertyPath: _patrolWayPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 1534468410}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ff50572ee128fb459e4c2b936a3de45, type: 3}
 --- !u!1 &931984757

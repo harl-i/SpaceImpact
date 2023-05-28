@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4.5
-  _damage: 5
+  _damage: 15
   _raycastDistance: 100
   _targetLayer:
     serializedVersion: 2

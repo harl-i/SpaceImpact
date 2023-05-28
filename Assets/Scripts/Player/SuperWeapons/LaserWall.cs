@@ -3,7 +3,7 @@ using UnityEngine;
 public class LaserWall : MonoBehaviour, IObjectFromPool
 {
     [SerializeField] private float _speed;
-    private int _damage = 10;
+    [SerializeField] private int _damage = 40;
 
     public GameObject GetGameObject()
     {
