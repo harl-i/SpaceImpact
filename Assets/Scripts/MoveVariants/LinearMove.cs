@@ -6,6 +6,19 @@ public class LinearMove : Move
     private float _speed;
     private Coroutine _startMove;
 
+    private void OnEnable()
+    {
+        _startMove = StartCoroutine(StartMove());
+    }
+
+    private void OnDisable()
+    {
+        if (_startMove != null)
+        {
+            StopCoroutine(_startMove);
+        }
+    }
+
     public override void SetSpeed(float speed)
     {
         _speed = speed;
@@ -17,19 +30,6 @@ public class LinearMove : Move
         {
             transform.Translate(Vector2.left * _speed * Time.deltaTime);
             yield return null;
-        }
-    }
-
-    private void OnEnable()
-    {
-        _startMove = StartCoroutine(StartMove());
-    }
-
-    private void OnDisable()
-    {
-        if (_startMove != null)
-        {
-            StopCoroutine(_startMove);
         }
     }
 }

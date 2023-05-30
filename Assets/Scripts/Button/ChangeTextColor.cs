@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class ChangeTextColor : MonoBehaviour
 {
     [SerializeField] private Color pressedColor;

@@ -1,5 +1,99 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &319208077503247716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3428427988387986022}
+  - component: {fileID: 3870019440101732074}
+  m_Layer: 0
+  m_Name: RocketsPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3428427988387986022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319208077503247716}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.2259203, y: 0.846178, z: -0.019589169}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4569763066991964869}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3870019440101732074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319208077503247716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2e5d3c6b5842242a7f6a7ab6f247d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 319208077503247716}
+  _capacity: 6
+  _rocket: {fileID: 8060183301293742742, guid: cb909f7ed60aeff49a7a535e3a67a07a, type: 3}
+--- !u!1 &4557451593149891440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3239808983943985344}
+  - component: {fileID: 5640928140419818464}
+  m_Layer: 3
+  m_Name: BulletsPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3239808983943985344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557451593149891440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4569763066991964869}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5640928140419818464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557451593149891440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80242eb3a5b94b74787d70e9a4063861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 4557451593149891440}
+  _capacity: 6
+  _bulletPrefab: {fileID: 4232405458133529851, guid: f0217e15bc45fcf4b84b441b272edfe9, type: 3}
 --- !u!1 &4569763066599221753
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,6 +170,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4569763066599221752}
+  - {fileID: 3239808983943985344}
+  - {fileID: 3428427988387986022}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -246,18 +342,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbaf8e6c2c154468af8921e4b25c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyDeathNotifier: {fileID: 0}
-  _blink: {fileID: 909616579995118582}
   _health: 100
   _reward: 1000
   _bossDeathNotifier: {fileID: 5848443223777312032}
   _isBoss: 1
   _canDeathNotfy: 0
   _canShoot: 0
+  _enemyDeathNotifier: {fileID: 0}
+  _blink: {fileID: 909616579995118582}
   _firstShootDelay: 6
   _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 2
   _bossPuff: {fileID: -2640974818947492985, guid: 8b063c9208ccd244b8b68d12f7383314, type: 3}
+  _bulletsPool: {fileID: 5640928140419818464}
 --- !u!114 &4569763066991964874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,9 +440,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firstShootDelay: 11
-  _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 3
-  _secondaryWeapon: {fileID: 7206949251850053658, guid: 22d1baa1af3481448a66b08e0f215b05, type: 3}
+  _shootPoint: {fileID: 4569763066599221752}
+  _secondaryWeapon: {fileID: 3870019440101732074}
 --- !u!114 &8736417428178738276
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,16 +5,6 @@ public class LaserWall : MonoBehaviour, IObjectFromPool
     [SerializeField] private float _speed;
     [SerializeField] private int _damage = 40;
 
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
-
-    public void ReturnToPool()
-    {
-        gameObject.SetActive(false);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out ShootingEnemy shootingEnemy))
@@ -36,5 +26,15 @@ public class LaserWall : MonoBehaviour, IObjectFromPool
     private void Update()
     {
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
     }
 }

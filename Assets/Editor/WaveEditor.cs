@@ -17,7 +17,6 @@ public class WaveEditor : Editor
     private SerializedProperty _canLunge;
     private SerializedProperty _lungeWaypoints;
     private SerializedProperty _hasSecondaryWeapon;
-    private SerializedProperty _bossSecondaryWeaponBullets;
     private SerializedProperty _hasBonus;
     private SerializedProperty _bonus;
     private SerializedProperty _bonusSpeed;
@@ -38,7 +37,6 @@ public class WaveEditor : Editor
         _canLunge = serializedObject.FindProperty("_canLunge");
         _hasSecondaryWeapon = serializedObject.FindProperty("_hasSecondaryWeapon");
         _lungeWaypoints = serializedObject.FindProperty("_lungeWaypoints");
-        _bossSecondaryWeaponBullets = serializedObject.FindProperty("_bossSecondaryWeaponBullets");
         _hasBonus = serializedObject.FindProperty("_hasBonus");
         _bonus = serializedObject.FindProperty("_bonus");
         _bonusSpeed = serializedObject.FindProperty("_bonusSpeed");
@@ -70,14 +68,6 @@ public class WaveEditor : Editor
             }
 
             EditorGUILayout.PropertyField(_hasSecondaryWeapon);
-            if (_hasSecondaryWeapon.boolValue)
-            {
-                EditorGUILayout.PropertyField(_bossSecondaryWeaponBullets);
-            }
-            else
-            {
-                _bossSecondaryWeaponBullets.objectReferenceValue = null;
-            }
         }
         else
         {

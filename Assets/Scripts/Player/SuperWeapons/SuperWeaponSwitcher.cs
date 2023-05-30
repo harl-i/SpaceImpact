@@ -12,6 +12,13 @@ public class SuperWeaponSwitcher : MonoBehaviour
 
     public event UnityAction<SuperWeaponVariant> SwitchSuperWeapon;
 
+    private void Awake()
+    {
+        _rocketGun = GetComponent<RocketGun>();
+        _laserGun = GetComponent<LaserGun>();
+        _laserWallGun = GetComponent<LaserWallGun>();
+    }
+
     public void ActivateRocketGun()
     {
         DisableAll();
@@ -31,13 +38,6 @@ public class SuperWeaponSwitcher : MonoBehaviour
         DisableAll();
         _laserWallGun.enabled = true;
         SwitchSuperWeapon?.Invoke(SuperWeaponVariant.LaserWall);
-    }
-
-    private void Awake()
-    {
-        _rocketGun = GetComponent<RocketGun>();
-        _laserGun = GetComponent<LaserGun>();
-        _laserWallGun = GetComponent<LaserWallGun>();
     }
 
     private void DisableAll()

@@ -23,6 +23,7 @@ public abstract class Wave : MonoBehaviour
     [SerializeField] private ObjectPool _bossSecondaryWeaponBullets;
     [SerializeField] private List<GameObject> _waypoints = new List<GameObject>();
     [SerializeField] private List<GameObject> _lungeWaypoints = new List<GameObject>();
+
     private float _bossSpeed = 2f;
 
     public void StartWave(Wave wave)
@@ -110,7 +111,6 @@ public abstract class Wave : MonoBehaviour
     {
         levelBoss.gameObject.SetActive(true);
         levelBoss.LungeBehaviour.SetLungeBehaviourWaypoints(_waypoints, _lungeWaypoints);
-        levelBoss.SecondaryWeapon.SetWeapon(_bossSecondaryWeaponBullets);
         levelBoss.LungeBehaviour.enabled = true;
         levelBoss.SecondaryWeapon.enabled = true;
     }
@@ -120,7 +120,6 @@ public abstract class Wave : MonoBehaviour
         levelBoss.gameObject.SetActive(true);
         levelBoss.LungeBehaviour.enabled = false;
         levelBoss.MoveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, _bossSpeed, _waypoints);
-        levelBoss.SecondaryWeapon.SetWeapon(_bossSecondaryWeaponBullets);
         levelBoss.SecondaryWeapon.enabled = true;
     }
 
@@ -134,7 +133,6 @@ public abstract class Wave : MonoBehaviour
     private void ActivateBaseBossBehaviour(Boss levelBoss)
     {
         levelBoss.gameObject.SetActive(true);
-
         levelBoss.MoveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, _bossSpeed, _waypoints);
     }
 }

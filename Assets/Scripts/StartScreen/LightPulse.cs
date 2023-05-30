@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -9,6 +8,7 @@ public class LightPulse : MonoBehaviour
     [SerializeField] private float _speed = 1.0f;
     [SerializeField] private float _minValue;
     [SerializeField] private float _maxValue;
+
     private Light2D _light2D;
     private float _maxTime = 1f;
 
@@ -31,12 +31,14 @@ public class LightPulse : MonoBehaviour
             float targetRadius = Random.Range(_minValue, _maxValue);
             float elapsedTime = 0f;
             float startRadius = _light2D.pointLightOuterRadius;
+
             while (elapsedTime < _maxTime)
             {
                 elapsedTime += Time.deltaTime * _speed;
                 _light2D.pointLightOuterRadius = Mathf.Lerp(startRadius, targetRadius, elapsedTime);
                 yield return null;
             }
+
             yield return delay;
         }
     }

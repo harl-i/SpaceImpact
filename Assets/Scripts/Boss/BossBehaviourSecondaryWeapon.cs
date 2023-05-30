@@ -4,33 +4,33 @@ using UnityEngine;
 public class BossBehaviourSecondaryWeapon : MonoBehaviour
 {
     [SerializeField] private float _firstShootDelay;
-    [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
+    [SerializeField] private Transform _shootPoint;
     [SerializeField] private ObjectPool _secondaryWeapon;
-
-    public void SetWeapon(ObjectPool secondaryWeapon)
-    {
-        _secondaryWeapon = secondaryWeapon;
-    }
-
-    private void Shoot()
-    {
-        _secondaryWeapon.TryGetObject(out GameObject bullet);
-
-        if (bullet != null)
-        {
-            bullet.transform.position = _shootPoint.transform.position;
-            bullet.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("bullets pool is empty");
-        }
-    }
 
     private void OnEnable()
     {
         StartCoroutine(StartShoot(_firstShootDelay));
+    }
+
+    private void Shoot()
+    {
+
+        if (_secondaryWeapon != null)
+        {
+            _secondaryWeapon.TryGetObject(out GameObject bullet);
+
+            if (bullet != null)
+            {
+                bullet.transform.position = _shootPoint.transform.position;
+                bullet.transform.SetParent(null);
+                bullet.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("bullets pool is empty");
+            }
+        }
     }
 
     private IEnumerator StartShoot(float firstShootDelay)

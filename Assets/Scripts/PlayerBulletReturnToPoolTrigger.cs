@@ -1,5 +1,3 @@
 using UnityEngine;
 
-public class PlayerBulletReturnToPoolTrigger : MonoBehaviour
-{
-}
+public class PlayerBulletReturnToPoolTrigger : MonoBehaviour{}

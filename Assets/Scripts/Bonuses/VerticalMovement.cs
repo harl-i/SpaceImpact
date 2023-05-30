@@ -5,6 +5,7 @@ public class VerticalMovement : MonoBehaviour
     public float speed = 2f;
     public float amplitude = 1f;
     private float originalY;
+    private float newPositionY;
 
     void Start()
     {
@@ -13,6 +14,11 @@ public class VerticalMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, originalY + amplitude * Mathf.Sin(Time.time * speed), transform.position.z);
+        newPositionY = originalY + amplitude * Mathf.Sin(Time.time * speed);
+
+        transform.position = new Vector3(
+            transform.position.x,
+            newPositionY, 
+            transform.position.z);
     }
 }

@@ -8,6 +8,16 @@ public class LevelTransition : MonoBehaviour
     private int _startScreen = 0;
     private int _gameOverScreen = 10;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out SaveParameters saveParameters))
+        {
+            saveParameters.Save();
+
+            ChangeScene();
+        }
+    }
+
     public void LoadGameOverScreen()
     {
         SceneManager.LoadScene(_gameOverScreen);
@@ -49,16 +59,6 @@ public class LevelTransition : MonoBehaviour
         PlayerPrefs.SetInt(PlayerParameters.LaserWallsCount, 0);
         PlayerPrefs.SetInt(PlayerParameters.Score, 0);
         PlayerPrefs.SetString(PlayerParameters.ActiveSuperWeapon, PlayerParameters.RocketGun);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out SaveParameters saveParameters))
-        {
-            saveParameters.Save();
-
-            ChangeScene();
-        }
     }
 
     private void ChangeScene()

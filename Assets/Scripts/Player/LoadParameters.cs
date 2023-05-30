@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class LoadParameters : MonoBehaviour
 {
     [SerializeField] private Score _score;
+
     private Player _player;
     private SuperWeaponSwitcher _superWeaponSwitcher;
     private int _health;

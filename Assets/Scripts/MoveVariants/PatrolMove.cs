@@ -9,6 +9,19 @@ public class PatrolMove : Move
     private Vector3 _target;
     private Coroutine _startMove;
 
+    private void OnEnable()
+    {
+        _startMove = StartCoroutine(StartMove());
+    }
+
+    private void OnDisable()
+    {
+        if (_startMove != null)
+        {
+            StopCoroutine(_startMove);
+        }
+    }
+
     public override void SetSpeed(float speed)
     {
         _speed = speed;
@@ -33,19 +46,6 @@ public class PatrolMove : Move
 
             if (i == _points.Count - 1)
                 i = 0;
-        }
-    }
-
-    private void OnEnable()
-    {
-        _startMove = StartCoroutine(StartMove());
-    }
-
-    private void OnDisable()
-    {
-        if (_startMove != null)
-        {
-            StopCoroutine(_startMove);
         }
     }
 }

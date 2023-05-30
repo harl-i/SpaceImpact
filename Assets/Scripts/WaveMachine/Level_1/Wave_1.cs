@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Wave_1 : Wave
 {
+    private int _sixthIteration = 6;
+    private int _eleventhIteration = 11;
+    private int _twelfthIteration = 12;
+
     private void OnEnable()
     {
         StartCoroutine(StartWave());
@@ -27,18 +31,18 @@ public class Wave_1 : Wave
                 spawnOrderIndex = 0;
             }
 
-            if (spawnOrderIndex == 6)
+            if (spawnOrderIndex == _sixthIteration)
             {
                 yield return doubleDelay;
                 SpawnEnemy(_enemiesPool, _spawnPoints[pointIndex], _moveVariant);
                 yield return delay;
             }
-            else if (spawnOrderIndex == 11)
+            else if (spawnOrderIndex == _eleventhIteration)
             {
                 SpawnEnemy(_enemiesPool, _spawnPoints[pointIndex], _moveVariant);
                 yield return shortDelay;
             }
-            else if (spawnOrderIndex == 12)
+            else if (spawnOrderIndex == _twelfthIteration)
             {
                 SpawnBonus(_bonus, _spawnPoints[pointIndex], _bonusSpeed, _canVerticalMoveBonus);
                 yield return delay;

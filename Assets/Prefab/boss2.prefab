@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &213494570375656184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6568565919643515196}
+  - component: {fileID: 1911614757219264688}
+  m_Layer: 3
+  m_Name: BulletsPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6568565919643515196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213494570375656184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4569763066991964869}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1911614757219264688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213494570375656184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80242eb3a5b94b74787d70e9a4063861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 213494570375656184}
+  _capacity: 6
+  _bulletPrefab: {fileID: 4232405458133529851, guid: f0217e15bc45fcf4b84b441b272edfe9, type: 3}
 --- !u!1 &4569763066599221753
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,6 +123,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4569763066599221752}
+  - {fileID: 6568565919643515196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -282,18 +330,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fbaf8e6c2c154468af8921e4b25c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyDeathNotifier: {fileID: 0}
-  _blink: {fileID: 334968998993878930}
   _health: 100
   _reward: 1000
   _bossDeathNotifier: {fileID: 7462876408137774460}
   _isBoss: 1
   _canDeathNotfy: 0
   _canShoot: 0
+  _enemyDeathNotifier: {fileID: 0}
+  _blink: {fileID: 334968998993878930}
   _firstShootDelay: 7
   _shootPoint: {fileID: 4569763066599221752}
   _shootDelay: 2
   _bossPuff: {fileID: -2640974818947492985, guid: 8b063c9208ccd244b8b68d12f7383314, type: 3}
+  _bulletsPool: {fileID: 1911614757219264688}
 --- !u!114 &4569763066991964874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,8 +440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firstShootDelay: 0
-  _shootPoint: {fileID: 0}
   _shootDelay: 0
+  _shootPoint: {fileID: 0}
   _secondaryWeapon: {fileID: 0}
 --- !u!114 &8699672745689656975
 MonoBehaviour:

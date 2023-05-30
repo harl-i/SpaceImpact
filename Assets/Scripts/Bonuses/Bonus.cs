@@ -4,19 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(VerticalMovement))]
 public abstract class Bonus : MonoBehaviour
 {
-    [SerializeField] private float _speed;
     [SerializeField] protected int _count;
     [SerializeField] protected VerticalMovement _verticalMovement;
-
-    public void SetSpeed(float speed)
-    {
-        _speed = speed;
-    }
-
-    public void ActivateVertcalMovement()
-    {
-        _verticalMovement.enabled = true;
-    }
+    [SerializeField] private float _speed;
 
     private void OnEnable()
     {
@@ -26,6 +16,16 @@ public abstract class Bonus : MonoBehaviour
     private void Update()
     {
         Move();
+    }
+
+    public void SetSpeed(float speed)
+    {
+        _speed = speed;
+    }
+
+    public void ActivateVertcalMovement()
+    {
+        _verticalMovement.enabled = true;
     }
 
     private void Move()

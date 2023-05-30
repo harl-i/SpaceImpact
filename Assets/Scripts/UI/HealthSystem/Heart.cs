@@ -8,6 +8,8 @@ public class Heart : MonoBehaviour
 {
     [SerializeField] private float _lerpDuration;
 
+    private float _maxFillingValue = 1;
+    private float _minFillingValue = 0;
     private Image _image;
 
     private void Awake()
@@ -18,12 +20,12 @@ public class Heart : MonoBehaviour
 
     public void ToFill()
     {
-        StartCoroutine(Filling(0, 1, _lerpDuration, Fill));
+        StartCoroutine(Filling(_minFillingValue, _maxFillingValue, _lerpDuration, Fill));
     }
 
     public void ToEmpty()
     {
-        StartCoroutine(Filling(1, 0, _lerpDuration, Destroy));
+        StartCoroutine(Filling(_maxFillingValue, _minFillingValue, _lerpDuration, Destroy));
     }
 
     private IEnumerator Filling(float startValue, float endValue, float duration, UnityAction<float> lerpingEnd)

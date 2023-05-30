@@ -17,14 +17,9 @@ public class Rocket : MonoBehaviour, IObjectFromPool
 
     public RocketSender SenderType => _rocketSender;
 
-    public GameObject GetGameObject()
+    private void OnEnable()
     {
-        return gameObject;
-    }
-
-    public void ReturnToPool()
-    {
-        gameObject.SetActive(false);
+        GenerateDirections();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,14 +39,19 @@ public class Rocket : MonoBehaviour, IObjectFromPool
         }
     }
 
-    private void OnEnable()
-    {
-        GenerateDirections();
-    }
-
     private void Update()
     {
         Homing();
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
     }
 
     private void Homing()

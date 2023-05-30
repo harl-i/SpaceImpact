@@ -17,6 +17,9 @@ public class SpaceFlyingObjectEditor : Editor
     private SerializedProperty _shootPoint;
     private SerializedProperty _shootDelay;
     private SerializedProperty _bossPuff;
+    private SerializedProperty _bulletsPool;
+    private float _indent = 5f;
+    private float _lineWidth = 1f;
 
     private void OnEnable()
     {
@@ -32,6 +35,7 @@ public class SpaceFlyingObjectEditor : Editor
         _shootPoint = serializedObject.FindProperty("_shootPoint");
         _shootDelay = serializedObject.FindProperty("_shootDelay");
         _bossPuff = serializedObject.FindProperty("_bossPuff");
+        _bulletsPool = serializedObject.FindProperty("_bulletsPool");
     }
 
     public override void OnInspectorGUI()
@@ -45,6 +49,7 @@ public class SpaceFlyingObjectEditor : Editor
 
             DrawLine();
 
+            EditorGUILayout.PropertyField(_bulletsPool);
             EditorGUILayout.PropertyField(_bossDeathNotifier);
             EditorGUILayout.PropertyField(_blink);
             EditorGUILayout.PropertyField(_bossPuff);
@@ -58,6 +63,7 @@ public class SpaceFlyingObjectEditor : Editor
             EditorGUILayout.PropertyField(_canShoot);
             if (_canShoot.boolValue)
             {
+                EditorGUILayout.PropertyField(_bulletsPool);
                 EditorGUILayout.PropertyField(_firstShootDelay);
                 EditorGUILayout.PropertyField(_shootPoint);
                 EditorGUILayout.PropertyField(_shootDelay);
@@ -81,8 +87,8 @@ public class SpaceFlyingObjectEditor : Editor
 
     private void DrawLine()
     {
-        EditorGUILayout.Space(5);
-        EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1), Color.gray);
-        EditorGUILayout.Space(5);
+        EditorGUILayout.Space(_indent);
+        EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, _lineWidth), Color.gray);
+        EditorGUILayout.Space(_indent);
     }
 }

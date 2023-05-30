@@ -38,6 +38,37 @@ public class Player : MonoBehaviour, IDamageable
     public event UnityAction<int> HealthChanged;
     public event UnityAction<int> SuperShoot;
 
+    private void Awake()
+    {
+        _input = GetComponent<PlayerInput>();
+        _superWeaponSwitcher = GetComponent<SuperWeaponSwitcher>();
+        _playerMover = GetComponent<PlayerMover>();
+        _levelEndBehavoiur = GetComponent<LevelEndBehaviour>();
+        _levelTransition = GetComponent<LevelTransition>();
+    }
+
+    private void OnEnable()
+    {
+        _input.keyFirePressed += OnShoot;
+    }
+
+    private void OnDisable()
+    {
+        _input.keyFirePressed -= OnShoot;
+    }
+
+    private void Start()
+    {
+        HealthChanged?.Invoke(_health);
+        _playerMover.enabled = true;
+        _levelEndBehavoiur.enabled = false;
+    }
+
+    private void Update()
+    {
+        _shootElapsedTime += Time.deltaTime;
+    }
+
     public void PickedRocketBonus(int count)
     {
         _rocketsCount = count;
@@ -87,7 +118,6 @@ public class Player : MonoBehaviour, IDamageable
             _laserWallsCount--;
             SuperShoot(_laserWallsCount);
         }
-
     }
 
     public void ApplyDamage(int damage)
@@ -144,37 +174,6 @@ public class Player : MonoBehaviour, IDamageable
         _laserWallsCount = count;
     }
 
-    private void Awake()
-    {
-        _input = GetComponent<PlayerInput>();
-        _superWeaponSwitcher = GetComponent<SuperWeaponSwitcher>();
-        _playerMover = GetComponent<PlayerMover>();
-        _levelEndBehavoiur = GetComponent<LevelEndBehaviour>();
-        _levelTransition = GetComponent<LevelTransition>();
-    }
-
-    private void Start()
-    {
-        HealthChanged?.Invoke(_health);
-        _playerMover.enabled = true;
-        _levelEndBehavoiur.enabled = false;
-    }
-
-    private void OnEnable()
-    {
-        _input.keyFirePressed += OnShoot;
-    }
-
-    private void OnDisable()
-    {
-        _input.keyFirePressed -= OnShoot;
-    }
-
-    private void Update()
-    {
-        _shootElapsedTime += Time.deltaTime;
-    }
-
     private void OnShoot()
     {
         if (_shootElapsedTime > _shootDelay)
@@ -192,6 +191,7 @@ public class Player : MonoBehaviour, IDamageable
         if (bullet != null)
         {
             bullet.transform.position = _shootPoint.transform.position;
+            bullet.transform.SetParent(null);
             bullet.SetActive(true);
         }
         else

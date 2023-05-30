@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 [RequireComponent(typeof(Player))]
@@ -9,21 +8,12 @@ using UnityEngine;
 public class SaveParameters : MonoBehaviour
 {
     [SerializeField] private Score _score;
+
     private List<SuperWeapon> _superWeaponsList = new List<SuperWeapon>();
     private RocketGun _rocketGun;
     private LaserGun _laserGun;
     private LaserWallGun _laserWallGun;
     private Player _player;
-
-    public void Save()
-    {
-        PlayerPrefs.SetInt(PlayerParameters.Health, _player.Health);
-        PlayerPrefs.SetInt(PlayerParameters.RocketsCount, _player.RocketsCount);
-        PlayerPrefs.SetInt(PlayerParameters.LasersCount, _player.LasersCount);
-        PlayerPrefs.SetInt(PlayerParameters.LaserWallsCount, _player.LaserWallsCount);
-        PlayerPrefs.SetInt(PlayerParameters.Score, _score.ScoreCount);
-        PlayerPrefs.SetString(PlayerParameters.ActiveSuperWeapon, GetSuperWeaponName());
-    }
 
     private void Awake()
     {
@@ -33,6 +23,16 @@ public class SaveParameters : MonoBehaviour
         _laserWallGun = GetComponent<LaserWallGun>();
 
         FillSuperWeaponList();
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetInt(PlayerParameters.Health, _player.Health);
+        PlayerPrefs.SetInt(PlayerParameters.RocketsCount, _player.RocketsCount);
+        PlayerPrefs.SetInt(PlayerParameters.LasersCount, _player.LasersCount);
+        PlayerPrefs.SetInt(PlayerParameters.LaserWallsCount, _player.LaserWallsCount);
+        PlayerPrefs.SetInt(PlayerParameters.Score, _score.ScoreCount);
+        PlayerPrefs.SetString(PlayerParameters.ActiveSuperWeapon, GetSuperWeaponName());
     }
 
     private void FillSuperWeaponList()

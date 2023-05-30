@@ -9,6 +9,19 @@ public class LungeMove : Move
     private Coroutine _startMove;
     private float _attackSpeed = 4;
 
+    private void OnEnable()
+    {
+        _startMove = StartCoroutine(StartMove());
+    }
+
+    private void OnDisable()
+    {
+        if (_startMove != null)
+        {
+            StopCoroutine(_startMove);
+        }
+    }
+
     public override void SetSpeed(float speed)
     {
         _speed = speed;
@@ -34,19 +47,6 @@ public class LungeMove : Move
             }
 
             yield return MoveToTarget(_points[i].transform.position);
-        }
-    }
-
-    private void OnEnable()
-    {
-        _startMove = StartCoroutine(StartMove());
-    }
-
-    private void OnDisable()
-    {
-        if (_startMove != null)
-        {
-            StopCoroutine(_startMove);
         }
     }
 

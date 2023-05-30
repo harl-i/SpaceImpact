@@ -9,6 +9,8 @@ public class Background : MonoBehaviour
     private RawImage _image;
     private float _imagePositionX;
     private float _speedÑoefficient = 100f;
+    private float _maxPositionX = 1f;
+    private float _imagePositionY = 0;
 
     private void Awake()
     {
@@ -20,11 +22,11 @@ public class Background : MonoBehaviour
     {
         _imagePositionX += (_speed / _speedÑoefficient) * Time.deltaTime;
 
-        if (_imagePositionX > 1)
+        if (_imagePositionX > _maxPositionX)
         {
             _imagePositionX = 0;
         }
 
-        _image.uvRect = new Rect(_imagePositionX, 0, _image.uvRect.width, _image.uvRect.height);
+        _image.uvRect = new Rect(_imagePositionX, _imagePositionY, _image.uvRect.width, _image.uvRect.height);
     }
 }

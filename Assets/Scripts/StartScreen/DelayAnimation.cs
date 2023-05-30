@@ -5,6 +5,7 @@ using UnityEngine;
 public class DelayAnimation : MonoBehaviour
 {
     [SerializeField] private float _delay;
+
     private Animator _animator;
 
     private void Awake()

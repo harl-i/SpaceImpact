@@ -8,6 +8,19 @@ public class PointsMove : Move
     private float _speed;
     private Coroutine _startMove;
 
+    private void OnEnable()
+    {
+        _startMove = StartCoroutine(StartMove());
+    }
+
+    private void OnDisable()
+    {
+        if (_startMove != null)
+        {
+            StopCoroutine(_startMove);
+        }
+    }
+
     public void SetPoints(List<GameObject> points)
     {
         _points = points;
@@ -23,19 +36,6 @@ public class PointsMove : Move
         for (int i = 0; i < _points.Count; i++)
         {
             yield return StartCoroutine(MoveToTarget(_points[i].transform.position));
-        }
-    }
-
-    private void OnEnable()
-    {
-        _startMove = StartCoroutine(StartMove());
-    }
-
-    private void OnDisable()
-    {
-        if (_startMove != null)
-        {
-            StopCoroutine(_startMove);
         }
     }
 

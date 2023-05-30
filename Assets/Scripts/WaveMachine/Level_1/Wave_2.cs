@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Wave_2 : Wave
 {
-    private int _enemysCount = 10;
+    private int _enemiesCount = 10;
 
     private void OnEnable()
     {
@@ -14,7 +14,7 @@ public class Wave_2 : Wave
     {
         WaitForSeconds spawnDelay = new WaitForSeconds(_spawnDelay);
 
-        for (int i = 0; i < _enemysCount; i++)
+        for (int i = 0; i < _enemiesCount; i++)
         {
             int randomPoint = Random.Range(0, _spawnPoints.Count);
             SpawnEnemy(_enemiesPool, _spawnPoints[randomPoint], _moveVariant);

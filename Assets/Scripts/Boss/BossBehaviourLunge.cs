@@ -10,8 +10,17 @@ public class BossBehaviourLunge : MonoBehaviour
     private List<GameObject> _lungeWayPoints = new List<GameObject>();
     private List<GameObject> _patrolWayPoints = new List<GameObject>();
     private MoveSwitcher _moveSwitcher;
-    //private LungeMove _lungeMove;
-    //private PatrolMove _patrolMove;
+    private float _speed = 2f;
+
+    private void Awake()
+    {
+        _moveSwitcher = GetComponent<MoveSwitcher>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartBehaviour());
+    }
 
     public void SetLungeBehaviourWaypoints(List<GameObject> patrolWaypoints, List<GameObject> lungeWaypoints)
     {
@@ -19,32 +28,20 @@ public class BossBehaviourLunge : MonoBehaviour
         _lungeWayPoints = lungeWaypoints;
     }
 
-    private void Awake()
-    {
-        _moveSwitcher = GetComponent<MoveSwitcher>();
-        //_lungeMove = GetComponent<LungeMove>();
-        //_patrolMove = GetComponent<PatrolMove>();
-    }
-
-    private void Start()
-    {
-        //_lungeMove.SetPoints(_lungeWayPoints);
-        //_patrolMove.SetPoints(_patrolWayPoints);
-
-        StartCoroutine(StartBehaviour());
-    }
-
     private IEnumerator StartBehaviour()
     {
+        WaitForSeconds delayAfterPatrolMoveActivation = new WaitForSeconds(16f);
+        WaitForSeconds delayAfterLungeMoveActivation = new WaitForSeconds(7f);
+
         while (gameObject.activeSelf == true)
         {
-            _moveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, 2f, _patrolWayPoints);
+            _moveSwitcher.ActivateMoveVariant(MoveVariants.Patrol, _speed, _patrolWayPoints);
 
-            yield return new WaitForSeconds(16f);
+            yield return delayAfterPatrolMoveActivation;
 
-            _moveSwitcher.ActivateMoveVariant(MoveVariants.Lunge, 2f, _lungeWayPoints);
+            _moveSwitcher.ActivateMoveVariant(MoveVariants.Lunge, _speed, _lungeWayPoints);
 
-            yield return new WaitForSeconds(7f);
+            yield return delayAfterLungeMoveActivation;
         }
     }
 }

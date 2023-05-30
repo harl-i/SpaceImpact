@@ -8,11 +8,26 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
     [SerializeField] private BossPuff _bossPuff;
+    [SerializeField] private EnemyBulletsPool _bulletsPool;
 
     private int _collisionDamage = 1;
-    private ObjectPool _bulletsPool;
 
     public static event UnityAction<int> RewardAccrual;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        StartCoroutine(StartShoot(_firstShootDelay));
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Player player))
+        {
+            player.ApplyDamage(_collisionDamage);
+            Die();
+        }
+    }
 
     protected override void Die()
     {
@@ -34,28 +49,26 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
 
     private void Shoot()
     {
-        _bulletsPool.TryGetObject(out GameObject bullet);
-
-        if (bullet != null)
+        if (_bulletsPool != null)
         {
-            bullet.transform.position = _shootPoint.transform.position;
-            bullet.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("bullets pool is empty");
-        }
-    }
 
-    private void Start()
-    {
-        _bulletsPool = FindObjectOfType<EnemyBulletsPool>();
-    }
+            _bulletsPool.TryGetObject(out GameObject bullet);
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        StartCoroutine(StartShoot(_firstShootDelay));
+            if (bullet != null)
+            {
+                bullet.transform.position = _shootPoint.transform.position;
+                if (bullet.transform.parent != null)
+                {
+                    bullet.transform.SetParent(null);
+
+                }
+                bullet.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("bullets pool is empty");
+            }
+        }
     }
 
     private IEnumerator StartShoot(float firstShootDelay)
@@ -76,15 +89,6 @@ public class ShootingEnemy : SpaceFlyingObject, IObjectFromPool
             Shoot();
 
             yield return new WaitForSeconds(delay);
-        }
-    }
-
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out Player player))
-        {
-            player.ApplyDamage(_collisionDamage);
-            Die();
         }
     }
 }

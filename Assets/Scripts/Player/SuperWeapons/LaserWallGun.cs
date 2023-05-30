@@ -27,6 +27,7 @@ public class LaserWallGun : SuperWeapon
         if (laserWall != null)
         {
             laserWall.transform.position = _player.ShootPoint.position;
+            laserWall.transform.SetParent(null);
             laserWall.SetActive(true);
         }
     }

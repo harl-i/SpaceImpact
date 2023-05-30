@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PolygonCollider2D))]
@@ -7,18 +6,39 @@ using UnityEngine;
 [RequireComponent(typeof(MoveSwitcher))]
 public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamageable
 {
-    [SerializeField] private EnemyDeathNotifier _enemyDeathNotifier;
-    [SerializeField] private Blink _blink;
     [SerializeField] protected int _health;
     [SerializeField] protected int _reward;
     [SerializeField] protected BossDeathNotifier _bossDeathNotifier;
     [SerializeField] protected bool _isBoss;
     [SerializeField] protected bool _canDeathNotfy;
     [SerializeField] protected bool _canShoot;
+    [SerializeField] private EnemyDeathNotifier _enemyDeathNotifier;
+    [SerializeField] private Blink _blink;
 
-    private bool _isCoroutineRunning = false;
     protected float _elapsedTime;
     private int _currentHealth;
+    private Transform _parent;
+    private bool _isCoroutineRunning = false;
+
+    private void Awake()
+    {
+        if (transform.parent != null)
+        {
+            _parent = transform.parent.transform;
+        }
+    }
+
+    protected virtual void OnEnable()
+    {
+        RestoreHealth();
+    }
+
+    private void Update()
+    {
+        _elapsedTime += Time.deltaTime;
+    }
+
+    protected abstract void OnTriggerEnter2D(Collider2D collision);
 
     public void ApplyDamage(int damage)
     {
@@ -42,6 +62,10 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamag
 
     public void ReturnToPool()
     {
+        if (transform.parent == null)
+        {
+            transform.SetParent(_parent);
+        }
         gameObject.SetActive(false);
     }
 
@@ -55,19 +79,9 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamag
         ReturnToPool();
     }
 
-    protected virtual void OnEnable()
-    {
-        RestoreHealth();
-    }
-
     private void RestoreHealth()
     {
         _currentHealth = _health;
-    }
-
-    private void Update()
-    {
-        _elapsedTime += Time.deltaTime;
     }
 
     private IEnumerator BlinkActivate()
@@ -77,6 +91,4 @@ public abstract class SpaceFlyingObject : MonoBehaviour, IObjectFromPool, IDamag
         _blink.enabled = false;
         _isCoroutineRunning = false;
     }
-
-    protected abstract void OnTriggerEnter2D(Collider2D collision);
 }

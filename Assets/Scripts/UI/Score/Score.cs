@@ -9,12 +9,6 @@ public class Score : MonoBehaviour
 
     public int ScoreCount => _score;
 
-    public void SetScore(int count)
-    {
-        _score = count;
-        _textMeshPro.text = _score.ToString();
-    }
-
     private void Awake()
     {
         _textMeshPro = GetComponent<TextMeshProUGUI>();
@@ -30,6 +24,12 @@ public class Score : MonoBehaviour
     {
         ShootingEnemy.RewardAccrual -= OnAccrual;
         NonShootingEnemy.RewardAccrual -= OnAccrual;
+    }
+
+    public void SetScore(int count)
+    {
+        _score = count;
+        _textMeshPro.text = _score.ToString();
     }
 
     private void OnAccrual(int reward)

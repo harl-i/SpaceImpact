@@ -37,7 +37,6 @@ public class ChaoticMove : Move
                 transform.position.x - _offsetX, 
                 Mathf.Clamp(transform.position.y + random, _bottomBorder, _topBorder),
                 transform.position.z);
-            
 
             while (transform.position != target)
             {

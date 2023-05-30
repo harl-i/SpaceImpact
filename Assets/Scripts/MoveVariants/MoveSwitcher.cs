@@ -14,6 +14,15 @@ public class MoveSwitcher : MonoBehaviour
     private PatrolMove _patrolMove;
     private LungeMove _lungeMove;
 
+    private void Awake()
+    {
+        _linearMove = GetComponent<LinearMove>();
+        _chaoticMove = GetComponent<ChaoticMove>();
+        _pointsMove = GetComponent<PointsMove>();
+        _patrolMove = GetComponent<PatrolMove>();
+        _lungeMove = GetComponent<LungeMove>();
+    }
+
     public void ActivateMoveVariant(MoveVariants moveVariants, float speed, List<GameObject> wayPoints)
     {
         DisableAll();
@@ -55,14 +64,5 @@ public class MoveSwitcher : MonoBehaviour
         _pointsMove.enabled = false;
         _patrolMove.enabled = false;
         _lungeMove.enabled = false;
-    }
-
-    private void Awake()
-    {
-        _linearMove = GetComponent<LinearMove>();
-        _chaoticMove = GetComponent<ChaoticMove>();
-        _pointsMove = GetComponent<PointsMove>();
-        _patrolMove = GetComponent<PatrolMove>();
-        _lungeMove = GetComponent<LungeMove>();
     }
 }

@@ -6,11 +6,10 @@ public abstract class SuperWeapon : MonoBehaviour
 {
     [SerializeField] protected float _shootDelay;
 
-    private float _timeOverDelay = 5f;
     protected PlayerInput _playerInput;
     protected Player _player;
     protected float _elapsedTime;
-
+    private float _timeOverDelay = 5f;
 
     private void Awake()
     {
@@ -29,14 +28,14 @@ public abstract class SuperWeapon : MonoBehaviour
         _playerInput.keySuperFirePressed -= OnSuperShoot;
     }
 
+    private void Update()
+    {
+        _elapsedTime += Time.deltaTime;
+    }
+
     protected abstract void OnSuperShoot();
 
     protected abstract void Shoot();
 
     public abstract SuperWeaponVariant GetSuperWeaponType();
-
-    private void Update()
-    {
-        _elapsedTime += Time.deltaTime;
-    }
 }

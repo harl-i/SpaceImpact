@@ -26,8 +26,8 @@ public class LaserGun : SuperWeapon
 
         if (laser != null)
         {
-            //laser.transform.SetParent(_player.ShootPoint);
             laser.transform.position = _player.ShootPoint.position;
+            laser.transform.SetParent(null);
             laser.SetActive(true);
         }
     }

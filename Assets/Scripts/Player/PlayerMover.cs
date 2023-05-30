@@ -13,6 +13,19 @@ public class PlayerMover : MonoBehaviour
     private bool _isVerticalMove;
     private bool _isHorizontalMove;
 
+    private void Start()
+    {
+        _targetPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        if ((Vector2)transform.position != _targetPosition)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _moveSpeed * Time.deltaTime);
+        }  
+    }
+
     public void TryMoveUp()
     {
         if(!_isHorizontalMove && _targetPosition.y < _maxHeight)
@@ -53,19 +66,6 @@ public class PlayerMover : MonoBehaviour
     {
         _isVerticalMove = false;
         _isHorizontalMove = false;
-    }
-
-    private void Start()
-    {
-        _targetPosition = transform.position;
-    }
-
-    private void Update()
-    {
-        if ((Vector2)transform.position != _targetPosition)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _moveSpeed * Time.deltaTime);
-        }  
     }
 
     private void SetNextPosition(Vector2 direction)

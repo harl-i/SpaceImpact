@@ -3,24 +3,38 @@ using UnityEngine;
 
 public abstract class Bullet : MonoBehaviour, IObjectFromPool
 {
+    [SerializeField] protected int _damage;
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private float _bulletLifeTime;
     [SerializeField] private Direction _choiceDirection;
-    [SerializeField] protected int _damage;
 
+    private Transform _parent;
+
+    private void Awake()
+    {
+        _parent = transform.parent.transform;
+    }
+
+    private void OnEnable()
+    {
+        SetDirection(_choiceDirection);
+    }
+
+    protected abstract void OnTriggerEnter2D(Collider2D collision);
+    
     public void ReturnToPool()
     {
+        if (transform.parent == null)
+        {
+            transform.SetParent(_parent);
+        }
+
         gameObject.SetActive(false);
     }
 
     public GameObject GetGameObject()
     {
         return this.gameObject;
-    }
-
-    private void OnEnable()
-    {
-        SetDirection(_choiceDirection);
     }
 
     private void SetDirection(Direction direction)
@@ -52,8 +66,6 @@ public abstract class Bullet : MonoBehaviour, IObjectFromPool
 
         ReturnToPool();
     }
-
-    protected abstract void OnTriggerEnter2D(Collider2D collision);
 }
 
 enum Direction
