@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9828f98289880b745b452bc2b840f349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 383868071652606008}
+  _container: {fileID: 8270230385394615245}
   _capacity: 3
   _laserWall: {fileID: 8816552347488033827, guid: 42640b73e49706b4f822a284c7a29cbe, type: 3}
 --- !u!1 &1275640188984301830
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0878b442c317394f9ef97793b34c9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 2349857643555521779}
+  _container: {fileID: 8319328308557643759}
   _capacity: 3
   _laser: {fileID: 2766617303862386593, guid: 670f0ea0a090f1e4d9733f2d5e35121f, type: 3}
 --- !u!1 &3147315760092827721
@@ -640,7 +640,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0c7ee5ec13d7049a535da5f1f0bacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletsPool: {fileID: 0}
+  _bulletsPool: {fileID: 3913037446350511732}
   _shootPoint: {fileID: 3147315760092827720}
   _shootDelay: 0.15
   _shield: {fileID: 1091107913}
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootDelay: 2
-  _pool: {fileID: 0}
+  _pool: {fileID: 7586251122620023798}
 --- !u!114 &3147315760658410724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootDelay: 2
-  _pool: {fileID: 0}
+  _pool: {fileID: 2002772620578988544}
 --- !u!114 &3147315760658410725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootDelay: 2
-  _pool: {fileID: 0}
+  _pool: {fileID: 6301085223707385718}
 --- !u!114 &3147315760658410721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,7 +931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a042632aace720d479953fbabb3661b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 3845917827648589243}
+  _container: {fileID: 4818698296603394115}
   _capacity: 30
   _bulletPrefab: {fileID: 4776375704638703007, guid: 743362328dc7534439df6f460cd7193a, type: 3}
 --- !u!1 &9170615036357838650
@@ -978,6 +978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2e5d3c6b5842242a7f6a7ab6f247d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 9170615036357838650}
+  _container: {fileID: 4923860636235387497}
   _capacity: 3
   _rocket: {fileID: 8060183301293742742, guid: fefab3d3c1d3da140a7fdbc5b364e9ce, type: 3}

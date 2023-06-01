@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class ChangeTextColor : MonoBehaviour
+public class TextColorChanger : MonoBehaviour
 {
     [SerializeField] private Color pressedColor;
     [SerializeField] private Button button;

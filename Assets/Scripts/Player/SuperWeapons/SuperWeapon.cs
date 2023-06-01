@@ -20,12 +20,12 @@ public abstract class SuperWeapon : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerInput.keySuperFirePressed += OnSuperShoot;
+        _playerInput.KeySuperFirePressed += OnSuperShoot;
     }
 
     private void OnDisable()
     {
-        _playerInput.keySuperFirePressed -= OnSuperShoot;
+        _playerInput.KeySuperFirePressed -= OnSuperShoot;
     }
 
     private void Update()

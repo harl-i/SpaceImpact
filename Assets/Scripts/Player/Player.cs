@@ -49,12 +49,12 @@ public class Player : MonoBehaviour, IDamageable
 
     private void OnEnable()
     {
-        _input.keyFirePressed += OnShoot;
+        _input.KeyFirePressed += OnShoot;
     }
 
     private void OnDisable()
     {
-        _input.keyFirePressed -= OnShoot;
+        _input.KeyFirePressed -= OnShoot;
     }
 
     private void Start()

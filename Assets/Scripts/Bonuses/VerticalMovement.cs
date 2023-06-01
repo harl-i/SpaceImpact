@@ -7,12 +7,12 @@ public class VerticalMovement : MonoBehaviour
     private float originalY;
     private float newPositionY;
 
-    void Start()
+    private void Start()
     {
         originalY = gameObject.transform.position.y;
     }
 
-    void Update()
+    private void Update()
     {
         newPositionY = originalY + amplitude * Mathf.Sin(Time.time * speed);
 
