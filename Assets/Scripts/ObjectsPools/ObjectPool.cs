@@ -29,7 +29,7 @@ public abstract class ObjectPool : MonoBehaviour
         _pool = new GameObject[_capacity];
         for (int i = 0; i < _capacity; i++)
         {
-            GameObject spawnedObject = Instantiate(prefab.GetGameObject(), _container);
+            GameObject spawnedObject = Instantiate(prefab.GameObject, _container);
             spawnedObject.gameObject.SetActive(false);
             _pool[i] = spawnedObject;
         }
