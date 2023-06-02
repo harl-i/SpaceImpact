@@ -6,9 +6,9 @@ public class Rocket : MonoBehaviour, IObjectFromPool
     [SerializeField] private int _damage;
     [SerializeField] private float _raycastDistance;
     [SerializeField] private LayerMask _targetLayer;
-    [SerializeField] private float angleStep;
-    [SerializeField] private float radius;
-    [SerializeField] private int numOfDirections;
+    [SerializeField] private float _angleStep;
+    [SerializeField] private float _radius;
+    [SerializeField] private int _numOfDirections;
     [SerializeField] private RocketSender _rocketSender;
 
     private Vector3[] _targetDirections;
@@ -94,15 +94,15 @@ public class Rocket : MonoBehaviour, IObjectFromPool
 
     private void GenerateDirections()
     {
-        _targetDirections = new Vector3[numOfDirections];
+        _targetDirections = new Vector3[_numOfDirections];
 
-        for (int i = 0; i < numOfDirections; i++)
+        for (int i = 0; i < _numOfDirections; i++)
         {
-            float angle = i * angleStep - GetDetectionRadiusSlope();
+            float angle = i * _angleStep - GetDetectionRadiusSlope();
             float rad = angle * Mathf.Deg2Rad;
 
-            float x = radius * Mathf.Cos(rad);
-            float y = radius * Mathf.Sin(rad);
+            float x = _radius * Mathf.Cos(rad);
+            float y = _radius * Mathf.Sin(rad);
 
             _targetDirections[i] = new Vector3(x, y, 0);
         }
