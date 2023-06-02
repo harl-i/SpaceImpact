@@ -532,18 +532,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3147315760658410723, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
-      propertyPath: _pool
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3147315760658410724, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
-      propertyPath: _pool
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3147315760658410725, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
-      propertyPath: _pool
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3147315760658410734, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
       propertyPath: _score
       value: 
@@ -555,10 +543,6 @@ PrefabInstance:
     - target: {fileID: 3147315760658410737, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3147315760658410746, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
-      propertyPath: _bulletsPool
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3147315760658410750, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
       propertyPath: m_RootOrder
@@ -1639,6 +1623,17 @@ Transform:
   m_Father: {fileID: 641112372}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1781651586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3147315760658410721, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
+  m_PrefabInstance: {fileID: 531253759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e879f7dac31e7174ebbfae72f2500abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1969914872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,6 +2037,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 828971248}
+    - target: {fileID: 7568949484008159388, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
+      propertyPath: _switcher
+      value: 
+      objectReference: {fileID: 1781651586}
     - target: {fileID: 7568949484582121381, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
       propertyPath: _player
       value: 

@@ -311,12 +311,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b82d3bcaf44b4ab2cd90011f4f6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 3147315760658410746, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
+  _player: {fileID: 0}
   _iconInUI: {fileID: 7568949485531594330}
   _count: {fileID: 7568949485229736730}
   _iconRocket: {fileID: 21300000, guid: d06df3defc7ea04488a11175b97486c4, type: 3}
   _iconLaser: {fileID: 21300000, guid: 3c12ce1700738d54d81643069017341a, type: 3}
   _iconLaserWall: {fileID: 21300000, guid: e40a3b44d315d244eb87740417cf1832, type: 3}
+  _switcher: {fileID: 0}
 --- !u!114 &7568949484008159389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e4f58c448a7c54a8361fb21be20c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 3147315760658410746, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
+  _player: {fileID: 0}
   _heartPrefab: {fileID: 6207037591988510279, guid: 924337e57261dfe46b415b8c915ce33b, type: 3}
 --- !u!1 &7568949484731159617
 GameObject:
