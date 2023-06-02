@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Wave_4 : Wave
 {
-    private int _enemysCount = 4;
+    private int _enemiesCount = 4;
 
     private void OnEnable()
     {
@@ -14,7 +14,7 @@ public class Wave_4 : Wave
     {
         WaitForSeconds delay = new WaitForSeconds(_spawnDelay);
 
-        for (int i = 0; i < _enemysCount; i++)
+        for (int i = 0; i < _enemiesCount; i++)
         {
             SpawnEnemy(_enemiesPool, _spawnPoints[2], _moveVariant);
             yield return delay;
