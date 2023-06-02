@@ -6,6 +6,7 @@ public interface IObjectFromPool
     {
         get { return GetGameObject(); }
     }
+
     public void ReturnToPool();
 
     public GameObject GetGameObject();

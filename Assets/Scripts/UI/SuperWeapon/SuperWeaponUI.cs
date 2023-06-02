@@ -10,13 +10,7 @@ public class SuperWeaponUI : MonoBehaviour
     [SerializeField] private Sprite _iconRocket;
     [SerializeField] private Sprite _iconLaser;
     [SerializeField] private Sprite _iconLaserWall;
-
-    private SuperWeaponSwitcher _switcher;
-
-    private void Awake()
-    {
-        _switcher = _player.GetComponent<SuperWeaponSwitcher>();
-    }
+    [SerializeField] private SuperWeaponSwitcher _switcher;
 
     private void OnEnable()
     {

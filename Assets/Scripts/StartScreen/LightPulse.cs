@@ -17,12 +17,12 @@ public class LightPulse : MonoBehaviour
         _light2D = GetComponent<Light2D>();
     }
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(ChangeRadius());
     }
 
-    IEnumerator ChangeRadius()
+    private IEnumerator ChangeRadius()
     {
         WaitForSeconds delay = new WaitForSeconds(0.1f);
 

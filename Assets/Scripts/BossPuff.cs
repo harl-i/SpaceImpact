@@ -1,3 +1,3 @@
 using UnityEngine;
 
-public class BossPuff : MonoBehaviour { }
+public class BossPuff : MonoBehaviour {}

@@ -33,9 +33,9 @@ public abstract class SuperWeapon : MonoBehaviour
         _elapsedTime += Time.deltaTime;
     }
 
+    public abstract SuperWeaponVariant GetSuperWeaponType();
+
     protected abstract void OnSuperShoot();
 
     protected abstract void Shoot();
-
-    public abstract SuperWeaponVariant GetSuperWeaponType();
 }

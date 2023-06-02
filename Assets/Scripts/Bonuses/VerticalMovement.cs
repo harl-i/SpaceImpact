@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class VerticalMovement : MonoBehaviour
 {
-    public float speed = 2f;
-    public float amplitude = 1f;
-    private float originalY;
-    private float newPositionY;
+    [SerializeField] private float _speed = 2f;
+    [SerializeField] private float _amplitude = 1f;
+    private float _originalY;
+    private float _newPositionY;
 
     private void Start()
     {
-        originalY = gameObject.transform.position.y;
+        _originalY = gameObject.transform.position.y;
     }
 
     private void Update()
     {
-        newPositionY = originalY + amplitude * Mathf.Sin(Time.time * speed);
+        _newPositionY = _originalY + _amplitude * Mathf.Sin(Time.time * _speed);
 
         transform.position = new Vector3(
             transform.position.x,
-            newPositionY, 
+            _newPositionY, 
             transform.position.z);
     }
 }

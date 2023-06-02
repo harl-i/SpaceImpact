@@ -7,16 +7,17 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class TextColorChanger : MonoBehaviour
 {
-    [SerializeField] private Color pressedColor;
-    [SerializeField] private Button button;
-    private TextMeshProUGUI buttonText;
+    [SerializeField] private Color _pressedColor;
+    [SerializeField] private Button _button;
+
+    private TextMeshProUGUI _buttonText;
     private int _blinkCount = 5;
 
     private void Start()
     {
-        button = GetComponent<Button>();
-        buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
-        button.onClick.AddListener(ChangeColor);
+        _button = GetComponent<Button>();
+        _buttonText = _button.GetComponentInChildren<TextMeshProUGUI>();
+        _button.onClick.AddListener(ChangeColor);
     }
 
     public void ChangeColor()
@@ -30,9 +31,9 @@ public class TextColorChanger : MonoBehaviour
 
         for (int i = 0; i < _blinkCount; i++)
         {
-            buttonText.color = pressedColor;
+            _buttonText.color = _pressedColor;
             yield return blinkDuration;
-            buttonText.color = Color.white;
+            _buttonText.color = Color.white;
             yield return blinkDuration;
         }
     }

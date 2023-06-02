@@ -15,7 +15,7 @@ public class Heart : MonoBehaviour
     private void Awake()
     {
         _image = GetComponent<Image>();
-        _image.fillAmount = 1;
+        _image.fillAmount = _maxFillingValue;
     }
 
     public void ToFill()
