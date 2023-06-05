@@ -16,6 +16,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootDelay;
     [SerializeField] private GameObject _shield;
+    [SerializeField] private AudioSource _shootSound;
 
     private SuperWeaponSwitcher _superWeaponSwitcher;
     private PlayerInput _input;
@@ -193,6 +194,7 @@ public class Player : MonoBehaviour, IDamageable
             bullet.transform.position = _shootPoint.transform.position;
             bullet.transform.SetParent(null);
             bullet.SetActive(true);
+            _shootSound.Play();
         }
         else
         {

@@ -29,6 +29,7 @@ public class RocketGun : SuperWeapon
             rocket.transform.position = _player.ShootPoint.position;
             rocket.transform.SetParent(null);
             rocket.SetActive(true);
+            _superShootSound.Play();
         }
     }
 }

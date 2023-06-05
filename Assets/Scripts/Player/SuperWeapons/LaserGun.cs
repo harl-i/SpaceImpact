@@ -29,6 +29,7 @@ public class LaserGun : SuperWeapon
             laser.transform.position = _player.ShootPoint.position;
             laser.transform.SetParent(null);
             laser.SetActive(true);
+            _superShootSound.Play();
         }
     }
 }

@@ -105,9 +105,9 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 8
-  angleStep: 10
-  radius: 100
-  numOfDirections: 12
+  _angleStep: 10
+  _radius: 100
+  _numOfDirections: 12
   _rocketSender: 0
 --- !u!60 &-1452666224150524412
 PolygonCollider2D:

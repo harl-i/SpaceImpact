@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class SuperWeapon : MonoBehaviour
 {
     [SerializeField] protected float _shootDelay;
+    [SerializeField] protected AudioSource _superShootSound;
 
     protected PlayerInput _playerInput;
     protected Player _player;

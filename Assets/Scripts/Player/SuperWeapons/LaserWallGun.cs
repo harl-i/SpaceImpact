@@ -29,6 +29,7 @@ public class LaserWallGun : SuperWeapon
             laserWall.transform.position = _player.ShootPoint.position;
             laserWall.transform.SetParent(null);
             laserWall.SetActive(true);
+            _superShootSound.Play();
         }
     }
 }
