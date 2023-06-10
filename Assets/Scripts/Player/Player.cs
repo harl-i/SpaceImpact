@@ -29,12 +29,16 @@ public class Player : MonoBehaviour, IDamageable
     private int _laserWallsCount;
     private float _shootElapsedTime;
     private bool _isShieldActivated = false;
+    private int _continuum;
+    private int _currentLevel;
 
     public Transform ShootPoint => _shootPoint;
     public int RocketsCount => _rocketsCount;
     public int LasersCount => _lasersCount;
     public int LaserWallsCount => _laserWallsCount;
     public int Health => _health;
+    public int CurrentLevel => _currentLevel;
+    public int Continuum => _continuum;
 
     public event UnityAction<int> HealthChanged;
     public event UnityAction<int> SuperShoot;
@@ -152,7 +156,15 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        _levelTransition.LoadGameOverScreen();
+        if (_continuum > 0)
+        {
+            _levelTransition.LoadContinuumScreen();
+        }
+        else
+        {
+            _levelTransition.LoadGameOverScreen();
+
+        }
     }
 
     public void SetHelath(int count)
@@ -173,6 +185,16 @@ public class Player : MonoBehaviour, IDamageable
     public void SetLasersWalls(int count)
     {
         _laserWallsCount = count;
+    }
+
+    public void SetContinuums(int count)
+    {
+        _continuum = count;
+    }
+
+    public void SetCurrentLevel(int count)
+    {
+        _currentLevel = count;
     }
 
     private void OnShoot()

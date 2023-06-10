@@ -18,6 +18,8 @@ public class LoadParameters : MonoBehaviour
     private int _lasersWalls;
     private int _scoreCount;
     private string _activeSuperWeapon;
+    private int _continuum;
+    private int _currentLevel;
 
     private void Awake()
     {
@@ -45,6 +47,8 @@ public class LoadParameters : MonoBehaviour
         _lasersWalls = PlayerPrefs.GetInt(PlayerParameters.LaserWallsCount);
         _scoreCount = PlayerPrefs.GetInt(PlayerParameters.Score);
         _activeSuperWeapon = PlayerPrefs.GetString(PlayerParameters.ActiveSuperWeapon);
+        _continuum = PlayerPrefs.GetInt(PlayerParameters.Continuum);
+        _currentLevel = PlayerPrefs.GetInt(PlayerParameters.CurrentLevel);
     }
 
     private void SetParameters()
@@ -54,6 +58,9 @@ public class LoadParameters : MonoBehaviour
         _player.SetLasers(_lasers);
         _player.SetLasersWalls(_lasersWalls);
         _score.SetScore(_scoreCount);
+        _player.SetContinuums(_continuum);
+        _player.SetCurrentLevel(_currentLevel);
+
     }
 
     private void ActivateSuperWeapon()

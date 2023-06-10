@@ -9,4 +9,6 @@ public static class PlayerParameters
     public const string RocketGun = "Rocket";
     public const string LaserGun = "Laser";
     public const string LaserWallGun = "LaserWall";
+    public const string Continuum = "Continuum";
+    public const string CurrentLevel = "CurrentLevel";
 }

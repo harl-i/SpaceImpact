@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80242eb3a5b94b74787d70e9a4063861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 1275190910305289295}
+  _container: {fileID: 1085736164861479881}
   _capacity: 6
   _bulletPrefab: {fileID: 4232405458133529851, guid: f0217e15bc45fcf4b84b441b272edfe9, type: 3}
 --- !u!1 &4097166790204989657
@@ -741,6 +741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c39bb4dff10c7e4a8e21b977f4b35ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 5967350682204840768}
+  _container: {fileID: 7034877398928529668}
   _capacity: 6
   _enemy: {fileID: 9097524849889478026, guid: 9d1d14e63f9fbbc419f2e6347473db59, type: 3}

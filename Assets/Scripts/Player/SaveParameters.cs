@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Player))]
 [RequireComponent(typeof(RocketGun))]
@@ -33,6 +34,7 @@ public class SaveParameters : MonoBehaviour
         PlayerPrefs.SetInt(PlayerParameters.LaserWallsCount, _player.LaserWallsCount);
         PlayerPrefs.SetInt(PlayerParameters.Score, _score.ScoreCount);
         PlayerPrefs.SetString(PlayerParameters.ActiveSuperWeapon, GetSuperWeaponName());
+        PlayerPrefs.SetInt(PlayerParameters.CurrentLevel, _player.CurrentLevel + 1);
     }
 
     private void FillSuperWeaponList()

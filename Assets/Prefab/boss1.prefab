@@ -476,6 +476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80242eb3a5b94b74787d70e9a4063861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 4941971970709293737}
+  _container: {fileID: 7292892699546956997}
   _capacity: 6
   _bulletPrefab: {fileID: 4232405458133529851, guid: f0217e15bc45fcf4b84b441b272edfe9, type: 3}
