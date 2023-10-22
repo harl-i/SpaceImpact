@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,10 @@ public class LevelTransition : MonoBehaviour
     private int _gameOverScreen = 10;
     private int _continuumScreen = 11;
     private int _continuumCurrentCount;
+    private bool _hasStarted = false;
+
+    [DllImport("__Internal")] 
+    private static extern void ShowFullScreenAdv();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -66,6 +71,13 @@ public class LevelTransition : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         SetStartPlayerPrefs();
+        
+        if (!_hasStarted)
+        {
+            ShowFullScreenAdv();
+
+            _hasStarted = true;
+        }
 
         SceneManager.LoadScene(_startScreen);
     }
@@ -80,12 +92,17 @@ public class LevelTransition : MonoBehaviour
         PlayerPrefs.SetInt(PlayerParameters.Continuum, 3);
         PlayerPrefs.SetInt(PlayerParameters.CurrentLevel, 1);
         PlayerPrefs.SetString(PlayerParameters.ActiveSuperWeapon, PlayerParameters.RocketGun);
-
     }
 
     private void ChangeScene()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
+
+        if (currentScene % 3 == 0)
+        {
+            ShowFullScreenAdv();
+        }
+
         SceneManager.LoadScene(++currentScene);
     }
 }
