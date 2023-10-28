@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerMover _playerMover;
+    [SerializeField] private Joystick _joystick;
 
     public event UnityAction KeyFirePressed;
     public event UnityAction KeySuperFirePressed;
@@ -56,5 +57,10 @@ public class PlayerInput : MonoBehaviour
         {
              KeySuperFirePressed?.Invoke();
         }
+    }
+
+    public void EnableJoystick(bool enable)
+    {
+        _joystick.gameObject.SetActive(enable);
     }
 }

@@ -10,10 +10,10 @@ public class LevelTransition : MonoBehaviour
     private int _gameOverScreen = 10;
     private int _continuumScreen = 11;
     private int _continuumCurrentCount;
-    private bool _hasStarted = false;
+    private bool hasStarted = false;
 
-    [DllImport("__Internal")] 
-    private static extern void ShowFullScreenAdv();
+    [DllImport("__Internal")]
+    private static extern void ShowFullscreenAdv();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,7 +29,7 @@ public class LevelTransition : MonoBehaviour
     {
         SceneManager.LoadScene(_gameOverScreen);
     }
-    
+
     public void LoadContinuumScreen()
     {
         SceneManager.LoadScene(_continuumScreen);
@@ -44,11 +44,16 @@ public class LevelTransition : MonoBehaviour
     {
         StartCoroutine(LoadStartSceen());
     }
-    
+
     public void BackToGame()
     {
         ReduceContinuum();
         SceneManager.LoadScene(PlayerPrefs.GetInt(PlayerParameters.CurrentLevel));
+    }
+
+    public void EndShowAdvertisment()
+    {
+        Time.timeScale = 1;
     }
 
     private void ReduceContinuum()
@@ -68,16 +73,11 @@ public class LevelTransition : MonoBehaviour
 
     private IEnumerator LoadStartSceen()
     {
+        StartShowAdvertisment();
+
         yield return new WaitForSeconds(1f);
 
         SetStartPlayerPrefs();
-        
-        if (!_hasStarted)
-        {
-            ShowFullScreenAdv();
-
-            _hasStarted = true;
-        }
 
         SceneManager.LoadScene(_startScreen);
     }
@@ -92,17 +92,24 @@ public class LevelTransition : MonoBehaviour
         PlayerPrefs.SetInt(PlayerParameters.Continuum, 3);
         PlayerPrefs.SetInt(PlayerParameters.CurrentLevel, 1);
         PlayerPrefs.SetString(PlayerParameters.ActiveSuperWeapon, PlayerParameters.RocketGun);
+
     }
 
     private void ChangeScene()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
 
-        if (currentScene % 3 == 0)
+        if ((currentScene + 1) % 3 == 0)
         {
-            ShowFullScreenAdv();
+            StartShowAdvertisment();
         }
 
         SceneManager.LoadScene(++currentScene);
+    }
+
+    private void StartShowAdvertisment()
+    {
+        Time.timeScale = 0;
+        ShowFullscreenAdv();
     }
 }
