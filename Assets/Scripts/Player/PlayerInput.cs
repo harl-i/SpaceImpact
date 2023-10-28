@@ -20,6 +20,12 @@ public class PlayerInput : MonoBehaviour
         InputHandler();
     }
 
+    public void EnableJoystick(int enable)
+    {
+        bool enableBool = enable == 1;
+        _joystick.gameObject.SetActive(enableBool);
+    }
+
     private void InputHandler()
     {
         if (Input.GetKey(KeyCode.W))
@@ -57,10 +63,5 @@ public class PlayerInput : MonoBehaviour
         {
              KeySuperFirePressed?.Invoke();
         }
-    }
-
-    public void EnableJoystick(bool enable)
-    {
-        _joystick.gameObject.SetActive(enable);
     }
 }

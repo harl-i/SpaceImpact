@@ -8,7 +8,7 @@ public class BrowserChecker : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void DetectBrowserAndEnableJoystick();
 
-    private void Start()
+    void Start()
     {
         DetectBrowserAndEnableJoystick();
     }

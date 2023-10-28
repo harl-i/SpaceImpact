@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7568949483871384418, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7568949484008159388, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
       propertyPath: _player
       value: 
@@ -2091,10 +2095,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3147315760658410737, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3147315760658410745, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
       propertyPath: _joystick
       value: 
       objectReference: {fileID: 8170153793238075802}
+    - target: {fileID: 3147315760658410745, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3147315760658410750, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -15,8 +15,9 @@ mergeInto(LibraryManager.library, {
 
     DetectBrowserAndEnableJoystick: function () {
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        
-        myGameInstance.SendMessage('Player', 'EnableJoystick', isMobile);
+
+        var isMobileNumber = +isMobile;
+        myGameInstance.SendMessage('Player', 'EnableJoystick', isMobileNumber);
     },
 
 });
