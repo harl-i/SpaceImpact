@@ -10,6 +10,8 @@ public class BrowserChecker : MonoBehaviour
 
     void Start()
     {
+#if !UNITY_EDITOR
         DetectBrowserAndEnableJoystick();
+#endif
     }
 }

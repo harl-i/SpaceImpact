@@ -20,4 +20,12 @@ mergeInto(LibraryManager.library, {
         myGameInstance.SendMessage('Player', 'EnableJoystick', isMobileNumber);
     },
 
+    SetBackgroundColor: function (r, g, b, a) {
+        var color = 'rgba(' + r * 100 + ',' + g * 100 + ',' + b * 100 + ',' + a + ')';
+        var element = document.getElementById('canvas-container');
+        alert(element);
+        element.style.backgroundColor = color;
+        alert(color);
+    },
+
 });
