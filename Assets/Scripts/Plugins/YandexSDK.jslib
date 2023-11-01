@@ -13,11 +13,11 @@ mergeInto(LibraryManager.library, {
         })
     },
 
-    DetectBrowserAndEnableJoystick: function () {
+    DetectBrowserAndEnableMobileButtons: function () {
         var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
         var isMobileNumber = +isMobile;
-        myGameInstance.SendMessage('Player', 'EnableJoystick', isMobileNumber);
+        myGameInstance.SendMessage('Player', 'EnableMobileButtons', isMobileNumber);
     },
 
     SetBackgroundColor: function (r, g, b, a) {

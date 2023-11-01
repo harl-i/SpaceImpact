@@ -608,6 +608,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMover: {fileID: 3147315760658410744}
+  _joystick: {fileID: 0}
+  _shootButton: {fileID: 0}
 --- !u!114 &3147315760658410746
 MonoBehaviour:
   m_ObjectHideFlags: 0

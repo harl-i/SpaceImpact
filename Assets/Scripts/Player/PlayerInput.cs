@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private Joystick _joystick;
+    [SerializeField] private ShootButton _shootButton;
 
     public event UnityAction KeyFirePressed;
     public event UnityAction KeySuperFirePressed;
@@ -20,10 +21,16 @@ public class PlayerInput : MonoBehaviour
         InputHandler();
     }
 
-    public void EnableJoystick(int enable)
+    public void EnableMobileButtons(int enable)
     {
         bool enableBool = enable == 1;
         _joystick.gameObject.SetActive(enableBool);
+        _shootButton.gameObject.SetActive(enableBool);
+    }
+
+    public void UIKeyFirePressed()
+    {
+        KeyFirePressed?.Invoke();
     }
 
     private void InputHandler()

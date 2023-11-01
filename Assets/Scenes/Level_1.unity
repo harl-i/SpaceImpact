@@ -130,38 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 128823485, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 486272903, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
+      propertyPath: _playerInput
       value: 
-      objectReference: {fileID: 836755474}
-    - target: {fileID: 128823485, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 836755474}
-    - target: {fileID: 128823485, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleMute
-      objectReference: {fileID: 0}
-    - target: {fileID: 128823485, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ToggleMute
-      objectReference: {fileID: 0}
-    - target: {fileID: 128823485, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SoundToggle, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 128823485, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: SoundToggle, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 262477806, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 485370690}
-    - target: {fileID: 262477806, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: TogglePause
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2129233808}
     - target: {fileID: 7568949483871384350, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -262,38 +234,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 87959280}
-    - target: {fileID: 7568949485229736731, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568949485229736731, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568949485229736731, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568949485229736731, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568949485531594331, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568949485531594331, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568949485531594331, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568949485531594331, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8170153793238075802, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
       propertyPath: playerMover
       value: 
@@ -309,6 +249,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cb4b92626b527b4abc6f325fc1c4692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1439216 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 486272903, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
+  m_PrefabInstance: {fileID: 1439214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875925f4d088bc142b15aef58c917be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &22780392 stripped
@@ -694,17 +645,6 @@ Transform:
   m_Father: {fileID: 2094146313}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &485370690 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3827254749642480412, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-  m_PrefabInstance: {fileID: 1439214}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0930efda963e2214d9e719dc54bf109c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,17 +1498,6 @@ MonoBehaviour:
   _container: {fileID: 785300873}
   _capacity: 10
   _enemy: {fileID: 9097524849889478026, guid: fd53fcb1dd87dd5469a07d66d20bd972, type: 3}
---- !u!114 &836755474 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3827254749622685712, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-  m_PrefabInstance: {fileID: 1439214}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bf68f951796aa444bf0bab3c2a9129a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &846078166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,6 +1809,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3147315760658410745, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
+      propertyPath: _shootButton
+      value: 
+      objectReference: {fileID: 1439216}
     - target: {fileID: 3147315760658410750, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2539,6 +2472,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3407b13d689919149bbbcada42f7f9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2129233808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3147315760658410745, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
+  m_PrefabInstance: {fileID: 1615029832}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86c3b79e470c44408c72fe999323327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &99571255322935148
