@@ -2002,6 +2002,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7896896215506485179, guid: b6433495450b91349904c7556ee24132, type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 7896896215506485180, guid: b6433495450b91349904c7556ee24132, type: 3}
       propertyPath: m_Name
       value: DominantColorFinder

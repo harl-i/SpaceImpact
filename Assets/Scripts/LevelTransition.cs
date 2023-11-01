@@ -10,7 +10,6 @@ public class LevelTransition : MonoBehaviour
     private int _gameOverScreen = 10;
     private int _continuumScreen = 11;
     private int _continuumCurrentCount;
-    private bool hasStarted = false;
 
     [DllImport("__Internal")]
     private static extern void ShowFullscreenAdv();
@@ -53,7 +52,7 @@ public class LevelTransition : MonoBehaviour
 
     public void EndShowAdvertisment()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1.0f;
     }
 
     private void ReduceContinuum()

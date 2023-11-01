@@ -1008,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7896896215506485179, guid: b6433495450b91349904c7556ee24132, type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 7896896215506485180, guid: b6433495450b91349904c7556ee24132, type: 3}
       propertyPath: m_Name
       value: DominantColorFinder
@@ -1718,6 +1722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c5ae4177c08546428c0501d46053f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gamePauseToggle: {fileID: 0}
 --- !u!114 &765867546 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7568949483861261977, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
