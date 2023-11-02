@@ -10,19 +10,14 @@ public class LoadParameters : MonoBehaviour
 {
     [SerializeField] private Score _score;
 
+    private SaveLoadSystem _saveLoadSystem;
     private Player _player;
     private SuperWeaponSwitcher _superWeaponSwitcher;
-    private int _health;
-    private int _rockets;
-    private int _lasers;
-    private int _lasersWalls;
-    private int _scoreCount;
     private string _activeSuperWeapon;
-    private int _continuum;
-    private int _currentLevel;
 
     private void Awake()
     {
+        _saveLoadSystem = new SaveLoadSystem(Application.persistentDataPath + "/save.json");
         _player = GetComponent<Player>();
         _superWeaponSwitcher = GetComponent<SuperWeaponSwitcher>();
     }
@@ -33,34 +28,26 @@ public class LoadParameters : MonoBehaviour
 
         if (sceneNumber != 0)
         {
-            GetParameters();
-            SetParameters();
+            Load();
             ActivateSuperWeapon();
         }
     }
 
-    private void GetParameters()
+    public void Load()
     {
-        _health = PlayerPrefs.GetInt(PlayerParameters.Health);
-        _rockets = PlayerPrefs.GetInt(PlayerParameters.RocketsCount);
-        _lasers = PlayerPrefs.GetInt(PlayerParameters.LasersCount);
-        _lasersWalls = PlayerPrefs.GetInt(PlayerParameters.LaserWallsCount);
-        _scoreCount = PlayerPrefs.GetInt(PlayerParameters.Score);
-        _activeSuperWeapon = PlayerPrefs.GetString(PlayerParameters.ActiveSuperWeapon);
-        _continuum = PlayerPrefs.GetInt(PlayerParameters.Continuum);
-        _currentLevel = PlayerPrefs.GetInt(PlayerParameters.CurrentLevel);
-    }
+        PlayerData playerData = _saveLoadSystem.Load();
 
-    private void SetParameters()
-    {
-        _player.SetHelath(_health);
-        _player.SetRockets(_rockets);
-        _player.SetLasers(_lasers);
-        _player.SetLasersWalls(_lasersWalls);
-        _score.SetScore(_scoreCount);
-        _player.SetContinuums(_continuum);
-        _player.SetCurrentLevel(_currentLevel);
-
+        if (playerData != null)
+        {
+            _player.SetHelath(playerData.Health);
+            _player.SetRockets(playerData.RocketsCount);
+            _player.SetLasers(playerData.LasersCount);
+            _player.SetLasersWalls(playerData.LaserWallsCount);
+            _player.SetContinuums(playerData.ContinuumsCount);
+            _score.SetScore(playerData.Score);
+            _activeSuperWeapon = playerData.ActiveSuperWeapon;
+            _player.SetCurrentLevel(playerData.CurrentLevel);
+        }
     }
 
     private void ActivateSuperWeapon()

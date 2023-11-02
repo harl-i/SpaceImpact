@@ -5,14 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransition : MonoBehaviour
 {
+    private SaveLoadSystem _saveLoadSystem;
     private int _firstLevel = 1;
     private int _startScreen = 0;
     private int _gameOverScreen = 10;
     private int _continuumScreen = 11;
-    private int _continuumCurrentCount;
 
     [DllImport("__Internal")]
     private static extern void ShowFullscreenAdv();
+
+    private void Awake()
+    {
+        _saveLoadSystem = new SaveLoadSystem(Application.persistentDataPath + "/save.json");
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,69 +51,102 @@ public class LevelTransition : MonoBehaviour
 
     public void BackToGame()
     {
-        ReduceContinuum();
-        SceneManager.LoadScene(PlayerPrefs.GetInt(PlayerParameters.CurrentLevel));
+        PlayerData playerData = _saveLoadSystem.Load();
+
+        if (playerData != null)
+        {
+            playerData.Health = 3;
+
+            ReduceContinuum(playerData);
+        }
+        _saveLoadSystem.Save(playerData);
+
+        SceneManager.LoadScene(playerData.CurrentLevel);
     }
 
+    private void ReduceContinuum(PlayerData playerData)
+    {
+        int continuumsCount = playerData.ContinuumsCount;
+        playerData.ContinuumsCount = continuumsCount - 1;
+    }
+
+#if !UNITY_EDITOR
     public void EndShowAdvertisment()
     {
         Time.timeScale = 1.0f;
     }
-
-    private void ReduceContinuum()
-    {
-        _continuumCurrentCount = PlayerPrefs.GetInt(PlayerParameters.Continuum);
-        PlayerPrefs.SetInt(PlayerParameters.Continuum, --_continuumCurrentCount);
-    }
+#endif
 
     private IEnumerator LoadFirstLevel()
     {
         yield return new WaitForSeconds(1f);
 
-        SetStartPlayerPrefs();
+        SetStartPlayerData();
 
         SceneManager.LoadScene(_firstLevel);
     }
 
     private IEnumerator LoadStartSceen()
     {
+#if !UNITY_EDITOR
         StartShowAdvertisment();
+#endif
 
         yield return new WaitForSeconds(1f);
 
-        SetStartPlayerPrefs();
+        SetStartPlayerData();
 
         SceneManager.LoadScene(_startScreen);
     }
 
-    private void SetStartPlayerPrefs()
+    private void SetStartPlayerData()
     {
-        PlayerPrefs.SetInt(PlayerParameters.Health, 3);
-        PlayerPrefs.SetInt(PlayerParameters.RocketsCount, 0);
-        PlayerPrefs.SetInt(PlayerParameters.LasersCount, 0);
-        PlayerPrefs.SetInt(PlayerParameters.LaserWallsCount, 0);
-        PlayerPrefs.SetInt(PlayerParameters.Score, 0);
-        PlayerPrefs.SetInt(PlayerParameters.Continuum, 3);
-        PlayerPrefs.SetInt(PlayerParameters.CurrentLevel, 1);
-        PlayerPrefs.SetString(PlayerParameters.ActiveSuperWeapon, PlayerParameters.RocketGun);
+        PlayerData playerData = new PlayerData
+        {
+            Health = 3,
+            RocketsCount = 0,
+            LasersCount = 0,
+            LaserWallsCount = 0,
+            Score = 0,
+            ActiveSuperWeapon = PlayerParameters.RocketGun,
+            ContinuumsCount = 3,
+            CurrentLevel = 1
+        };
 
+        _saveLoadSystem.Save(playerData);
     }
 
     private void ChangeScene()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
 
+#if !UNITY_EDITOR
         if ((currentScene + 1) % 3 == 0)
         {
             StartShowAdvertisment();
         }
-
+#endif
+        SaveSceneToPlayer(currentScene);
         SceneManager.LoadScene(++currentScene);
     }
 
+    private void SaveSceneToPlayer(int currentScene)
+    {
+        PlayerData playerData = _saveLoadSystem.Load();
+
+        if (playerData != null)
+        {
+            playerData.CurrentLevel = currentScene + 1;
+
+            _saveLoadSystem.Save(playerData);
+        }
+    }
+
+#if !UNITY_EDITOR
     private void StartShowAdvertisment()
     {
         Time.timeScale = 0;
         ShowFullscreenAdv();
     }
+#endif
 }

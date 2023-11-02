@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Player))]
 [RequireComponent(typeof(RocketGun))]
@@ -16,8 +15,12 @@ public class SaveParameters : MonoBehaviour
     private LaserWallGun _laserWallGun;
     private Player _player;
 
+    private SaveLoadSystem _saveLoadSystem;
+
     private void Awake()
     {
+        _saveLoadSystem = new SaveLoadSystem(Application.persistentDataPath + "/save.json");
+
         _player = GetComponent<Player>();
         _rocketGun = GetComponent<RocketGun>();
         _laserGun = GetComponent<LaserGun>();
@@ -28,13 +31,19 @@ public class SaveParameters : MonoBehaviour
 
     public void Save()
     {
-        PlayerPrefs.SetInt(PlayerParameters.Health, _player.Health);
-        PlayerPrefs.SetInt(PlayerParameters.RocketsCount, _player.RocketsCount);
-        PlayerPrefs.SetInt(PlayerParameters.LasersCount, _player.LasersCount);
-        PlayerPrefs.SetInt(PlayerParameters.LaserWallsCount, _player.LaserWallsCount);
-        PlayerPrefs.SetInt(PlayerParameters.Score, _score.ScoreCount);
-        PlayerPrefs.SetString(PlayerParameters.ActiveSuperWeapon, GetSuperWeaponName());
-        PlayerPrefs.SetInt(PlayerParameters.CurrentLevel, _player.CurrentLevel + 1);
+        PlayerData playerData = new PlayerData
+        {
+            Health = _player.Health,
+            RocketsCount = _player.RocketsCount,
+            LasersCount = _player.LasersCount,
+            LaserWallsCount = _player.LaserWallsCount,
+            Score = _score.ScoreCount,
+            ActiveSuperWeapon = GetSuperWeaponName(),
+            ContinuumsCount = _player.Continuum,
+            CurrentLevel = _player.CurrentLevel + 1
+        };
+
+        _saveLoadSystem.Save(playerData);
     }
 
     private void FillSuperWeaponList()

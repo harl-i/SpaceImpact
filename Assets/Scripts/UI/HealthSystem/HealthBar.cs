@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
 
     private void OnHealthChanged(int value)
     {
-        if (_hearts.Count < value)
+        if (_hearts.Count <= value)
         {
             int createHealth = value - _hearts.Count;
             for (int i = 0; i < createHealth; i++)
@@ -28,7 +28,7 @@ public class HealthBar : MonoBehaviour
                 CreateHeart();
             }
         }
-        else if (_hearts.Count > value && _hearts.Count != 0)
+        else if (_hearts.Count >= value && _hearts.Count != 0)
         {
             int deleteHealth = _hearts.Count - value;
             for (int i = 0; i < deleteHealth; i++)

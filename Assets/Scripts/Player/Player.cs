@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IDamageable
     private PlayerMover _playerMover;
     private LevelEndBehaviour _levelEndBehavoiur;
     private LevelTransition _levelTransition;
+    private SaveLoadSystem _saveLoadSystem;
     private int _health = 3;
     private int _rocketsCount;
     private int _lasersCount;
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour, IDamageable
         _playerMover = GetComponent<PlayerMover>();
         _levelEndBehavoiur = GetComponent<LevelEndBehaviour>();
         _levelTransition = GetComponent<LevelTransition>();
+        _saveLoadSystem = new SaveLoadSystem(Application.persistentDataPath + "/save.json");
     }
 
     private void OnEnable()
@@ -64,7 +66,9 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        HealthChanged?.Invoke(_health);
+        PlayerData playerData = _saveLoadSystem.Load();
+
+        HealthChanged?.Invoke(playerData.Health);
         _playerMover.enabled = true;
         _levelEndBehavoiur.enabled = false;
     }
