@@ -841,6 +841,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3147315760658410721, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
+      propertyPath: _superWeaponButton
+      value: 
+      objectReference: {fileID: 933348691}
     - target: {fileID: 3147315760658410734, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
       propertyPath: _score
       value: 
@@ -861,6 +865,10 @@ PrefabInstance:
       propertyPath: _shootButton
       value: 
       objectReference: {fileID: 933348689}
+    - target: {fileID: 3147315760658410745, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
+      propertyPath: _superWeaponButton
+      value: 
+      objectReference: {fileID: 933348691}
     - target: {fileID: 3147315760658410750, guid: 1816485262d58974397dd1cce7a8a54a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1817,6 +1825,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 367117707, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 828971248}
+    - target: {fileID: 367117708, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 531253762}
+    - target: {fileID: 367117708, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UIKeySuperShootPressed
+      objectReference: {fileID: 0}
     - target: {fileID: 486272903, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
       propertyPath: _playerInput
       value: 
@@ -1979,6 +1999,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &933348691 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 367117707, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
+  m_PrefabInstance: {fileID: 933348688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa266f9eb066f8644a33ebd51d6f6178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &963319670

@@ -6,6 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(LaserWallGun))]
 public class SuperWeaponSwitcher : MonoBehaviour
 {
+    [SerializeField] private SuperWeaponButton _superWeaponButton;
+
     private RocketGun _rocketGun;
     private LaserGun _laserGun;
     private LaserWallGun _laserWallGun;
@@ -24,6 +26,7 @@ public class SuperWeaponSwitcher : MonoBehaviour
         DisableAll();
         _rocketGun.enabled = true;
         SwitchSuperWeapon?.Invoke(SuperWeaponVariant.Rocket);
+        _superWeaponButton.SetSuperWeapon(SuperWeaponVariant.Rocket);
     }
 
     public void ActivateLaserGun()
@@ -31,6 +34,7 @@ public class SuperWeaponSwitcher : MonoBehaviour
         DisableAll();
         _laserGun.enabled = true;
         SwitchSuperWeapon?.Invoke(SuperWeaponVariant.Laser);
+        _superWeaponButton.SetSuperWeapon(SuperWeaponVariant.Laser);
     }
 
     public void ActivateLaserWallGun()
@@ -38,6 +42,7 @@ public class SuperWeaponSwitcher : MonoBehaviour
         DisableAll();
         _laserWallGun.enabled = true;
         SwitchSuperWeapon?.Invoke(SuperWeaponVariant.LaserWall);
+        _superWeaponButton.SetSuperWeapon(SuperWeaponVariant.LaserWall);
     }
 
     private void DisableAll()

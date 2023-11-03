@@ -32,6 +32,7 @@ public class Player : MonoBehaviour, IDamageable
     private bool _isShieldActivated = false;
     private int _continuum;
     private int _currentLevel;
+    private int _lastShoot = 1;
 
     public Transform ShootPoint => _shootPoint;
     public int RocketsCount => _rocketsCount;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public event UnityAction<int> HealthChanged;
     public event UnityAction<int> SuperShoot;
+    public event UnityAction SuperWeaponChargeDepleted;
 
     private void Awake()
     {
@@ -56,12 +58,12 @@ public class Player : MonoBehaviour, IDamageable
 
     private void OnEnable()
     {
-        _input.KeyFirePressed += OnShoot;
+        _input.KeyShootPressed += OnShoot;
     }
 
     private void OnDisable()
     {
-        _input.KeyFirePressed -= OnShoot;
+        _input.KeyShootPressed -= OnShoot;
     }
 
     private void Start()
@@ -109,6 +111,11 @@ public class Player : MonoBehaviour, IDamageable
             _rocketsCount--;
             SuperShoot(_rocketsCount);
         }
+
+        if (_rocketsCount == 0)
+        {
+            SuperWeaponChargeDepleted?.Invoke();
+        }
     }
 
     public void ReduceLaser()
@@ -118,6 +125,11 @@ public class Player : MonoBehaviour, IDamageable
             _lasersCount--;
             SuperShoot(_lasersCount);
         }
+
+        if (_lasersCount == 0)
+        {
+            SuperWeaponChargeDepleted?.Invoke();
+        }
     }
 
     public void ReduceLaserWall()
@@ -126,6 +138,11 @@ public class Player : MonoBehaviour, IDamageable
         {
             _laserWallsCount--;
             SuperShoot(_laserWallsCount);
+        }
+
+        if (_laserWallsCount == 0)
+        {
+            SuperWeaponChargeDepleted?.Invoke();
         }
     }
 

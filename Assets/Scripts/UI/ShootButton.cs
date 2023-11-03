@@ -28,7 +28,7 @@ public class ShootButton : MonoBehaviour
     {
         if (continuousShoot)
         {
-            _playerInput.UIKeyFirePressed();
+            _playerInput.UIKeyShootPressed();
         }
     }
 

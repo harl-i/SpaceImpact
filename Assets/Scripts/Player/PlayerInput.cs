@@ -7,9 +7,10 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private ShootButton _shootButton;
+    [SerializeField] private SuperWeaponButton _superWeaponButton;
 
-    public event UnityAction KeyFirePressed;
-    public event UnityAction KeySuperFirePressed;
+    public event UnityAction KeyShootPressed;
+    public event UnityAction KeySuperShootPressed;
 
     private void Start()
     {
@@ -26,11 +27,17 @@ public class PlayerInput : MonoBehaviour
         bool enableBool = enable == 1;
         _joystick.gameObject.SetActive(enableBool);
         _shootButton.gameObject.SetActive(enableBool);
+        _superWeaponButton.gameObject.SetActive(enableBool);
     }
 
-    public void UIKeyFirePressed()
+    public void UIKeyShootPressed()
     {
-        KeyFirePressed?.Invoke();
+        KeyShootPressed?.Invoke();
+    }
+
+    public void UIKeySuperShootPressed()
+    {
+        KeySuperShootPressed?.Invoke();
     }
 
     private void InputHandler()
@@ -63,12 +70,12 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            KeyFirePressed?.Invoke();
+            KeyShootPressed?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-             KeySuperFirePressed?.Invoke();
+             KeySuperShootPressed?.Invoke();
         }
     }
 }

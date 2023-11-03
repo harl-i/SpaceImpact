@@ -488,7 +488,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: b8eecab9ea3c7894aa01e7c3d6a6db2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -610,6 +610,7 @@ MonoBehaviour:
   _playerMover: {fileID: 3147315760658410744}
   _joystick: {fileID: 0}
   _shootButton: {fileID: 0}
+  _superWeaponButton: {fileID: 0}
 --- !u!114 &3147315760658410746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,6 +702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e879f7dac31e7174ebbfae72f2500abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _superWeaponButton: {fileID: 0}
 --- !u!114 &3147315760658410735
 MonoBehaviour:
   m_ObjectHideFlags: 0
