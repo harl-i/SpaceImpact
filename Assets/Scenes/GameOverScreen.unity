@@ -24992,6 +24992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1215528687}
   - component: {fileID: 1215528689}
+  - component: {fileID: 1215528690}
   - component: {fileID: 1215528688}
   m_Layer: 5
   m_Name: GameOver
@@ -25067,12 +25068,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 175
+  m_fontSize: 136.6
   m_fontSizeBase: 175
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 136.6
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -25117,6 +25118,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215528686}
   m_CullTransparentMesh: 1
+--- !u!114 &1215528690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215528686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ce54c619ab2a64396b4c33800350e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _en: GAME OVER
+  _ru: "\u0418\u0413\u0420\u0410 \u041E\u041A\u041E\u041D\u0427\u0415\u041D\u0410"
+  _tr: "OYUN B\u0130TT\u0130"
 --- !u!1 &1216692654
 GameObject:
   m_ObjectHideFlags: 0
@@ -26135,6 +26151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1272823318}
   - component: {fileID: 1272823320}
+  - component: {fileID: 1272823321}
   - component: {fileID: 1272823319}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -26183,7 +26200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412 \u0413\u041B\u0410\u0412\u041D\u041E\u0415 \u041C\u0415\u041D\u042E"
+  m_text: MAIN MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
   m_sharedMaterial: {fileID: -3129221099471949057, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
@@ -26260,6 +26277,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272823317}
   m_CullTransparentMesh: 1
+--- !u!114 &1272823321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272823317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ce54c619ab2a64396b4c33800350e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _en: MAIN MENU
+  _ru: "\u0412 \u0413\u041B\u0410\u0412\u041D\u041E\u0415 \u041C\u0415\u041D\u042E"
+  _tr: "ANA MEN\xDC"
 --- !u!1 &1273327472
 GameObject:
   m_ObjectHideFlags: 0
