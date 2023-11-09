@@ -18,6 +18,7 @@ mergeInto(LibraryManager.library, {
 
         var isMobileNumber = +isMobile;
         myGameInstance.SendMessage('Player', 'EnableMobileButtons', isMobileNumber);
+        myGameInstance.SendMessage('Exit', 'EnableMobileButtons', isMobileNumber);
     },
 
     SetBackgroundColor: function (r, g, b, a) {
