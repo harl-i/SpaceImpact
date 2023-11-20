@@ -38,4 +38,12 @@ mergeInto(LibraryManager.library, {
         return buffer;
     },
 
+    SetLeaderboardScore : function(score){
+        ysdk.getLeaderboards()
+        .then(lb => {
+            // Без extraData
+            lb.setLeaderboardScore('SpaceImpactLeaderboard', score);
+      });
+    },
+
 });

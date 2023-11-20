@@ -31,6 +31,7 @@ public class LevelTransition : MonoBehaviour
 
     public void LoadGameOverScreen()
     {
+
         SceneManager.LoadScene(_gameOverScreen);
     }
 

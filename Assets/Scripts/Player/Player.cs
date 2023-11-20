@@ -42,6 +42,8 @@ public class Player : MonoBehaviour, IDamageable
     public int CurrentLevel => _currentLevel;
     public int Continuum => _continuum;
 
+    public static event UnityAction PlayerDied;
+
     public event UnityAction<int> HealthChanged;
     public event UnityAction<int> SuperShoot;
     public event UnityAction SuperWeaponChargeDepleted;
@@ -155,6 +157,7 @@ public class Player : MonoBehaviour, IDamageable
 
             if (_health <= 0)
             {
+                PlayerDied?.Invoke();
                 Die();
             }
             else
@@ -184,7 +187,6 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             _levelTransition.LoadGameOverScreen();
-
         }
     }
 
