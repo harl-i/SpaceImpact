@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 
@@ -11,9 +9,6 @@ public class Score : MonoBehaviour
     private int _score;
 
     public int ScoreCount => _score;
-
-    [DllImport("__Internal")]
-    private static extern void SetLeaderboardScore(int score);
 
     private void Awake()
     {
@@ -39,8 +34,6 @@ public class Score : MonoBehaviour
     {
         _score = count;
         _textMeshPro.text = _score.ToString();
-
-        //SetLeaderboardScore(_score);
     }
 
     private void OnPlayerDied()

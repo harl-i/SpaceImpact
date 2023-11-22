@@ -29,21 +29,33 @@ mergeInto(LibraryManager.library, {
 
     },
 
-    GetLang : function(){
+    GetLang: async function(){
+        await window.ysdkInitialized;
         var lang = ysdk.environment.i18n.lang;
         var bufferSize = lengthBytesUTF8(lang) + 1;
         var buffer = _malloc(bufferSize);
         stringToUTF8(lang, buffer, bufferSize);
+
+        alert("---!!!GetLang done!!!---")
         
         return buffer;
     },
 
     SetLeaderboardScore : function(score){
-        ysdk.getLeaderboards()
-        .then(lb => {
-            // Без extraData
-            lb.setLeaderboardScore('SpaceImpactLeaderboard', score);
-      });
+        var player;
+        ysdk.getPlayer().then(_player => {
+            player = _player;
+            if (player.getMode() !== 'lite') {
+                ysdk.getLeaderboards()
+                .then(lb => {
+                    lb.setLeaderboardScore('SpaceImpactLeaderboard', score);
+                });
+            } else {
+                player.signIn();
+            }
+            }).catch(err => {
+                    alert("Initialization error");
+            });
     },
 
 });

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SpaceImpact</title>
+
+    <!-- Yandex Games SDK -->
+    <script src="https://yandex.ru/games/sdk/v2"></script>
+
+    <style>
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #unity-canvas {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body style="margin: 0px; overflow: hidden;" oncontextmenu="return false;">
+    <div id="canvas-container">
+        <canvas id="unity-canvas" style="position: fixed; width: 100%; height: 100%; background: #0E1012; object-fit: contain;"></canvas>
+    </div>
+
+    <div id="progress-bar" style="position: absolute; left: 0%; right: 100%; top: 49%; bottom: 49%; background-color: white;"></div>
+
+    <script>
+        window.ysdkInitialized = new Promise((resolve) => {
+            YaGames.init().then(ysdk => {
+                console.log('Yandex SDK initialized');
+                window.ysdk = ysdk;
+
+                // leaderboard
+                var lb;
+                ysdk.getLeaderboards()
+                    .then(_lb => lb = _lb);
+
+                //ysdk.adv.showFullscreenAdv({
+                //    callbacks: {
+                //        onClose: function (wasShown) {
+                //            myGameInstance.SendMessage('GameManager', 'EndShowAdvertisment');
+                //        },
+                //        onError: function (error) {
+                //            // some action on error
+                //        }
+                //    }
+                //})
+
+                resolve();
+            });
+        });
+    </script>
+
+    <script src="Build/SPACE IMPACT GAME.loader.js"></script>
+    <script>
+
+        window.addEventListener('resize', () => {
+            const canvas = document.getElementById('unity-canvas');
+            const aspectRatio = 16 / 9;
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
+            let width, height;
+
+            if (windowWidth / windowHeight > aspectRatio) {
+                width = windowHeight * aspectRatio;
+                height = windowHeight;
+            } else {
+                width = windowWidth;
+                height = windowWidth / aspectRatio;
+            }
+
+            // Измените размеры элемента Canvas
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+
+            // Измените размеры буфера отрисовки WebGL
+            canvas.width = width;
+            canvas.height = height;
+
+            // Обновите область просмотра WebGL
+            const gl = canvas.getContext('webgl');
+            gl.viewport(0, 0, canvas.width, canvas.height);
+
+            // Обновите размер рендеринга Unity
+            unityInstance.SetResolution(canvas.width, canvas.height);
+        });
+
+        const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
+
+        const settings = {
+            dataUrl: "Build/26076e27ee728d252a12cf481d8e6d9f.data.unityweb",
+            frameworkUrl: "Build/00e13591d7b324fd9b6e4fb09556a424.js.unityweb",
+            codeUrl: "Build/a11a8f71b3aa322d58bfff3835aa9507.wasm.unityweb",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "Half-Cat Studio",
+            productName: "SpaceImpact",
+            productVersion: "1.0.0.0",
+            matchWebGLToCanvasSize: false,
+            devicePixelRatio: !isMobileDevice ? 2 : 1.6,
+        };
+
+        const progressBar = document.querySelector("#progress-bar");
+
+        var myGameInstance = null;
+
+        setTimeout(() => {
+            const canvas = document.getElementById('unity-canvas');
+            let gl = canvas.getContext('webgl2');
+
+            if (!gl) {
+                gl = canvas.getContext('webgl');
+            }
+
+            if (!gl) {
+                alert("WebGL not supported");
+                return;
+            }
+
+            const sync = gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
+            gl.waitSync(sync, 0, gl.TIMEOUT_IGNORED);
+
+            createUnityInstance(canvas, settings, (progress) => {
+                progressBar.style.right = 100 * (1 - progress) + "%";
+            }).then((unityInstance) => {
+                myGameInstance = unityInstance;
+                progressBar.style.display = "none";
+                window.dispatchEvent(new Event('resize'));
+            }).catch((message) => {
+                alert(message);
+            });
+        }, 500); // Wait half a second before loading. Makes page more responsive on reload.
+    </script>
+</body>
+
+</html>
