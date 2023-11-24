@@ -29,17 +29,31 @@ mergeInto(LibraryManager.library, {
 
     },
 
-    GetLang: async function(){
-        await window.ysdkInitialized;
-        var lang = ysdk.environment.i18n.lang;
-        var bufferSize = lengthBytesUTF8(lang) + 1;
-        var buffer = _malloc(bufferSize);
-        stringToUTF8(lang, buffer, bufferSize);
-
-        alert("---!!!GetLang done!!!---")
-        
-        return buffer;
+    GetLang: function(){
+            var lang = ysdk.environment.i18n.lang;
+            var bufferSize = lengthBytesUTF8(lang) + 1;
+            var buffer = _malloc(bufferSize);
+            stringToUTF8(lang, buffer, bufferSize);
+   
+            return buffer;
     },
+
+    // SetLeaderboardScore : function(score){
+    //     var player;
+    //     ysdk.getPlayer().then(_player => {
+    //         player = _player;
+    //         if (player.getMode() !== 'lite') {
+    //             ysdk.getLeaderboards()
+    //             .then(lb => {
+    //                 lb.setLeaderboardScore('SpaceImpactLeaderboard', score);
+    //             });
+    //         } else {
+    //             player.signIn();
+    //         }
+    //         }).catch(err => {
+    //                 alert("Initialization error");
+    //         });
+    // },
 
     SetLeaderboardScore : function(score){
         var player;
@@ -48,14 +62,18 @@ mergeInto(LibraryManager.library, {
             if (player.getMode() !== 'lite') {
                 ysdk.getLeaderboards()
                 .then(lb => {
-                    lb.setLeaderboardScore('SpaceImpactLeaderboard', score);
+                    lb.getLeaderboardScore('SpaceImpactLeaderboard')
+                    .then(currentScore => {
+                        if (score > currentScore) {
+                            lb.setLeaderboardScore('SpaceImpactLeaderboard', score);
+                        }
+                    });
                 });
             } else {
                 player.signIn();
             }
-            }).catch(err => {
-                    alert("Initialization error");
-            });
+        }).catch(err => {
+            alert("Initialization error");
+        });
     },
-
 });

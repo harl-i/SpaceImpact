@@ -29699,7 +29699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _en: SAVE SCORE
-  _ru: ---
+  _ru: "\u0421\u041E\u0425\u0420\u0410\u041D\u0418\u0422\u042C \u0421\u0427\u0401\u0422"
   _tr: ---
 --- !u!222 &1389415765
 CanvasRenderer:
