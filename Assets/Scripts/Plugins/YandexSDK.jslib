@@ -38,23 +38,6 @@ mergeInto(LibraryManager.library, {
             return buffer;
     },
 
-    // SetLeaderboardScore : function(score){
-    //     var player;
-    //     ysdk.getPlayer().then(_player => {
-    //         player = _player;
-    //         if (player.getMode() !== 'lite') {
-    //             ysdk.getLeaderboards()
-    //             .then(lb => {
-    //                 lb.setLeaderboardScore('SpaceImpactLeaderboard', score);
-    //             });
-    //         } else {
-    //             player.signIn();
-    //         }
-    //         }).catch(err => {
-    //                 alert("Initialization error");
-    //         });
-    // },
-
     SetLeaderboardScore : function(score){
         var player;
         ysdk.getPlayer().then(_player => {
@@ -62,11 +45,13 @@ mergeInto(LibraryManager.library, {
             if (player.getMode() !== 'lite') {
                 ysdk.getLeaderboards()
                 .then(lb => {
-                    lb.getLeaderboardScore('SpaceImpactLeaderboard')
-                    .then(currentScore => {
-                        if (score > currentScore) {
+                    lb.getLeaderboardPlayerEntry('SpaceImpactLeaderboard')
+                    .then(currentEntry => {
+                        if (score > currentEntry.score) {
                             lb.setLeaderboardScore('SpaceImpactLeaderboard', score);
                         }
+
+                        myGameInstance.SendMessage('HideScoreButton', 'Hide');
                     });
                 });
             } else {
@@ -74,6 +59,7 @@ mergeInto(LibraryManager.library, {
             }
         }).catch(err => {
             alert("Initialization error");
+            console.error(err);
         });
     },
 });
