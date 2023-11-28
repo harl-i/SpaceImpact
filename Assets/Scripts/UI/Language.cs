@@ -17,8 +17,9 @@ public class Language : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
+#if !UNITY_EDITOR
             _currentLanguage = GetLang();
+#endif
         }
         else
         {

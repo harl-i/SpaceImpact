@@ -26,7 +26,7 @@ public class LoadParameters : MonoBehaviour
     {
         int sceneNumber = SceneManager.GetActiveScene().buildIndex;
 
-        if (sceneNumber != 0)
+        if (sceneNumber != 1)
         {
             Load();
             ActivateSuperWeapon();

@@ -20,6 +20,7 @@ public class InternationalText : MonoBehaviour
 
     private void Start()
     {
+#if !UNITY_EDITOR
         if (Language.Instance.CurrentLanguage == Tr)
         {
             _textMeshProUGUI.text = _tr;
@@ -32,5 +33,11 @@ public class InternationalText : MonoBehaviour
         {
             _textMeshProUGUI.text = _en;
         }
+#endif
+
+#if UNITY_EDITOR
+        _textMeshProUGUI.text = _en;
+#endif
+
     }
 }
