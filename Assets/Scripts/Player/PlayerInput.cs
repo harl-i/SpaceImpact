@@ -8,6 +8,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Joystick _joystick;
     [SerializeField] private ShootButton _shootButton;
     [SerializeField] private SuperWeaponButton _superWeaponButton;
+    [SerializeField] private float shootDelay = 0.1f;
+
+    private float nextShootTime = 0f;
 
     public event UnityAction KeyShootPressed;
     public event UnityAction KeySuperShootPressed;
@@ -68,9 +71,10 @@ public class PlayerInput : MonoBehaviour
             _playerMover.StopMove();
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKey(KeyCode.Return) && Time.time >= nextShootTime)
         {
             KeyShootPressed?.Invoke();
+            nextShootTime = Time.time + shootDelay;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
