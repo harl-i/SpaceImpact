@@ -9,5 +9,7 @@ public class SoundToggle : MonoBehaviour
         _isMuted = !_isMuted;
 
         AudioListener.volume = _isMuted ? 0 : 1;
+
+        PlayerPrefs.SetInt("Muted", _isMuted ? 1 : 0);
     }
 }

@@ -13,6 +13,9 @@ public class ButtonSpriteChanger : MonoBehaviour
     {
         _button = GetComponent<Button>();
         _buttonImage = _button.GetComponent<Image>();
+
+        bool isMuted = PlayerPrefs.GetInt("Muted", 0) == 1;
+        _buttonImage.sprite = isMuted ? _sprite2 : _sprite1;
     }
 
     public void SwitchSprite()
