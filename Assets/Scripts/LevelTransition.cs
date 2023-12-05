@@ -95,7 +95,7 @@ public class LevelTransition : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        SetStartPlayerData();
+        //SetStartPlayerData();
 
         SceneManager.LoadScene(_startScreen);
     }
@@ -122,7 +122,7 @@ public class LevelTransition : MonoBehaviour
         int currentScene = SceneManager.GetActiveScene().buildIndex;
 
 #if !UNITY_EDITOR
-        if ((currentScene + 1) % 3 == 0)
+        if ((currentScene + 1) % 2 == 0)
         {
             StartShowAdvertisment();
         }
