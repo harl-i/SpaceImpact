@@ -1,54 +1,57 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Image))]
 public class SoundSwitch : MonoBehaviour
 {
-    //public AudioSource audioSource;
-    public Sprite soundOnIcon;
-    public Sprite soundOffIcon;
-    private Image buttonImage;
-    private bool isSoundOn;
+    [SerializeField] private Sprite _soundOnIcon;
+    [SerializeField] private Sprite _soundOffIcon;
 
-    void Start()
+    private Image _buttonImage;
+    private bool _isSoundOn;
+
+    private void Awake()
     {
-        buttonImage = GetComponent<Image>();
+        _buttonImage = GetComponent<Image>();
+    }
+
+    private void Start()
+    {
         LoadSoundState();
     }
 
     public void ToggleSound()
     {
-        isSoundOn = !isSoundOn;
+        _isSoundOn = !_isSoundOn;
         SaveSoundState();
 
-        if (isSoundOn)
+        if (_isSoundOn)
         {
-            buttonImage.sprite = soundOnIcon;
-            //audioSource.Play(); // Включить звук
+            _buttonImage.sprite = _soundOnIcon;
             AudioListener.volume = 1;
         }
         else
         {
-            buttonImage.sprite = soundOffIcon;
-            //audioSource.Stop(); // Выключить звук
+            _buttonImage.sprite = _soundOffIcon;
             AudioListener.volume = 0;
         }
     }
 
     public void SaveSoundState()
     {
-        PlayerPrefs.SetInt("isSoundOn", isSoundOn ? 1 : 0);
+        PlayerPrefs.SetInt("isSoundOn", _isSoundOn ? 1 : 0);
     }
 
     public void LoadSoundState()
     {
-        isSoundOn = PlayerPrefs.GetInt("isSoundOn", 1) == 1;
-        if (isSoundOn)
+        _isSoundOn = PlayerPrefs.GetInt("isSoundOn", 1) == 1;
+        if (_isSoundOn)
         {
-            buttonImage.sprite = soundOnIcon;
+            _buttonImage.sprite = _soundOnIcon;
         }
         else
         {
-            buttonImage.sprite = soundOffIcon;
+            _buttonImage.sprite = _soundOffIcon;
         }
     }
 }

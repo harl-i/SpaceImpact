@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,10 +11,16 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private SuperWeaponButton _superWeaponButton;
     [SerializeField] private float shootDelay = 0.1f;
 
-    private float nextShootTime = 0f;
+    private float _nextShootTime = 0f;
+    private bool _canShoot = true;
 
     public event UnityAction KeyShootPressed;
     public event UnityAction KeySuperShootPressed;
+
+    private void OnEnable()
+    {
+        GamePause.OnPauseStateChanged += UpdateCanShoot;
+    }
 
     private void Start()
     {
@@ -23,6 +30,11 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         InputHandler();
+    }
+
+    private void OnDisable()
+    {
+        GamePause.OnPauseStateChanged -= UpdateCanShoot;
     }
 
     public void EnableMobileButtons(int enable)
@@ -41,6 +53,11 @@ public class PlayerInput : MonoBehaviour
     public void UIKeySuperShootPressed()
     {
         KeySuperShootPressed?.Invoke();
+    }
+
+    private void UpdateCanShoot(bool isPaused)
+    {
+        _canShoot = !isPaused;
     }
 
     private void InputHandler()
@@ -71,13 +88,13 @@ public class PlayerInput : MonoBehaviour
             _playerMover.StopMove();
         }
 
-        if (Input.GetKey(KeyCode.Return) && Time.time >= nextShootTime)
+        if (Input.GetKey(KeyCode.Return) && Time.time >= _nextShootTime && _canShoot)
         {
             KeyShootPressed?.Invoke();
-            nextShootTime = Time.time + shootDelay;
+            _nextShootTime = Time.time + shootDelay;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && _canShoot)
         {
              KeySuperShootPressed?.Invoke();
         }

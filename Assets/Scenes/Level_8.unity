@@ -2256,10 +2256,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1781651597}
-    - target: {fileID: 367117708, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UIKeySuperShootPressed
-      objectReference: {fileID: 0}
     - target: {fileID: 486272903, guid: 12c50c9b410e28d438f8355b8876757f, type: 3}
       propertyPath: _playerInput
       value: 
