@@ -103,9 +103,9 @@
         const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
 
         const settings = {
-            dataUrl: "Build/67c0ae004b29124b71325a3b94e9ff20.data.unityweb",
-            frameworkUrl: "Build/0a87549b577644233d8490b9acf4599d.js.unityweb",
-            codeUrl: "Build/a11a8f71b3aa322d58bfff3835aa9507.wasm.unityweb",
+            dataUrl: "Build/1da9bb2d556fc7266fe67c2e0d143659.data.unityweb",
+            frameworkUrl: "Build/12b64822495d2c944f983682ce363839.js.unityweb",
+            codeUrl: "Build/aaeaa7deb9cc0dc3c4620079507b7e7f.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Half-Cat Studio",
             productName: "SpaceImpact",
@@ -144,6 +144,24 @@
                     alert(message);
                 });
             }, 500); // Wait half a second before loading. Makes page more responsive on reload.
+        });
+    </script>
+
+    <script>
+        document.addEventListener("visibilitychange", function () {
+            if (document.hidden) {
+                myGameInstance.SendMessage('Pause Switcher', 'OnPauseButtonClick');
+            } else {
+                myGameInstance.SendMessage('Pause Switcher', 'OnPauseButtonClick');
+            }
+        });
+
+        window.addEventListener("blur", function () {
+            myGameInstance.SendMessage('Sound Switcher', 'ToggleSound');
+        });
+
+        window.addEventListener("focus", function () {
+            myGameInstance.SendMessage('Sound Switcher', 'ToggleSound');
         });
     </script>
 </body>

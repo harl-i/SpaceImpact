@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 128823485}
   - component: {fileID: 972349335}
   m_Layer: 5
-  m_Name: Sound ON\OFF
+  m_Name: Sound Switcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 262477806}
   - component: {fileID: 2944738368044991396}
   m_Layer: 5
-  m_Name: Play\Pause
+  m_Name: Pause Switcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
