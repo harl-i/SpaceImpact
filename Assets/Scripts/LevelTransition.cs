@@ -31,7 +31,6 @@ public class LevelTransition : MonoBehaviour
 
     public void LoadGameOverScreen()
     {
-
         SceneManager.LoadScene(_gameOverScreen);
     }
 
@@ -94,8 +93,6 @@ public class LevelTransition : MonoBehaviour
 #endif
 
         yield return new WaitForSeconds(1f);
-
-        //SetStartPlayerData();
 
         SceneManager.LoadScene(_startScreen);
     }
