@@ -54,9 +54,21 @@ mergeInto(LibraryManager.library, {
             ysdk.getLeaderboards().then(lb => {
                 lb.getLeaderboardPlayerEntry('SpaceImpactLeaderboard').then(currentEntry => {
                     if (score > currentEntry.score) {
-                        lb.setLeaderboardScore('SpaceImpactLeaderboard', score);
+                        lb.setLeaderboardScore('SpaceImpactLeaderboard', score).then(() => {
+                            // Вызывает Unity метод при успешном обновлении счета
+                            myGameInstance.SendMessage('Messages', 'OnScoreUpdatedSuccessfully', score);
+                        }).catch(err => {
+                            // Вызывает Unity метод в случае ошибки при обновлении счета
+                            myGameInstance.SendMessage('Messages', 'OnScoreUpdateError', score);
+                            console.error("Error setting leaderboard score: " + err.message);
+                        });
+                    } else {
+                        // Вызывает Unity метод, если новый счет меньше текущего
+                        myGameInstance.SendMessage('Messages', 'OnScoreUpdateFailed', score);
                     }
                 }).catch(err => {
+                    // Если не удалось получить текущий счет или другая ошибка
+                    myGameInstance.SendMessage('Messages', 'OnScoreUpdateError', score);
                     console.error("Error getting leaderboard entry: " + err.message);
                 });
             }).catch(err => {
