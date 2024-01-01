@@ -76,4 +76,26 @@ mergeInto(LibraryManager.library, {
             });
         }
     },
+
+    SaveToLocalStorage: function(key, data){
+       localStorage.setItem(UTF8ToString(key), UTF8ToString(data));
+    },
+
+    LoadFromLocalStorage: function(key){
+       var returnStr = "";
+
+       if(localStorage.getItem(UTF8ToString(key)) !==null)
+       {
+           returnStr = localStorage.getItem(UTF8ToString(key));
+       }
+
+       var bufferSize = lengthBytesUTF8(returnStr) + 1;
+       var buffer = _malloc(bufferSize);
+       stringToUTF8(returnStr, buffer, bufferSize);
+       return buffer;
+    },
+
+    ClearLocalStorage: function(key){
+       localStorage.removeItem(UTF8ToString(key));
+    }
 });

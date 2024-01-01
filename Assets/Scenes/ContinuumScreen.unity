@@ -2838,7 +2838,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
-  m_sharedMaterial: {fileID: -3129221099471949057, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
+  m_sharedMaterial: {fileID: 8582012087191275313, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7413,7 +7413,7 @@ MonoBehaviour:
   m_text: CONTINUE...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
-  m_sharedMaterial: {fileID: -3129221099471949057, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
+  m_sharedMaterial: {fileID: 8582012087191275313, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25405,7 +25405,7 @@ MonoBehaviour:
   m_text: GAME OVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
-  m_sharedMaterial: {fileID: -3129221099471949057, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
+  m_sharedMaterial: {fileID: 8582012087191275313, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -26564,7 +26564,7 @@ MonoBehaviour:
   m_text: MAIN MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
-  m_sharedMaterial: {fileID: -3129221099471949057, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
+  m_sharedMaterial: {fileID: 8582012087191275313, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -31037,7 +31037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pressedColor: {r: 0, g: 0, b: 0, a: 0}
-  _button: {fileID: 0}
+  _button: {fileID: 1470943943}
 --- !u!114 &1470943943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31097,14 +31097,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1470943941}
         m_TargetAssemblyTypeName: LevelTransition, Assembly-CSharp
         m_MethodName: BackToGame
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1470943944
 MonoBehaviour:
@@ -36528,7 +36528,7 @@ MonoBehaviour:
   m_text: X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
-  m_sharedMaterial: {fileID: -3129221099471949057, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
+  m_sharedMaterial: {fileID: 8582012087191275313, guid: 19b5111108907e7469918b1e6a03245d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

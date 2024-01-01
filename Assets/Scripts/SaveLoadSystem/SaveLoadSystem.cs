@@ -1,8 +1,14 @@
-using System.IO;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class SaveLoadSystem
 {
+    [DllImport("__Internal")]
+    private static extern void SaveToLocalStorage(string key, string value);
+
+    [DllImport("__Internal")]
+    private static extern string LoadFromLocalStorage(string key);
+
     private string _filePath;
 
     public SaveLoadSystem(string filePath)
@@ -13,14 +19,15 @@ public class SaveLoadSystem
     public void Save(PlayerData playerData)
     {
         string json = JsonUtility.ToJson(playerData);
-        File.WriteAllText(_filePath, json);
+        SaveToLocalStorage(_filePath, json);
     }
 
     public PlayerData Load()
     {
-        if (File.Exists(_filePath))
+        string json = LoadFromLocalStorage(_filePath);
+
+        if (!string.IsNullOrEmpty(json))
         {
-            string json = File.ReadAllText(_filePath);
             return JsonUtility.FromJson<PlayerData>(json);
         }
 

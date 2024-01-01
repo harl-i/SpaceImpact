@@ -1,9 +1,9 @@
-using TMPro;
 using UnityEngine;
 
-public class CountContinuums : MonoBehaviour
+public class SaveDataChecker : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _continuumsCount;
+    [SerializeField] private GameObject _continueButton;
+
     private SaveLoadSystem _saveLoadSystem;
 
     private void Awake()
@@ -17,7 +17,7 @@ public class CountContinuums : MonoBehaviour
 
         if (playerData != null)
         {
-            _continuumsCount.text = playerData.ContinuumsCount.ToString();
+            _continueButton.SetActive(true);
         }
     }
 }

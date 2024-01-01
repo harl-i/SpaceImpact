@@ -49,11 +49,11 @@ public class LevelTransition : MonoBehaviour
         StartCoroutine(LoadStartSceen());
     }
 
-    public void BackToGame()
+    public void BackToGame(bool isComingFromContinuumScreen)
     {
         PlayerData playerData = _saveLoadSystem.Load();
 
-        if (playerData != null)
+        if (playerData != null && isComingFromContinuumScreen)
         {
             playerData.Health = 3;
 
