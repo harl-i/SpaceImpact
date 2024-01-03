@@ -26,7 +26,9 @@ public class LoadParameters : MonoBehaviour
     {
         int sceneNumber = SceneManager.GetActiveScene().buildIndex;
 
+#if !UNITY_EDITOR
         Load();
+#endif
 
         if (sceneNumber != 1)
         {
